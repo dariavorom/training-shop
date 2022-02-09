@@ -1,0 +1,39 @@
+.header__bottom {
+  background-color: #fff;
+  padding: 20px 0;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-wrapper {
+    flex: 0 0 150px;
+  }
+  .personal-wrapper {
+    flex: 0 0 172px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .personal__item.cart {
+      position: relative;
+      .count {
+        position: absolute;
+        top: -9px;
+        right: -10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        font-size: 9px;
+        width: 16px;
+        height: 16px;
+        color: #fff;
+        border-radius: 50%;
+        background-color: #000;
+        border: 2px solid #fff;
+        z-index: 2;
+        box-sizing: content-box;
+      }
+    }
+  }
+}

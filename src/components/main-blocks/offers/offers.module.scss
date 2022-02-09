@@ -1,0 +1,42 @@
+.offers {
+  margin-bottom: 95px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    position: relative;
+    width: 50%;
+  }
+
+  &__text {
+    max-width: 293px;
+    width: 100%;
+    padding: 16px 23px;
+  }
+}
+.contentWhiteBg__title {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+.contentWhiteBg__description{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  span {
+    color: #E91E63;
+
+  }
+}

@@ -1,0 +1,94 @@
+.subscribe {
+  background: linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%);
+  padding: 60px 0;
+  margin-bottom: 96px;
+  &__formWrapper {
+    position: relative;
+    padding: 80px 80px 95px;
+    background-color: #fff;
+    border-radius: 4px;
+    max-width: 532px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 1;
+
+    img {
+      position: absolute;
+      bottom: -60px;
+      z-index: 2;
+    }
+  }
+  &__form {
+    input, button {
+      width: 100%;
+      height: 64px;
+    }
+    input {
+      background-color: #f8f8f8;
+      border: none;
+      color: inherit;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      padding: 5px;
+      outline: none;
+      margin-bottom: 25px;
+      &::placeholder {
+        text-align: center;
+        color: inherit;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        opacity: 0.4;
+
+      }
+    }
+    button {
+      background-color: #121212;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      text-align: center;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.9;
+      padding: 0;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 13px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    span {
+      color: #E91E63;
+    }
+  }
+
+  &__woman {
+    left: -260px;
+    top: -25px;
+  }
+
+  &__man {
+    right: -210px;
+    top: -15px;
+  }
+}

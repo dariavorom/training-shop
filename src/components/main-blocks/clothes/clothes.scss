@@ -1,0 +1,23 @@
+.women-clothes, .men-clothes {
+  margin-bottom: 95px;
+}
+.clothes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  margin-bottom: 50px;
+
+  &__link {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    background-color: #f8f8f8;
+  }
+}

@@ -1,0 +1,21 @@
+.copyright {
+  background-color: #f8f8f8;
+  padding: 12px 0;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 22px;
+  opacity: 0.8;
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__payments {
+     img {
+      display: inline-block;
+    }
+    img:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

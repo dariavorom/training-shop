@@ -1,0 +1,10 @@
+.menu-item {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 16px;
+  color: #121212;
+  text-decoration: none;
+  &:not(:last-child) {
+    margin-right: 35px;
+  }
+}
