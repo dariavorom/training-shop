@@ -1,0 +1,23 @@
+.related {
+
+  .title-h2 {
+    margin-bottom: 48px;
+  }
+
+  .clothes {
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .arrow-next {
+    top: -80px;
+    right: 7px;
+    transform: translate(0, 0) rotate(180deg);
+  }
+  .arrow-prev {
+    top: -80px;
+    right: 66px;
+    left: unset;
+    transform: translate(0, 0) rotate(0deg);
+  }
+}

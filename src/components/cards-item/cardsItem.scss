@@ -38,5 +38,24 @@
     bottom: 2px;
     right: 0;
     display: flex;
+    svg {
+      width: 12px;
+      height: 11px;
+    }
+    svg.grey path {
+      fill: #E5E5E5;
+    }
+  }
+  .sticker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #E91E63;
+    padding: 0 8px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 31px;
+    text-align: center;
+    color: #fff;
   }
 }

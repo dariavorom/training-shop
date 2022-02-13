@@ -1,4 +1,3 @@
-import Header from "../../components/header/Header";
 import {Banner} from "../../components/main-blocks/banner/Banner";
 import './main.scss';
 import {Benefits} from "../../components/main-blocks/benefits/Benefits";
@@ -7,21 +6,20 @@ import MenClothes from "../../components/main-blocks/men-clothes/menClothes";
 import Offers from "../../components/main-blocks/offers/Offers";
 import Subscribe from "../../components/main-blocks/subscribe/Subscribe";
 import LatestFromBlog from "../../components/main-blocks/latest-from-blog/LatestFromBlog";
-import Footer from "../../components/footer/Footer";
+import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
 
 
 const Main = () => {
     return (
         <>
-            <Header/>
+            <ScrollToTop/>
             <Banner/>
             <Benefits/>
             <WomenClothes/>
             <MenClothes/>
-            <Offers />
+            <Offers/>
             <Subscribe/>
-            <LatestFromBlog />
-            <Footer/>
+            <LatestFromBlog/>
         </>
     );
 }

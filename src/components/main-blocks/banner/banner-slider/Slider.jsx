@@ -1,6 +1,6 @@
 import {SLIDER} from "../../../constants/main-page/main-banner-slider";
 import './slider.scss';
-import arrow from '../../assets/slider/arrow.svg';
+import arrow from '../../../../assets/arrow.svg';
 const Slider = () => {
 
     return (

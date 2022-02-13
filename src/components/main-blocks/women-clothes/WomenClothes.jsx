@@ -1,13 +1,12 @@
-import ProductHeader from "../../products-header/ProductHeader";
 import Clothes from "../clothes/Clothes";
-import {ClothesWomen} from "../../constants/clothes-women";
+import CategoriesHeader from "../categories-header/CategoriesHeader";
 const WomenClothes = () => {
   return (
       <>
           <div className="women-clothes">
               <div className="container">
-                  <ProductHeader name={'women\'s'}/>
-                  <Clothes productType={'women'} prodList={ClothesWomen}/>
+                  <CategoriesHeader name={'women\'s'}/>
+                  <Clothes productType={'women'}/>
               </div>
           </div>
       </>

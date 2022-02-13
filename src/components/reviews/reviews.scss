@@ -1,0 +1,93 @@
+.reviews {
+  padding: 32px 0;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &-right {
+      align-self: flex-end;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 32px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+
+    &-icons {
+      margin-right: 6px;
+      flex: 0 0 110px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-value {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      opacity: .6;
+      line-height: 100%;
+    }
+  }
+
+  &__write-btn {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    opacity: 0.6;
+
+    img {
+      margin-right: 6px;
+    }
+  }
+  &__items {
+    margin-top: 25px;
+  }
+  &__item:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  &__item {
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+  }
+  &__item-author {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  &__item-time {
+    margin: 0 8px 0 auto;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 18px;
+    opacity: 0.4;
+  }
+  &__item-icons {
+    svg {
+      width: 12px;
+      height: 11px;
+    }
+    svg.grey path {
+      fill: #E5E5E5;
+    }
+  }
+  &__item-content {
+    font-size: 14px;
+    line-height: 22px;
+    opacity: 0.8;
+  }
+}

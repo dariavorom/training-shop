@@ -1,0 +1,35 @@
+.clothes {
+
+
+  &__top {
+    margin: 0 0 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .tabs {
+      &__list {
+        display: flex;
+        align-items: center;
+      }
+      &__item {
+        font-size: 12px;
+        line-height: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #1A1A1A;
+        opacity: 0.6;
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 30px;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -4,12 +4,10 @@ import './clothes.scss';
 
 const Clothes = (props) => {
     let productType = props.productType;
-    let prodList = props.prodList;
     return (
         <>
             <div className={'clothes'} data-test-id={`clothes-${productType}`}>
-                <CardsItem productType={productType} prodList={prodList}/>
-
+                <CardsItem productType={productType}/>
             </div>
             <Link to={productType} className={'clothes__link'}>see all</Link>
         </>

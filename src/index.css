@@ -1,4 +1,4 @@
-@import "normalize.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat&family=Playfair+Display+SC:wght@400;900&family=Spartan:wght@400;500;600;700&display=swap');
 
 html, body, div, span, applet, object, iframe,
@@ -52,6 +52,9 @@ table {
 }
 button {
     border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
 }
 button,input,optgroup,select,textarea {
     font-family: inherit;
@@ -114,6 +117,25 @@ a {
     text-transform: uppercase;
     color: #121212;
 }
+.title-h1 {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    letter-spacing: 0.06em;
+    color: #121212;
+}
 img {
     display: block;
+}
+.payments {
+    display: flex;
+    align-items: center;
+}
+.payments img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.border-bottom {
+    border-bottom: 2px solid #E6E6E6;
 }
