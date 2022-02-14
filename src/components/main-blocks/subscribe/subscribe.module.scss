@@ -2,6 +2,8 @@
   background: linear-gradient(180deg, #F3F2F2 0%, #DCDBDB 100%);
   padding: 60px 0;
   margin-bottom: 96px;
+  overflow: hidden;
+
   &__formWrapper {
     position: relative;
     padding: 80px 80px 95px;
@@ -18,11 +20,13 @@
       z-index: 2;
     }
   }
+
   &__form {
     input, button {
       width: 100%;
       height: 64px;
     }
+
     input {
       background-color: #f8f8f8;
       border: none;
@@ -34,6 +38,7 @@
       padding: 5px;
       outline: none;
       margin-bottom: 25px;
+
       &::placeholder {
         text-align: center;
         color: inherit;
@@ -44,6 +49,7 @@
 
       }
     }
+
     button {
       background-color: #121212;
       cursor: pointer;
@@ -58,6 +64,7 @@
       padding: 0;
     }
   }
+
   &__title {
     font-weight: 600;
     font-size: 12px;
@@ -77,6 +84,7 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 30px;
+
     span {
       color: #E91E63;
     }
@@ -91,4 +99,41 @@
     right: -210px;
     top: -15px;
   }
+}
+
+@media (max-width: 1024px) {
+  .subscribe {
+    &__formWrapper {
+      padding: 50px;
+      max-width: 450px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .subscribe {
+    &__formWrapper {
+      max-width: 100%;
+
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .subscribe {
+    margin-bottom: 50px;
+
+    &__description {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    &__formWrapper {
+      padding: 20px;
+    }
+  }
+
 }

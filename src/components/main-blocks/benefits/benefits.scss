@@ -1,10 +1,12 @@
 .benefits-wrapper {
   border-bottom: 2px solid #F8F8F8;
   margin-bottom: 95px;
+
   .benefits {
     padding: 30px 0;
     display: flex;
     justify-content: space-between;
+
     &__item {
       width: 32%;
       max-width: 350px;
@@ -12,10 +14,12 @@
       align-items: center;
       justify-content: flex-start;
       color: #121212;
+
       img {
         margin-right: 15px;
       }
     }
+
     &__title {
       font-weight: 600;
       font-size: 12px;
@@ -25,11 +29,28 @@
       margin-bottom: 5px;
       padding: 0;
     }
+
     &__description {
       font-weight: 500;
       font-size: 12px;
       line-height: 22px;
       opacity: 0.9;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .benefits-wrapper {
+    margin-bottom: 50px;
+    .benefits {
+      display: block;
+      &__item {
+        width: 100%;
+        margin: 0 auto;
+      }
+      &__item:not(:last-child) {
+        margin-bottom: 20px;
+      }
     }
   }
 }

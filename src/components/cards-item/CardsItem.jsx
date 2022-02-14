@@ -13,7 +13,7 @@ const CardsItem = (props) => {
             {prodList.map(({id, name, price, oldPrice, sale, raiting, img_src}) => (
                 <Link key={id} to={`/${productType}/${id}`} className={'cards-item'}
                       data-test-id={`clothes-card-${productType}`}>
-                    <img src={img_src} alt="" className={'cards-item__img'}/>
+                    <div className={'cards-item__img-container'}><img src={img_src} alt="" className={'cards-item__img'}/></div>
                     <span className="cards-item__title">{name}</span>
 
                     <span className="cards-item__price">$ {price}</span>

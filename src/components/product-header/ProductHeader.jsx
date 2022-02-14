@@ -18,9 +18,6 @@ const ProductHeader = (props) => {
                             <span className={'breadcrumbs__arrow cur'}>►</span>
                             <span className={'breadcrumbs__path'}>{product.name}</span>
                         </div>
-                        <div className="product__share">
-                            <a className={'product-header__share'} href="#"><img src={share} alt=""/><span>Share</span></a>
-                        </div>
                     </div>
                     <div className="product-header__title">
                         <h1 className="title-h1">
@@ -47,6 +44,9 @@ const ProductHeader = (props) => {
                                 <span className="name">Availability: </span>
                                 <span className="value">In Stock</span>
                             </div>
+                        </div>
+                        <div className="product-header__share">
+                            <a className={''} href="#"><img src={share} alt=""/><span>Share</span></a>
                         </div>
                     </div>
                 </div>

@@ -55,3 +55,36 @@
     min-width: 108px;
   }
 }
+@media (max-width: 900px) {
+  .joinus {
+    &-wrapper {
+      display: block;
+      text-align: center;
+    }
+    &__title {
+      margin-bottom: 20px;
+    }
+    &__form {
+      margin: 0 auto 20px;
+      width: 100%;
+    }
+    &__socials {
+      margin: 0 auto;
+      max-width: 110px;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .joinus {
+  &__form {
+    display: block;
+    margin: 0 auto;
+    input {
+      text-align: center;
+    }
+  }
+    &__btn {
+      margin: 20px auto;
+    }
+}
+}

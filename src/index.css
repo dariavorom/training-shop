@@ -139,3 +139,8 @@ img {
 .border-bottom {
     border-bottom: 2px solid #E6E6E6;
 }
+@media (max-width: 600px) {
+    .title-h2 {
+        font-size: 18px;
+    }
+}

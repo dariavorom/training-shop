@@ -6,10 +6,12 @@ import user from '../assets/img/user.svg';
 import cart from '../assets/img/cart.svg';
 import './header_bottom.scss';
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 const HeaderBottom = () => {
+    const [burger, setActiveClass] = useState(false);
     return (
-        <div className={'header__bottom'}>
+        <div className={`header__bottom ${burger ? 'menu-active' : ''}`}>
             <div className="container">
                 <div className="header__bottom-wrapper">
                     <div className="logo-wrapper">
@@ -33,6 +35,9 @@ const HeaderBottom = () => {
                             <img src={cart} alt=""/>
                         </Link>
                     </div>
+                    <button className="burger" onClick={() => setActiveClass(!burger)}>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </div>

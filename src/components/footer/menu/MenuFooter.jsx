@@ -15,11 +15,15 @@ const MenuFooter = () => {
                 <div className="footer-nav-wrapper">
                     <div className={"footer-nav__column"}>
                         <div className="footer-nav__title">Categories</div>
+                        <ul className={'nav-list'}>
                         {CATEGORIES.map(({id, path, name}) => (
-                            <Link key={id} to={`/${path}`} data-test-id={`footer-nav-link-${path}`} className={'footer-nav-link'}>
+                            <li key={id} className={'nav-list__item'}>
+                                <Link key={id} to={`/${path}`} data-test-id={`footer-nav-link-${path}`} className={'footer-nav-link'}>
                                 <span>{name}</span>
                             </Link>
+                            </li>
                         ))}
+                        </ul>
                     </div>
                     <div className={"footer-nav__column"}>
                         <div className="footer-nav__title">Information</div>

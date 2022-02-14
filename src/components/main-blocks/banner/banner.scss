@@ -1,9 +1,18 @@
 .main-banner {
-    background-color: #fff;
-    border-top: 2px solid #F8F8F8;
-    padding-top: 30px;
+  background-color: #fff;
+  border-top: 2px solid #F8F8F8;
+  padding-top: 30px;
+
+  .banner-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-banner {
     .banner-wrapper {
-        display: flex;
-        justify-content: space-between;
+      display: block;
     }
+  }
 }

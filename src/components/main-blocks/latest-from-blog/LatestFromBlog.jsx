@@ -15,7 +15,9 @@ const LatestFromBlog = () => {
                 <div className="blog__items">
                     {NEWS.map(({id, title, description, img, date}) => (
                             <div key={id} className={'blog__item'}>
-                                <img src={img} alt={title}/>
+                                <div className="blog__img">
+                                    <img src={img} alt={title}/>
+                                </div>
                                 <div className={"blog__item-text"}>
                                     <Link to={'/'} className={'blog__item-title'}>{title}</Link>
                                     <p className={'blog__item-description'}>{description}</p>

@@ -16,15 +16,28 @@
   }
 
   &__payments {
-    max-height: 16px;
+    min-height: 16px;
 
     img {
       -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
       filter: grayscale(100%);
       height: 16px;
     }
+
     a:not(:last-child) {
       margin-right: 11px;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .copyright {
+    &-wrapper {
+      flex-direction: column;
+    }
+    &__payments {
+      order: -1;
+      margin-bottom: 10px;
     }
   }
 }

@@ -1,5 +1,7 @@
 .header__top {
   background-color: #000;
+  position: relative;
+  z-index: 6;
 
   .header__contacts-item, a {
     font-size: 11px;
@@ -61,6 +63,11 @@
         max-width: 14px;
       }
     }
+  }
+}
 
+@media (max-width: 768px) {
+  .header__top {
+    display: none;
   }
 }

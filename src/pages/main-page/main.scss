@@ -42,3 +42,14 @@
   text-transform: uppercase;
   color: #121212;
 }
+@media (max-width: 500px) {
+  .content-white-bg__description {
+    font-size: 18px;
+  }
+  .content-white-bg {
+    padding: 15px;
+  }
+  .content-white-bg-small {
+    padding: 10px;
+  }
+}

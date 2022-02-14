@@ -16,6 +16,7 @@
     max-width: 100%;
     overflow: hidden;
     width: 100%;
+
     img {
       width: 100%;
       height: 100%;
@@ -30,13 +31,17 @@
     justify-content: space-between;
     padding-top: 56px;
     width: 94px;
+    margin-right: 20px;
+
     .arrow {
       top: 0;
     }
+
     .arrow-top {
       left: 0;
       transform: translate(0, 0) rotate(90deg);
     }
+
     .arrow-bot {
       right: 0;
       transform: translate(0, 0) rotate(270deg);
@@ -47,11 +52,50 @@
     width: 94px;
     height: 114px;
     margin-right: 16px;
+    margin-bottom: 16px;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .slider {
+    display: block;
+    max-height: 100%;
+
+    &__slides {
+      max-width: 100%;
+    }
+
+    &__slide {
+      img {
+        height: auto;
+      }
+    }
+&__thumbnail {
+  margin-bottom: 0;
+}
+    &__thumbnails {
+    flex-direction: row;
+      margin-right: 0;
+      width: 100%;
+      padding: 10px 40px;
+      overflow-x: auto;
+      .arrow {
+        top: 50%;
+      }
+      .arrow-top {
+        left: 0;
+        transform: translate(0, -50%) rotate(0deg);
+      }
+      .arrow-bot {
+        right: 0;
+        transform: translate(0, -50%) rotate(180deg);
+      }
     }
   }
 }

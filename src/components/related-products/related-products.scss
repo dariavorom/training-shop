@@ -2,6 +2,7 @@
 
   .title-h2 {
     margin-bottom: 48px;
+    padding-right: 100px;
   }
 
   .clothes {
@@ -19,5 +20,18 @@
     right: 66px;
     left: unset;
     transform: translate(0, 0) rotate(0deg);
+  }
+}
+@media (max-width: 600px) {
+  .related {
+    .title-h2 {
+      margin-bottom: 20px;
+    }
+    .arrow-next {
+      top: -55px;
+    }
+    .arrow-prev {
+      top: -55px;
+    }
   }
 }
