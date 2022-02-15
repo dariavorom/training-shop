@@ -1,3 +1,5 @@
+[training-shop](https://dariavorom.github.io/training-shop/#/) - open training-shop
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
