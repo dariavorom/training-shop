@@ -71,7 +71,7 @@
 @media (max-width: 550px) {
   .cards-item {
     &__img-container {
-      height: 230px;
+      height: auto;
     }
     &__raiting {
       position: relative;

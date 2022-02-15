@@ -13,13 +13,15 @@ const Main = () => {
     return (
         <>
             <ScrollToTop/>
-            <Banner/>
-            <Benefits/>
-            <WomenClothes/>
-            <MenClothes/>
-            <Offers/>
-            <Subscribe/>
-            <LatestFromBlog/>
+            <main>
+                <Banner/>
+                <Benefits/>
+                <WomenClothes/>
+                <MenClothes/>
+                <Offers/>
+                <Subscribe/>
+                <LatestFromBlog/>
+            </main>
         </>
     );
 }

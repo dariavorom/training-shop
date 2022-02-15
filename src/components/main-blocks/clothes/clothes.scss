@@ -3,7 +3,7 @@
 }
 .clothes {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(255px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
   grid-gap: 30px;
   margin-bottom: 50px;
   grid-auto-flow: dense;
@@ -23,8 +23,8 @@
 }
 @media (max-width: 550px) {
   .clothes {
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
     margin-bottom: 30px;
   }
   .women-clothes, .men-clothes {

@@ -1,12 +1,9 @@
 import phone from "../assets/img/phone.svg";
 import loc from "../assets/img/loc.svg";
 import clock from "../assets/img/clock.svg";
-import facebook from "../assets/img/facebook.svg";
-import twitter from "../assets/img/twitter.svg";
-import instagram from "../assets/img/instagram.svg";
-import pinterest from "../assets/img/pinterest.svg";
 import './header_top.scss';
 import {Link} from "react-router-dom";
+import {SvgGenerator} from "../../svg-generator/SvgGenerator";
 
 const HeaderTop = () => {
     return (
@@ -29,16 +26,16 @@ const HeaderTop = () => {
                     </div>
                     <div className="header__socials">
                         <Link to={'/'} className={'header__socials-link'}>
-                        <img src={facebook} alt="facebook"/>
+                            <SvgGenerator id={'facebook'} width={'14'} height={'14'}/>
                         </Link>
                         <Link to={'/'} className={'header__socials-link'}>
-                            <img src={twitter} alt="twitter"/>
+                            <SvgGenerator id={'twitter'} width={'17'} height={'13'}/>
                         </Link>
                         <Link to={'/'} className={'header__socials-link'}>
-                            <img src={instagram} alt="instagram"/>
+                           <SvgGenerator id={'instagram'} width={'14'} height={'14'}/>
                         </Link>
                         <Link to={'/'} className={'header__socials-link'}>
-                            <img src={pinterest} alt="pinterest"/>
+                            <SvgGenerator id={'pinterest'} width={'14'} height={'14'}/>
                         </Link>
 
                     </div>

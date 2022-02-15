@@ -21,13 +21,22 @@ import RelatedProducts from "../../components/related-products/RelatedProducts";
 const ProductPage = () => {
     const {productType} = useParams();
     const {path} = useParams();
-    const product = Clothes.filter(function (item) {
-        return item.id == path;
-    })
+    const prodCat = Clothes.filter(function (item) {
+        return item[productType];
+    });
+    let product;
+    for (let prodListElementKey of prodCat) {
+        product = prodListElementKey[productType].filter(
+            function (item) {
+                return item.id == path;
+            }
+        )
+    }
+    console.log(product)
     return (
         <>
             <ScrollToTop/>
-            <div className={'page-product'} data-test-id={`product-page-${productType}`}>
+            <main className={'page-product'} data-test-id={`product-page-${productType}`}>
                 <ProductHeader product={product}/>
                 <div className="product-wrapper">
                     <div className="container">
@@ -142,7 +151,7 @@ const ProductPage = () => {
                     </div>
                 </div>
                 <RelatedProducts/>
-            </div>
+            </main>
         </>
     );
 }

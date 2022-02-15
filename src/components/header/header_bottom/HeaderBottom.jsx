@@ -15,7 +15,7 @@ const HeaderBottom = () => {
             <div className="container">
                 <div className="header__bottom-wrapper">
                     <div className="logo-wrapper">
-                        <Link to='/' className={'header-nav-logo'} data-testid={'header-logo-link'}>
+                        <Link to='/' className={'header-nav-logo'} data-test-id={'header-logo-link'}>
                             <img src={logo} alt=""/>
                         </Link>
                     </div>
@@ -36,7 +36,7 @@ const HeaderBottom = () => {
                         </Link>
                     </div>
                     <button className="burger" onClick={() => setActiveClass(!burger)}>
-                        <span></span>
+                        <span> </span>
                     </button>
                 </div>
             </div>

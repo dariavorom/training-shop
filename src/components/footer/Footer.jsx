@@ -5,7 +5,7 @@ import Copyright from "./copyright/Copyright";
 const Footer = () => {
     return (
         <>
-            <footer>
+            <footer className='footer' data-test-id='footer'>
                 <JoinUs/>
                 <MenuFooter/>
                 <Copyright/>
