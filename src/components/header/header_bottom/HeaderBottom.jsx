@@ -1,17 +1,30 @@
 import Menu from "../menu/Menu";
-import logo from '../../../logo.svg';
+import logo from '../../../assets/logo.svg';
 import search from '../assets/img/search.svg';
 import globe from '../assets/img/globe.svg';
 import user from '../assets/img/user.svg';
 import cart from '../assets/img/cart.svg';
 import './header_bottom.scss';
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import classNames from "classnames";
+import {useEffect} from "react";
 
 const HeaderBottom = () => {
-    const [burger, setActiveClass] = useState(false);
+    const [isMenuOpen, toggleMenu] = useState(false);
+
+    function toggleMenuMode() {
+        toggleMenu(!isMenuOpen);
+    }
+
+    useEffect(() => {
+        document.body.classList.add(`${isMenuOpen ? 'lock' : 'unlock'}`);
+        return () => {
+            document.body.classList.remove('lock');
+        };
+    }, [isMenuOpen]);
     return (
-        <div className={`header__bottom ${burger ? 'menu-active' : ''}`}>
+        <div className={classNames('header__bottom', {"menu-active": isMenuOpen})}>
             <div className="container">
                 <div className="header__bottom-wrapper">
                     <div className="logo-wrapper">
@@ -35,7 +48,13 @@ const HeaderBottom = () => {
                             <img src={cart} alt=""/>
                         </Link>
                     </div>
-                    <button className="burger" onClick={() => setActiveClass(!burger)}>
+                    <button
+                        data-test-id={'burger-menu-btn'}
+                        className={classNames("burger", {'active': isMenuOpen})}
+                        onClick={toggleMenuMode}
+                    >
+                        <span> </span>
+                        <span> </span>
                         <span> </span>
                     </button>
                 </div>

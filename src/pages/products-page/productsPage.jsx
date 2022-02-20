@@ -10,7 +10,7 @@ const ProductsPage = () => {
     return (
         <>
             <ScrollToTop/>
-            <div className="products-page" data-test-id={`products-page-${productType}`}>
+            <main className="products-page" data-test-id={`products-page-${productType}`}>
                 <ProductsHeader name={productType}/>
                 <Filter/>
                 <div className="clothes-wrapper">
@@ -21,7 +21,7 @@ const ProductsPage = () => {
                         <img className={'loading'} src={loading} alt=""/>
                     </div>
                 </div>
-            </div>
+            </main>
         </>
     );
 }

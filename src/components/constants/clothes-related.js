@@ -47,4 +47,48 @@ export const ClothesRelated = [
         raining: 4,
         img_src: women_04
     },
+    {
+        id: 5,
+        name: 'Women\'s tracksuit Q4',
+        category: 'women',
+        material: '100% Polyester',
+        price: '30.00',
+        oldPrice: '',
+        sale: '',
+        raining: 4,
+        img_src: women_04
+    },
+    {
+        id: 6,
+        name: 'Women\'s tracksuit Q4',
+        category: 'women',
+        material: '100% Polyester',
+        price: '30.00',
+        oldPrice: '',
+        sale: '',
+        raining: 4,
+        img_src: women_03
+    },
+    {
+        id: 7,
+        name: 'Women\'s tracksuit Q4',
+        category: 'women',
+        material: '100% Polyester',
+        price: '30.00',
+        oldPrice: '',
+        sale: '',
+        raining: 4,
+        img_src: women_02
+    },
+    {
+        id: 8,
+        name: 'Women\'s tracksuit Q4',
+        category: 'women',
+        material: '100% Polyester',
+        price: '30.00',
+        oldPrice: '',
+        sale: '',
+        raining: 4,
+        img_src: women_01
+    },
 ]

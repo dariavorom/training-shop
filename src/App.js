@@ -1,4 +1,3 @@
-import './App.css';
 import {Main} from './pages/main-page/main';
 import ProductPage from './pages/product-page/productPage';
 import ProductsPage from './pages/products-page/productsPage';

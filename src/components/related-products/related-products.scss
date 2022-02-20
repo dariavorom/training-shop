@@ -1,4 +1,10 @@
 .related {
+  &-slider {
+    width: 100%;
+    .cards-item {
+      position: unset;
+    }
+  }
 
   .title-h2 {
     margin-bottom: 48px;
@@ -15,6 +21,7 @@
     right: 7px;
     transform: translate(0, 0) rotate(180deg);
   }
+
   .arrow-prev {
     top: -80px;
     right: 66px;
@@ -22,14 +29,17 @@
     transform: translate(0, 0) rotate(0deg);
   }
 }
+
 @media (max-width: 600px) {
   .related {
     .title-h2 {
       margin-bottom: 20px;
     }
+
     .arrow-next {
       top: -55px;
     }
+
     .arrow-prev {
       top: -55px;
     }

@@ -32,7 +32,6 @@ const ProductPage = () => {
             }
         )
     }
-    console.log(product)
     return (
         <>
             <ScrollToTop/>
