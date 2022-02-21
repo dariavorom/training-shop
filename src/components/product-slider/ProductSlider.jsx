@@ -12,7 +12,7 @@ import "swiper/css/thumbs";
 const ProductSlider = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
-        <div className="product-slider slider">
+        <div className="product-slider slider" data-test-id={'product-slider'}>
             <Swiper
                 id={"slider__slides"}
                 className={"slider__slides"}

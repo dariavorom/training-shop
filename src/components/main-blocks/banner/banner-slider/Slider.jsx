@@ -25,8 +25,6 @@ const Slider = () => {
                     swiper.params.navigation.prevEl = navigationPrevRef.current;
                     swiper.params.navigation.nextEl = navigationNextRef.current;
                 }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
             >
                 {SLIDER.map(({id, title, description, img_src}) => (
                     <SwiperSlide key={id} className={'slide'}>
