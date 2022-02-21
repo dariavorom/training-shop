@@ -12,7 +12,7 @@ import "swiper/css/thumbs";
 const ProductSlider = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
-        <div className="product-slider slider" data-test-id={'product-slider'}>
+        <div className="product-slider slider">
             <Swiper
                 id={"slider__slides"}
                 className={"slider__slides"}
@@ -49,7 +49,7 @@ const ProductSlider = () => {
             <div className="slider__thumbnails">
                 <Swiper
                     id={"slider__thumbnails"}
-                    direction={'vertical'}
+                    direction={'horizontal'}
                     onSwiper={setThumbsSwiper}
                     spaceBetween={10}
                     slidesPerView={4}
@@ -60,6 +60,13 @@ const ProductSlider = () => {
                     navigation={{
                         nextEl: '.arrow.arrow-bot',
                         prevEl: '.arrow.arrow-top'
+                    }}
+                    breakpoints={{
+                        // when window width is >= 640px
+                        600: {
+                            direction: 'vertical'
+                        },
+                        // when window width is >= 768px
                     }}
                 >
                     <SwiperSlide className={'slider__thumbnail'}>

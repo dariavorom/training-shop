@@ -37,7 +37,7 @@ const ProductPage = () => {
             <ScrollToTop/>
             <main className={'page-product'} data-test-id={`product-page-${productType}`}>
                 <ProductHeader product={product}/>
-                <div className="product-wrapper">
+                <div className="product-wrapper" data-test-id={'product-slider'}>
                     <div className="container">
                         <div className="product">
                             <ProductSlider/>

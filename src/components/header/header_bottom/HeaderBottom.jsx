@@ -46,7 +46,7 @@ const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
                         </Link>
                     </div>
                     <button
-                        data-test-id={'burger-menu'}
+                        data-test-id={'burger-menu-btn'}
                         className={classNames("burger", {'active': isMenuOpen})}
                         onClick={toggleMenuMode}
                     >
