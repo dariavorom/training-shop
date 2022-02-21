@@ -1,39 +1,28 @@
 import arrow from '../../assets/arrow.svg';
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 import slideImg from '../../../src/pages/product-page/assets/slider-img.jpg';
-import Thumb01 from '../../../src/pages/product-page/assets/slider-thumb-01.jpg';
-import Thumb02 from '../../../src/pages/product-page/assets/slider-thumb-02.jpg';
-import Thumb03 from '../../../src/pages/product-page/assets/slider-thumb-03.jpg';
-import Thumb04 from '../../../src/pages/product-page/assets/slider-thumb-04.jpg';
 import './product-slider.scss';
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Controller, Navigation} from "swiper";
+import {FreeMode, Navigation, Thumbs} from "swiper";
 import "swiper/css";
-import 'swiper/css/navigation';
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 const ProductSlider = () => {
-    const navigationNextRef = React.useRef(null)
-    const navigationPrevRef = React.useRef(null)
-    const navigationNextRefThumb = React.useRef(null)
-    const navigationPrevRefThumb = React.useRef(null)
-    const [activeSlide, setActiveSlide] = useState(0);
-    const [firstSwiper, setFirstSwiper] = useState(null);
-    const [secondSwiper, setSecondSwiper] = useState(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <div className="product-slider slider">
             <Swiper
                 id={"slider__slides"}
                 className={"slider__slides"}
-                modules={[Controller, Navigation]}
-                slidesPerView={1}
                 spaceBetween={10}
-                loop={true}
+                thumbs={{swiper: thumbsSwiper}}
+                modules={[FreeMode, Navigation, Thumbs]}
                 navigation={{
-                    prevEl: navigationPrevRef.current,
-                    nextEl: navigationNextRef.current,
+                    prevEl: '.arrow.arrow-prev',
+                    nextEl: '.arrow.arrow-next',
                 }}
-                onSwiper={setFirstSwiper}
-                controller={{ control: secondSwiper }}
             >
                 <SwiperSlide className="slider__slide">
                     <img src={slideImg} alt=""/>
@@ -50,60 +39,61 @@ const ProductSlider = () => {
                 <SwiperSlide className="slider__slide">
                     <img src={slideImg} alt=""/>
                 </SwiperSlide>
-                <button className={'arrow arrow-prev productArrowPrev'} ref={navigationPrevRef}>
+                <button className={'arrow arrow-prev'}>
                     <img src={arrow} alt=""/>
                 </button>
-                <button className={'arrow arrow-next productArrowNext'} ref={navigationNextRef}>
+                <button className={'arrow arrow-next'}>
                     <img src={arrow} alt=""/>
                 </button>
             </Swiper>
             <div className="slider__thumbnails">
-                <button className={'arrow arrow-top'} ref={navigationPrevRefThumb}>
-                    <img src={arrow} alt=""/>
-                </button>
-                <button className={'arrow arrow-bot'} ref={navigationNextRefThumb}>
-                    <img src={arrow} alt=""/>
-                </button>
                 <Swiper
                     id={"slider__thumbnails"}
                     direction={'vertical'}
+                    onSwiper={setThumbsSwiper}
                     spaceBetween={10}
                     slidesPerView={4}
-                    modules={[Controller, Navigation]}
+                    freeMode={true}
+                    watchSlidesProgress={true}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    slideToClickedSlide={true}
                     navigation={{
-                        nextEl: navigationNextRefThumb.current,
-                        prevEl: navigationPrevRefThumb.current
+                        nextEl: '.arrow.arrow-bot',
+                        prevEl: '.arrow.arrow-top'
                     }}
-                    loop={true}
-                    onSwiper={setSecondSwiper}
-                    controller={{ control: firstSwiper }}
                 >
                     <SwiperSlide className={'slider__thumbnail'}>
-                        {({ isActive }) => (
+                        {({isActive}) => (
+                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
+                        )}
+                    </SwiperSlide>
+                    <SwiperSlide className={'slider__thumbnail'}>
+                        {({isActive}) => (
                             <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
                         )}
                     </SwiperSlide>
                     <SwiperSlide className="slider__thumbnail">
-                        {({ isActive }) => (
+                        {({isActive}) => (
                             <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
                         )}
                     </SwiperSlide>
                     <SwiperSlide className="slider__thumbnail">
-                        {({ isActive }) => (
+                        {({isActive}) => (
                             <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
                         )}
                     </SwiperSlide>
                     <SwiperSlide className="slider__thumbnail">
-                        {({ isActive }) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
-                    <SwiperSlide className="slider__thumbnail">
-                        {({ isActive }) => (
+                        {({isActive}) => (
                             <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
                         )}
                     </SwiperSlide>
                 </Swiper>
+                <button className={'arrow arrow-top'}>
+                    <img src={arrow} alt=""/>
+                </button>
+                <button className={'arrow arrow-bot'}>
+                    <img src={arrow} alt=""/>
+                </button>
             </div>
         </div>
     );

@@ -6,33 +6,30 @@ import user from '../assets/img/user.svg';
 import cart from '../assets/img/cart.svg';
 import './header_bottom.scss';
 import {Link} from "react-router-dom";
-import {useContext, useState} from "react";
 import classNames from "classnames";
-import {useEffect} from "react";
 
-const HeaderBottom = () => {
-    const [isMenuOpen, toggleMenu] = useState(false);
-
+const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
     function toggleMenuMode() {
         toggleMenu(!isMenuOpen);
     }
-
-    useEffect(() => {
-        document.body.classList.add(`${isMenuOpen ? 'lock' : 'unlock'}`);
-        return () => {
-            document.body.classList.remove('lock');
-        };
-    }, [isMenuOpen]);
+    function toggleMenuOutSide () {
+        if(isMenuOpen) {
+            toggleMenuMode()
+        }
+    }
     return (
-        <div className={classNames('header__bottom', {"menu-active": isMenuOpen})}>
+        <div className={'header__bottom'}>
             <div className="container">
                 <div className="header__bottom-wrapper">
-                    <div className="logo-wrapper">
+                    <div className="logo-wrapper" onClick={toggleMenuOutSide}>
                         <Link to='/' className={'header-nav-logo'} data-test-id={'header-logo-link'}>
                             <img src={logo} alt=""/>
                         </Link>
                     </div>
-                    <Menu/>
+                    <div className="menu-wrapper">
+                        <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu}/>
+                    </div>
+
                     <div className="personal-wrapper">
                         <Link to={'/'} className={'personal__item'}>
                             <img src={search} alt=""/>

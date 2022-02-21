@@ -39,20 +39,26 @@
 @media (max-width: 768px) {
   .menu {
     position: fixed;
+    display: flex;
+    justify-content: flex-end;
     top: 60px;
     bottom: 0;
     z-index: 2;
     left: 100%;
     right: 0;
-    padding: 20px 0;
-    background: #fff;
     border-top: 2px solid #F8F8F8;
+    backdrop-filter: blur(2px);
     transition: left .3s ease-in-out;
     overflow-y: auto;
+    &-item {
+      font-size: 18px !important;
+    }
     .nav {
+      width: 50%;
       display: block;
       text-align: center;
-      padding-bottom: 20px;
+      padding: 20px 50px 50px;
+      background: #fff;
 
       &__item {
         &:not(:last-child) {
@@ -61,8 +67,16 @@
         }
       }
     }
+    &.active {
+      left: 0;
+    }
   }
-  .header__bottom.menu-active .menu {
-    left: 0;
+}
+@media (max-width: 550px) {
+  .menu {
+    justify-content: space-between;
+    .nav {
+      width: 100%;
+    }
   }
 }

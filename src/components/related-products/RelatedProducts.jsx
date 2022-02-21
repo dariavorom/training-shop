@@ -18,7 +18,7 @@ const RelatedProducts = () => {
         <div className={'related'}>
             <div className="container">
                 <h2 className={'title-h2'}>related products</h2>
-                <div className="clothes">
+                <div className="clothes" data-test-id={'related-slider'}>
                     <button className={'arrow arrow-prev'} ref={navigationPrevRef}>
                         <img src={arrow} alt=""/>
                     </button>

@@ -3,7 +3,7 @@
   width: 50%;
   max-width: 540px;
   max-height: 490px;
-  margin-right: 20px;
+  margin-right: 20px !important;
   .slide {
     width: 100%;
     position: relative;
@@ -50,7 +50,7 @@
 @media (max-width: 768px) {
   .main-slider {
     width: 100%;
-    margin: 0 auto 30px;
+    margin: 0 auto 30px !important;
   }
 }
 @media (max-width: 500px) {
