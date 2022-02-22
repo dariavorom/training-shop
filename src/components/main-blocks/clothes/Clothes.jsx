@@ -11,7 +11,6 @@ const Clothes = (props) => {
             </div>
             <Link to={productType} className={'clothes__link'}>see all</Link>
         </>
-
     );
 }
 export default Clothes;

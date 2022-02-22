@@ -5,6 +5,7 @@ import ProductsHeader from "../../components/products-header/ProductsHeader";
 import loading from '../../assets/loading.gif';
 import Filter from "../../components/filter/Filter";
 import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
+
 const ProductsPage = () => {
     const {productType} = useParams();
     return (

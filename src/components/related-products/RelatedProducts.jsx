@@ -40,7 +40,6 @@ const RelatedProducts = () => {
                             swiper.params.navigation.prevEl = navigationPrevRef.current;
                             swiper.params.navigation.nextEl = navigationNextRef.current;
                         }}
-                        onSlideChange={() => console.log('slide change')}
                         breakpoints={{
                             360: {
                                 slidesPerView: 2,

@@ -4,7 +4,7 @@ import share from './assets/share.svg';
 import {SvgGenerator} from "../svg-generator/SvgGenerator";
 
 const ProductHeader = (props) => {
-    let product = props.product[0];
+    let product = props.product
     let cat = product.category[0].toUpperCase() + product.category.substring(1);
     return (
         <div className={'product-header'}>
@@ -33,7 +33,7 @@ const ProductHeader = (props) => {
                                <SvgGenerator id={'star'}/>
                                <SvgGenerator id={'star'}/>
                             </div>
-                            <span>2 Reviews</span>
+                            <span>{product.reviews.length} Reviews</span>
                         </div>
                         <div className="product-header__info">
                             <div className="product-header__info-item">

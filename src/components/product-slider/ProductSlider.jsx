@@ -1,6 +1,5 @@
 import arrow from '../../assets/arrow.svg';
 import React, {useState} from "react";
-import slideImg from '../../../src/pages/product-page/assets/slider-img.jpg';
 import './product-slider.scss';
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs} from "swiper";
@@ -9,7 +8,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-const ProductSlider = () => {
+const ProductSlider = ({images}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <div className="product-slider slider">
@@ -20,25 +19,15 @@ const ProductSlider = () => {
                 thumbs={{swiper: thumbsSwiper}}
                 modules={[FreeMode, Navigation, Thumbs]}
                 navigation={{
-                    prevEl: '.arrow.arrow-prev',
-                    nextEl: '.arrow.arrow-next',
+                    prevEl: '.product-slider .arrow.arrow-prev',
+                    nextEl: '.product-slider .arrow.arrow-next',
                 }}
             >
-                <SwiperSlide className="slider__slide">
-                    <img src={slideImg} alt=""/>
-                </SwiperSlide>
-                <SwiperSlide className="slider__slide">
-                    <img src={slideImg} alt=""/>
-                </SwiperSlide>
-                <SwiperSlide className="slider__slide">
-                    <img src={slideImg} alt=""/>
-                </SwiperSlide>
-                <SwiperSlide className="slider__slide">
-                    <img src={slideImg} alt=""/>
-                </SwiperSlide>
-                <SwiperSlide className="slider__slide">
-                    <img src={slideImg} alt=""/>
-                </SwiperSlide>
+                {images.map(({url, id}) => (
+                    <SwiperSlide className="slider__slide" key={id}>
+                        <img src={`https://training.cleverland.by/shop${url}`} alt=""/>
+                    </SwiperSlide>
+                ))}
                 <button className={'arrow arrow-prev'}>
                     <img src={arrow} alt=""/>
                 </button>
@@ -69,31 +58,14 @@ const ProductSlider = () => {
                         // when window width is >= 768px
                     }}
                 >
-                    <SwiperSlide className={'slider__thumbnail'}>
-                        {({isActive}) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
-                    <SwiperSlide className={'slider__thumbnail'}>
-                        {({isActive}) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
-                    <SwiperSlide className="slider__thumbnail">
-                        {({isActive}) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
-                    <SwiperSlide className="slider__thumbnail">
-                        {({isActive}) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
-                    <SwiperSlide className="slider__thumbnail">
-                        {({isActive}) => (
-                            <img src={slideImg} alt="" className={isActive ? 'active' : 'not-active'}/>
-                        )}
-                    </SwiperSlide>
+                    {images.map(({url, id}) => (
+                        <SwiperSlide className="slider__thumbnail" key={id}>
+                            {({isActive}) => (
+                                <img src={`https://training.cleverland.by/shop${url}`} alt=""
+                                     className={isActive ? 'active' : 'not-active'}/>
+                            )}
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
                 <button className={'arrow arrow-top'}>
                     <img src={arrow} alt=""/>

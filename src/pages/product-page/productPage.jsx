@@ -1,6 +1,5 @@
 import {Link, useParams} from "react-router-dom";
 import ProductHeader from "../../components/product-header/ProductHeader";
-import {Clothes} from "../../components/constants/clothes";
 import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
 import ProductSlider from "../../components/product-slider/ProductSlider";
 import Reviews from "../../components/reviews/Reviews";
@@ -17,21 +16,18 @@ import color03 from './assets/color-03.png';
 import color04 from './assets/color-04.png';
 import {PAYMENTS} from "../../components/constants/payments";
 import RelatedProducts from "../../components/related-products/RelatedProducts";
+import {PRODUCTS} from "../../components/constants/products";
 
 const ProductPage = () => {
     const {productType} = useParams();
     const {path} = useParams();
-    const prodCat = Clothes.filter(function (item) {
-        return item[productType];
+    let prodList = PRODUCTS[productType];
+    let product = [];
+    prodList.forEach((item) => {
+        if (item.id === path) {
+            return (product = item);
+        }
     });
-    let product;
-    for (let prodListElementKey of prodCat) {
-        product = prodListElementKey[productType].filter(
-            function (item) {
-                return item.id == path;
-            }
-        )
-    }
     return (
         <>
             <ScrollToTop/>
@@ -40,7 +36,7 @@ const ProductPage = () => {
                 <div className="product-wrapper" data-test-id={'product-slider'}>
                     <div className="container">
                         <div className="product">
-                            <ProductSlider/>
+                            <ProductSlider images={product.images}/>
                             <div className="product-info">
                                 <div className="product-info__color">
                                     <div className={'product-info__text'}>
@@ -91,7 +87,7 @@ const ProductPage = () => {
                                 </div>
                                 <div className="product-info__actions border-bottom">
                                     <div className="product__price">
-                                        <span className={'cur-price'}>$ 379.99</span>
+                                        <span className={'cur-price'}>$ {product.price}</span>
                                     </div>
                                     <div className="product__addToCart">
                                         <button className={'btn addToCart'}>Add to card</button>
@@ -137,14 +133,14 @@ const ProductPage = () => {
                                     </div>
                                     <div className="product-info__additional-item">
                                         <span className={'name'}>Size: </span>
-                                        <span className={'value'}>XS, S, M, L</span>
+                                        <span className={'value'}>{product.sizes}</span>
                                     </div>
                                     <div className="product-info__additional-item">
                                         <span className={'name'}>Material: </span>
-                                        <span className={'value'}>100% Polyester</span>
+                                        <span className={'value'}>{product.material}</span>
                                     </div>
                                 </div>
-                                <Reviews/>
+                                {product.reviews.length > 0 ? <Reviews reviews={product.reviews}/> : null}
                             </div>
                         </div>
                     </div>
