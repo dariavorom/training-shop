@@ -11,31 +11,38 @@ import "swiper/css/thumbs";
 const ProductSlider = ({images}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
-        <div className="product-slider slider">
-            <Swiper
-                id={"slider__slides"}
-                className={"slider__slides"}
-                spaceBetween={10}
-                thumbs={{swiper: thumbsSwiper}}
-                modules={[FreeMode, Navigation, Thumbs]}
-                navigation={{
-                    prevEl: '.product-slider .arrow.arrow-prev',
-                    nextEl: '.product-slider .arrow.arrow-next',
-                }}
-            >
-                {images.map(({url, id}) => (
-                    <SwiperSlide className="slider__slide" key={id}>
-                        <img src={`https://training.cleverland.by/shop${url}`} alt=""/>
-                    </SwiperSlide>
-                ))}
+        <div className="product-slider slider"  data-test-id={'product-slider'}>
+            <div className="slider__slides">
                 <button className={'arrow arrow-prev'}>
                     <img src={arrow} alt=""/>
                 </button>
                 <button className={'arrow arrow-next'}>
                     <img src={arrow} alt=""/>
                 </button>
-            </Swiper>
+                <Swiper
+                    id={"slider__slides"}
+                    spaceBetween={10}
+                    thumbs={{swiper: thumbsSwiper}}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                    navigation={{
+                        prevEl: '.product-slider .arrow.arrow-prev',
+                        nextEl: '.product-slider .arrow.arrow-next',
+                    }}
+                >
+                    {images.map(({url, id}) => (
+                        <SwiperSlide className="slider__slide" key={id}>
+                            <img src={`https://training.cleverland.by/shop${url}`} alt=""/>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
             <div className="slider__thumbnails">
+                <button className={'arrow arrow-prev arrow-top'}>
+                    <img src={arrow} alt=""/>
+                </button>
+                <button className={'arrow arrow-next arrow-bot'}>
+                    <img src={arrow} alt=""/>
+                </button>
                 <Swiper
                     id={"slider__thumbnails"}
                     direction={'horizontal'}
@@ -46,10 +53,6 @@ const ProductSlider = ({images}) => {
                     watchSlidesProgress={true}
                     modules={[FreeMode, Navigation, Thumbs]}
                     slideToClickedSlide={true}
-                    navigation={{
-                        nextEl: '.arrow.arrow-bot',
-                        prevEl: '.arrow.arrow-top'
-                    }}
                     breakpoints={{
                         // when window width is >= 640px
                         600: {
@@ -60,19 +63,11 @@ const ProductSlider = ({images}) => {
                 >
                     {images.map(({url, id}) => (
                         <SwiperSlide className="slider__thumbnail" key={id}>
-                            {({isActive}) => (
                                 <img src={`https://training.cleverland.by/shop${url}`} alt=""
-                                     className={isActive ? 'active' : 'not-active'}/>
-                            )}
+                                     className={'slider__thumbnail-img'}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <button className={'arrow arrow-top'}>
-                    <img src={arrow} alt=""/>
-                </button>
-                <button className={'arrow arrow-bot'}>
-                    <img src={arrow} alt=""/>
-                </button>
             </div>
         </div>
     );

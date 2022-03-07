@@ -1,13 +1,136 @@
 .filter {
   padding: 32px 0;
+  position: relative;
 
-  &-wrapper {
+  &-btn {
+    position: relative;
+    padding-left: 30px;
+    height: 22px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      background-image: url("./assets/filter.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      transition: .3s ease-in-out;
+    }
+
+    &.active:before {
+      background-image: url("./assets/close.svg");
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__item {
+  &-wrapper {
+    background-color: #F8F8F8;
+    margin-top: 0;
+    padding: 0;
+    transition: all .3s ease-in-out;
+  }
+
+  &-wrapper.active {
+    margin-top: 30px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  &__group-wrapper {
+    display: none;
+
+    label {
+      display: block;
+      position: relative;
+      padding: 10px 0;
+      user-select: none;
+      input[type="checkbox"] {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        display: block;
+        width: 0;
+        height: 0;
+      }
+
+      .label-name {
+        position: relative;
+        font-size: 13px;
+        line-height: 15px;
+        color: #121212;
+        opacity: 0.8;
+        padding: 0 0 0 35px;
+      }
+
+      .label-name:before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        box-sizing: border-box;
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      input[type=checkbox]:checked + .label-name:before {
+        background: #fff url('./assets/checked.png') 0 0 no-repeat;
+
+      }
+    }
+  }
+
+  &-wrapper.active &__group-wrapper {
+    display: block;
+    width: 25%;
+  }
+
+  &-wrapper.active &__group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 240px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+      background-color: #E6E6E6;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #8D8B8B;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #121212;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__action-item {
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -19,30 +142,90 @@
 
   &__btn {
     opacity: 0.6;
+
     button {
       text-transform: uppercase;
       display: flex;
       align-items: center;
       cursor: pointer;
     }
+
     img {
       margin-right: 12px;
     }
   }
+
   &__view {
     justify-content: space-between;
     flex: 0 0 65px;
+
     button {
       height: 24px;
       width: 24px;
       padding: 3px;
     }
   }
+
   &__sort {
     opacity: 0.6;
     cursor: pointer;
+
     img {
       margin-left: 5px;
     }
+  }
+}
+
+.filter-result {
+  font-size: 14px;
+  line-height: 22px;
+
+  .total {
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &__item {
+    opacity: 0.6;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 940px) {
+  .filter-wrapper.active {
+    flex-wrap: wrap;
+  }
+  .filter-wrapper.active .filter__group-wrapper {
+    width: 47%;
+  }
+}
+
+@media(max-width: 550px) {
+  .filter-wrapper.active {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    gap: 15px 0;
+    z-index: 10;
+  }
+  .filter-wrapper.active .filter__group-wrapper {
+    width: 100%;
+  }
+  .filter-result__items {
+    font-size: 12px;
+  }
+  .filter-result__item:not(:last-child) {
+    margin-right: 15px;
   }
 }

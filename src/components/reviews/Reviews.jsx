@@ -1,6 +1,6 @@
 import './reviews.scss';
 import write from '../../pages/product-page/assets/write.png';
-import {SvgGenerator} from "../svg-generator/SvgGenerator";
+import Rating from "../raiting/Raiting";
 
 const Reviews = ({reviews}) => {
     return (
@@ -10,11 +10,7 @@ const Reviews = ({reviews}) => {
                     <span className="reviews__title product-info__name black">reviews</span>
                     <div className="reviews__quantity">
                         <div className="reviews__quantity-icons">
-                            <SvgGenerator id={'star'}/>
-                            <SvgGenerator id={'star'}/>
-                            <SvgGenerator id={'star'}/>
-                            <SvgGenerator id={'star'}/>
-                            <SvgGenerator id={'star'}/>
+                           <Rating rating={reviews}/>
                         </div>
                         <div className="reviews__quantity-value"><span>{reviews.length} Reviews</span></div>
                     </div>
@@ -33,11 +29,7 @@ const Reviews = ({reviews}) => {
                         <div className="reviews__item-author">{item.name}</div>
                     <div className="reviews__item-time">3 months ago </div>
                     <div className="reviews__item-icons">
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
+                        <Rating rating={[item]}/>
                     </div>
                 </div>
                     <div className="reviews__item-content">{item.text}</div>

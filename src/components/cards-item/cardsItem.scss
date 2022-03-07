@@ -1,5 +1,6 @@
 .cards-item {
-  position: relative;
+  position: relative !important;
+  display: block;
   max-width: 255px;
   width: 100%;
   margin: 0 auto;

@@ -209,3 +209,6 @@ img {
         right: 10px !important;
     }
 }
+svg.grey path {
+    fill: #E5E5E5;
+}

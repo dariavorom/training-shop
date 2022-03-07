@@ -1,17 +1,17 @@
 import React from "react";
-import {ClothesRelated} from "../constants/clothes-related";
 import {Link, useParams} from "react-router-dom";
-import {SvgGenerator} from "../svg-generator/SvgGenerator";
 import arrow from "../../assets/arrow.svg";
 import './related-products.scss';
 import {Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
+import {PRODUCTS} from "../constants/products";
+import Rating from "../raiting/Raiting";
 
 const RelatedProducts = () => {
-    const prodList = ClothesRelated;
     const {productType} = useParams();
+    const prodList = PRODUCTS[productType];
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
     return (
@@ -52,30 +52,32 @@ const RelatedProducts = () => {
                             },
                         }}
                     >
-                        {prodList.map(({id, name, price, oldPrice, sale, raiting, img_src}) => (
-                            <SwiperSlide key={id}>
-                                <Link to={`/${productType}/${id}`} className={'cards-item'}
-                                      data-test-id={`clothes-card-${productType}`}>
-                                    <div className={'cards-item__img-container'}><img src={img_src} alt=""
-                                                                                      className={'cards-item__img'}/>
-                                    </div>
-                                    <span className="cards-item__title">{name}</span>
-
-                                    <span className="cards-item__price">$ {price}</span>
-                                    {oldPrice !== '' &&
-                                        <span
-                                            className={'cards-item__price cards-item__price--old'}>$ {oldPrice}</span>}
-                                    <span className={'cards-item__raiting'}>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'}/>
-                        <SvgGenerator id={'star'} className={'grey'}/>
+                        {prodList.map(({id, name, price, discount, images, reviews}) => {
+                            let oldPrice;
+                            if (discount) {
+                                oldPrice = (price / ((100 - discount.replace(/[^0-9]/g, '')) / 100)).toFixed(2);
+                            }
+                            return (
+                                <SwiperSlide key={id}>
+                                    <Link key={id} to={`/${productType}/${id}`} className={'cards-item'}
+                                          data-test-id={`clothes-card-${productType}`}>
+                                        <div className={'cards-item__img-container'}>
+                                            <img src={`https://training.cleverland.by/shop${images[0]?.url}`} alt=""
+                                                 className={'cards-item__img'}/>
+                                        </div>
+                                        <span className="cards-item__title">{name}</span>
+                                        <span className="cards-item__price">$ {price}</span>
+                                        {discount !== null &&
+                                            <span
+                                                className={'cards-item__price cards-item__price--old'}>{oldPrice}</span>}
+                                        <span className={'cards-item__raiting'}>
+                        <Rating rating={reviews}/>
                     </span>
-                                    <span className={'sticker sticker-sale'}>{sale}</span>
-                                </Link>
-                            </SwiperSlide>
-                        ))}
+                                        <span className={'sticker sticker-sale'}>{discount}</span>
+                                    </Link>
+                                </SwiperSlide>
+                            )
+                        })}
                     </Swiper>
                 </div>
 

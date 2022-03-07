@@ -1,7 +1,7 @@
 import './productHeader.scss';
 import {Link} from "react-router-dom";
 import share from './assets/share.svg';
-import {SvgGenerator} from "../svg-generator/SvgGenerator";
+import Rating from "../raiting/Raiting";
 
 const ProductHeader = (props) => {
     let product = props.product
@@ -27,11 +27,7 @@ const ProductHeader = (props) => {
                     <div className="product-header__bottom">
                         <div className="product-header__raiting">
                             <div className="product-header__stars">
-                               <SvgGenerator id={'star'}/>
-                               <SvgGenerator id={'star'}/>
-                               <SvgGenerator id={'star'}/>
-                               <SvgGenerator id={'star'}/>
-                               <SvgGenerator id={'star'}/>
+                                <Rating rating={product.reviews}/>
                             </div>
                             <span>{product.reviews.length} Reviews</span>
                         </div>

@@ -34,7 +34,6 @@
       object-fit: cover;
     }
   }
-
   &__thumbnails {
     position: relative;
     padding-top: 60px;
@@ -139,7 +138,7 @@
       }
 
       .arrow-bot {
-        right: 0;
+        right: 0 !important;
         transform: translate(0, -50%) rotate(180deg);
       }
     }
