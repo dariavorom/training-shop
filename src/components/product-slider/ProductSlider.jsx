@@ -7,8 +7,10 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import {useParams} from "react-router-dom";
 
 const ProductSlider = ({images}) => {
+    const {path} = useParams();
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <div className="product-slider slider"  data-test-id={'product-slider'}>

@@ -23,12 +23,14 @@ const MenClothes = () => {
                             <ul className="tabs__list">
                                 {MAIN_CLOTHES_BLOCK_MENU.map(({particularName, name, id}, index) => {
                                     return (
-                                        <li className={`tabs__item ${isChosen === index ? 'active' : ''}`} key={id}
-                                            data-test-id={`clothes-men-${particularName}`}
-                                            onClick={() => {
-                                                setParticular(particularName);
-                                                setChosen(index);
-                                            }}>{name}</li>
+                                        <li className={`tabs__item ${isChosen === index ? 'active' : ''}`} key={id}>
+                                            <button
+                                                data-test-id={`clothes-men-${particularName}`}
+                                                onClick={() => {
+                                                    setParticular(particularName);
+                                                    setChosen(index);
+                                                }}>{name}</button>
+                                        </li>
                                     )
                                 })}
                             </ul>

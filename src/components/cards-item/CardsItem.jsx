@@ -19,7 +19,7 @@ const CardsItem = ({cardsItem: {id, name, price, discount, images, reviews}, pro
                 <span className="cards-item__price">$ {price}</span>
                 {discount !== null &&
                     <span className={'cards-item__price cards-item__price--old'}>
-                        {oldPrice}
+                       $ {oldPrice}
                     </span>}
                 <span className={'cards-item__raiting'}>
                         <Rating rating={reviews}/>

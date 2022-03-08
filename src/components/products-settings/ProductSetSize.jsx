@@ -1,9 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import sizeGuide from "../../pages/product-page/assets/sizes.png";
+import {useParams} from "react-router-dom";
 
 const ProductSetSize = ({sizes}) => {
+    const {path} = useParams()
     const [size, setSize] = useState(sizes[0]);
     const [isChosen, setChosen] = useState(0);
+    useEffect(() => {
+        setSize(sizes[0]);
+        setChosen(0);
+    }, [path])
     return (
         <div className="product-info__size border-bottom">
             <div className={'product-info__text'}>

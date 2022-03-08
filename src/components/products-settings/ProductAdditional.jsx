@@ -3,7 +3,6 @@ const ProductAdditional = ({sizes, productColor, material}) => {
     colorArr = productColor.map(el => {
         return colorArr[el] = el.color
     })
-    console.log(colorArr)
     function uniqueColor(arr) {
         const result = [];
         for (let str of arr) {

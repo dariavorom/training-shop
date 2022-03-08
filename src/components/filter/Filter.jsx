@@ -35,7 +35,7 @@ const Filter = ({onInputCheck}) => {
         toggleActive(false)
     }, [productType])
     return (
-        <div className={'products-filter filter'}>
+        <div className='products-filter filter'>
             <div className="container">
                 <div className="filter-actions">
                     <div className="filter__action-item filter__btn">
@@ -45,10 +45,10 @@ const Filter = ({onInputCheck}) => {
                         </button>
                     </div>
                     <div className="filter__action-item filter__view">
-                        <button className={'filter__view-list'}>
+                        <button className='filter__view-list'>
                             <img src={viewList} alt=""/>
                         </button>
-                        <button className={'filter__view-grid'}>
+                        <button className='filter__view-grid'>
                             <img src={viewGrid} alt=""/>
                         </button>
                     </div>
