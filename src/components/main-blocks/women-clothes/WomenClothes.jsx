@@ -19,18 +19,17 @@ const WomenClothes = () => {
                             <h2 className=" title-h2">Women's</h2>
                         </div>
                         <div className="clothes__top-tabs tabs">
-                            <ul className="tabs__list">
+                            <div className="tabs__list">
                                 {MAIN_CLOTHES_BLOCK_MENU.map(({particularName, name, id}, index) => {
                                     return (
-                                        <li className={`tabs__item ${isChosen === index ? 'active' : ''}`} key={id}>
-                                            <button data-test-id={`clothes-women-${particularName}`} onClick={() => {
-                                                setParticular(particularName);
-                                                setChosen(index);
-                                            }}>{name}</button>
-                                        </li>
+                                        <button className={`tabs__item ${isChosen === index ? 'active' : ''}`} key={id}
+                                                data-test-id={`clothes-women-${particularName}`} onClick={() => {
+                                            setParticular(particularName);
+                                            setChosen(index);
+                                        }}>{name}</button>
                                     )
                                 })}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                     <Clothes productType={'women'} products={products}/>
