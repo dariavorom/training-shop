@@ -223,16 +223,7 @@
 }
 
 .addToCart {
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 48px;
-  text-align: center;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #fff;
-  opacity: 0.9;
-  background-color: #000;
-  min-width: 155px;
+
 }
 
 @media (max-width: 900px) {
@@ -281,6 +272,29 @@
         top: 0;
         margin-bottom: 20px;
       }
+      &__actions {
+        gap: 10px;
+      }
+      &__actions, &__help, &__payments, &__description {
+        padding: 15px 0;
+      }
+      &__size {
+        padding-bottom: 15px;
+      }
+      &__additional {
+        padding: 15px 0;
+        .product-info__name {
+          margin-bottom: 15px;
+        }
+      }
+    }
+    &__reviews {
+      padding: 15px 0;
+    }
+    &__price {
+      margin-right: 0;
+      width: 100%;
+      text-align: center;
     }
   }
 }

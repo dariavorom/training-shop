@@ -4,11 +4,28 @@ import ProductsPage from './pages/products-page/productsPage';
 import {Routes, Route} from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Cart from "./components/cart/cart"
+import {useEffect, useState} from "react";
 
 const App = () => {
+    const [isCartOpen, toggleCart] = useState(false);
+    function toggleCartMode() {
+        toggleCart(!isCartOpen);
+    }
+    function toggleCartOutSide () {
+        if(isCartOpen) {
+            toggleCartMode()
+        }
+    }
+    useEffect(() => {
+        document.body.classList.add(`${isCartOpen ? 'lock' : 'unlock'}`);
+        return () => {
+            document.body.classList.remove('lock');
+        };
+    }, [isCartOpen]);
     return (
         <div className="app" data-test-id="app">
-            <Header />
+            <Header toggleCartMode={toggleCartMode}/>
             <Routes>
                 <Route index element={<Main/>}/>
                 <Route exact path="/" element={<Main/>}/>
@@ -22,6 +39,7 @@ const App = () => {
                 <Route exact path="/faq/" element={<Main/>}/>
             </Routes>
             <Footer />
+            <Cart isCartOpen={isCartOpen} toggleCartMode={toggleCartMode}/>
         </div>
     );
 }

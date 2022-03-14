@@ -12,11 +12,11 @@ const CardsItem = ({cardsItem: {id, name, price, discount, images, reviews}, pro
             <Link to={`/${productType}/${id}`} className={'cards-item'}
                   data-test-id={`clothes-card-${productType}`}>
                 <div className={'cards-item__img-container'}>
-                    <img src={`https://training.cleverland.by/shop${images[0]?.url}`} alt=""
+                    <img src={`https://training.cleverland.by/shop${images[0].url}`} alt=""
                          className={'cards-item__img'}/>
                 </div>
                 <span className="cards-item__title">{name}</span>
-                <span className="cards-item__price">$ {price}</span>
+                <span className="cards-item__price">$ {price.toFixed(2)}</span>
                 {discount !== null &&
                     <span className={'cards-item__price cards-item__price--old'}>
                        $ {oldPrice}

@@ -44,24 +44,6 @@ const ProductsPage = () => {
     };
 
     function filter(array = [], filters = {}) {
-        // const productsId = []
-        // let products = []
-        // products = array;
-        // products.forEach(elem => {
-        //         let colors = new Set()
-        //         elem['images'].forEach(el => colors.add(el))
-        //         elem['color'] = [...colors].map(el => el = el.color)
-        //         elem['brands'] = elem['brand'].split()
-        //     }
-        // )
-        // products = products.filter(elem => {
-        //         const commonKeys = keys.filter(key => elem.hasOwnProperty(key));
-        //         return commonKeys.reduce((flag, key) => {
-        //             return flag && filters[key].map(el => elem[key].includes(el))[0]
-        //         }, true);
-        //     }
-        // )
-
         array = array.filter(elem => {
             let colors = [];
             elem['images'].forEach(item => {
@@ -90,6 +72,7 @@ const ProductsPage = () => {
     selected.sizes = sizes;
     selected.brand = brand;
     selected.price = price;
+
     useEffect(() => {
         let filtered = filter(PRODUCTS[productType], selected)
         !isNotEmpty() ? setProducts(PRODUCTS[productType]) : setProducts(filtered)
@@ -122,7 +105,8 @@ const ProductsPage = () => {
                                     className={'filter-result__item'}>Size: {selected.sizes.slice().join(', ')}</div> : null}
                                 {selected.brand.length ? <div
                                     className={'filter-result__item'}>Brand: {selected.brand.slice().join(', ')}</div> : null}
-                                {/*<div className={'filter-result__item'}>Price:</div>*/}
+                                {/*{selected.price.length ?*/}
+                                {/*    <div className={'filter-result__item'}>Price: {selected.price.slice().join(', ')}</div> : null}*/}
                             </div>
                         </div>
                     </div>

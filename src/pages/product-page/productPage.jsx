@@ -15,8 +15,11 @@ import {PRODUCTS} from "../../components/constants/products";
 import ProductAdditional from "../../components/products-settings/ProductAdditional";
 import ProductSetColor from "../../components/products-settings/ProductSetColor";
 import ProductSetSize from "../../components/products-settings/ProductSetSize";
+import {connect} from 'react-redux';
+import {addItem, removeItemById} from "../../redux/cart.actions";
+import {useEffect, useState} from "react";
 
-const ProductPage = () => {
+const ProductPage = ({items, addItem, removeItem}) => {
     const {productType} = useParams();
     const {path} = useParams();
     let prodList = PRODUCTS[productType];
@@ -26,6 +29,49 @@ const ProductPage = () => {
             return (product = item);
         }
     });
+    const filterByProp = (arr, prop) => {
+        let colorsObg = {};
+        let newArr;
+        newArr = arr.filter(item => {
+            if (colorsObg[item[prop]]) {
+                return false;
+            } else {
+                colorsObg[item[prop]] = true;
+                return true;
+            }
+        });
+        return newArr;
+    }
+    const colors = filterByProp(product.images, "color");
+    const [size, setSize] = useState(product.sizes[0]);
+    const [isChosenSize, setChosenSize] = useState(0);
+    const [color, setColor] = useState(colors[0].color);
+    const [isChosenColor, setChosenColor] = useState(0);
+    const generateId = product.id + '-' + size + '-' + color;
+    let cartItem = {
+        ...product,
+        id: generateId.replace(' ', ''),
+        sizes: size,
+        color: color,
+    };
+    const curQuantity = items.filter(item => item.id === cartItem.id).length;
+    const setImageToCart = () => {
+        cartItem.image = `https://training.cleverland.by/shop${colors.filter(item => item.color === color)[0].url}`
+    }
+    function actions() {
+        if (curQuantity === 0) {
+            addItem(cartItem);
+        } else {
+            removeItem(cartItem.id)
+        }
+    }
+
+    useEffect(() => {
+        setSize(product.sizes[0]);
+        setChosenSize(0);
+        setColor(colors[0].color);
+        setChosenColor(0)
+    }, [path])
     return (
         <>
             <ScrollToTop/>
@@ -36,14 +82,23 @@ const ProductPage = () => {
                         <div className="product">
                             <ProductSlider images={product.images}/>
                             <div className="product-info">
-                                <ProductSetColor images={product.images}/>
-                                <ProductSetSize sizes={product.sizes}/>
+                                <ProductSetColor colors={filterByProp(product.images, "color")} color={color}
+                                                 setColor={setColor}
+                                                 isChosenColor={isChosenColor} setChosenColor={setChosenColor}/>
+                                <ProductSetSize sizes={product.sizes} size={size} setSize={setSize}
+                                                isChosenSize={isChosenSize} setChosenSize={setChosenSize}/>
                                 <div className="product-info__actions border-bottom">
                                     <div className="product__price">
-                                        <span className={'cur-price'}>$ {product.price}</span>
+                                        <span className={'cur-price'}>$ {(product.price).toFixed(2)}</span>
                                     </div>
                                     <div className="product__addToCart">
-                                        <button className={'btn addToCart'}>Add to card</button>
+                                        <button data-test-id='add-cart-button' className={'btn-dark addToCart'}
+                                                onClick={() => {
+                                                    setImageToCart();
+                                                    actions();
+                                                }}>
+                                            {curQuantity === 0 ? 'Add to cart' : 'remove from cart'}
+                                        </button>
                                     </div>
                                     <div className="product__like-icons">
                                         <button className="favorite"><img src={favorite} alt=""/></button>
@@ -89,4 +144,12 @@ const ProductPage = () => {
         </>
     );
 }
-export default ProductPage;
+const mapStateToProps = ({cart: {cartItems}}) => ({
+    items: cartItems,
+});
+const mapDispatchToProps = dispatch => ({
+    addItem: item => dispatch(addItem(item)),
+    removeItem: id => dispatch(removeItemById(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

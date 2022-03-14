@@ -212,3 +212,50 @@ img {
 svg.grey path {
     fill: #E5E5E5;
 }
+.btn-dark {
+    font-weight: 300;
+    font-size: 13px;
+    height: 48px;
+    padding: 0 15px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.9;
+    background-color: #121212;
+    border: 2px solid #121212;
+    min-width: 155px;
+    width: 100%;
+    transition: .3s ease-in-out;
+}
+.btn-dark:hover {
+    background: #E6E6E6;
+    border: 2px solid #E6E6E6;
+    color: #121212;
+}
+
+.btn-light {
+    font-weight: 300;
+    font-size: 13px;
+    height: 48px;
+    padding: 0 15px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000;
+    opacity: 0.9;
+    background: #F8F8F8;
+    border: 2px solid #F8F8F8;
+    min-width: 155px;
+    width: 100%;
+    transition: .3s ease-in-out;
+}
+.btn-light:hover {
+    background: #E6E6E6;
+    border: 2px solid #E6E6E6;
+}
+.btn-dark:active, .btn-light:active {
+    background: #9C9C9C;
+    border: 2px solid #9C9C9C;
+    color: #fff ;
+}

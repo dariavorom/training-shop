@@ -10,7 +10,7 @@ const Clothes = ({productType, products}) => {
                         return <CardsItem cardsItem={card} productType={productType} key={card.id}/>
                 })}
             </div>
-            <Link to={productType} className={'clothes__link'}>see all</Link>
+            <Link to={productType} className={'clothes__link btn-light'}>see all</Link>
         </>
     );
 }

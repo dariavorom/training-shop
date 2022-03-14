@@ -3,20 +3,21 @@ import logo from '../../../assets/logo.svg';
 import search from '../assets/img/search.svg';
 import globe from '../assets/img/globe.svg';
 import user from '../assets/img/user.svg';
-import cart from '../assets/img/cart.svg';
 import './header_bottom.scss';
 import {Link} from "react-router-dom";
 import classNames from "classnames";
+import CartButton from "../../cart/cart-button";
 
-const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
+const HeaderBottom = ({isMenuOpen, toggleMenu, toggleCartMode}) => {
     function toggleMenuMode() {
         toggleMenu(!isMenuOpen);
     }
-    function toggleMenuOutSide () {
-        if(isMenuOpen) {
+    function toggleMenuOutSide() {
+        if (isMenuOpen) {
             toggleMenuMode()
         }
     }
+
     return (
         <div className={'header__bottom'}>
             <div className="container">
@@ -40,10 +41,7 @@ const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
                         <Link to={'/'} className={'personal__item'}>
                             <img src={user} alt=""/>
                         </Link>
-                        <Link to={'/'} className={'personal__item cart'}>
-                            <span className={'count'}>2</span>
-                            <img src={cart} alt=""/>
-                        </Link>
+                        <CartButton toggleCartMode={toggleCartMode}/>
                     </div>
                     <button
                         data-test-id={'burger-menu-btn'}
