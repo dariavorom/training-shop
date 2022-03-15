@@ -47,22 +47,25 @@ const ProductPage = ({items, addItem, removeItem}) => {
     const [isChosenSize, setChosenSize] = useState(0);
     const [color, setColor] = useState(colors[0].color);
     const [isChosenColor, setChosenColor] = useState(0);
-    const generateId = product.id + '-' + size + '-' + color;
     let cartItem = {
         ...product,
-        id: generateId.replace(' ', ''),
         sizes: size,
         color: color,
     };
-    const curQuantity = items.filter(item => item.id === cartItem.id).length;
+
     const setImageToCart = () => {
         cartItem.image = `https://training.cleverland.by/shop${colors.filter(item => item.color === color)[0].url}`
     }
+    const curQuantity = items.filter(item =>
+        item.id === cartItem.id &&
+        item.sizes === cartItem.sizes &&
+        item.color === cartItem.color).length;
+
     function actions() {
         if (curQuantity === 0) {
             addItem(cartItem);
         } else {
-            removeItem(cartItem.id)
+            removeItem(cartItem.id, cartItem.color, cartItem.sizes, cartItem.image)
         }
     }
 
@@ -149,7 +152,7 @@ const mapStateToProps = ({cart: {cartItems}}) => ({
 });
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
-    removeItem: id => dispatch(removeItemById(id)),
+    removeItem: (id, color, sizes, image) => dispatch(removeItemById(id, color, sizes, image)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

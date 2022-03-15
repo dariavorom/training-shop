@@ -76,9 +76,9 @@ const mapStateToProps = ({cart: {cartItems}}) => ({
     total: cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0).toFixed(2)
 });
 const mapDispatchToProps = dispatch => ({
-    removeItem: id => dispatch(removeItemById(id)),
-    incItem: id => dispatch(incItem(id)),
-    decItem: id => dispatch(decItem(id)),
-    onChange: (id, quantity) => dispatch(onChangeInput(id, quantity)),
+    removeItem: (id, color, sizes, image) => dispatch(removeItemById(id, color, sizes, image)),
+    incItem: (id, color, sizes, image) => dispatch(incItem(id, color, sizes, image)),
+    decItem: (id, color, sizes, image) => dispatch(decItem(id, color, sizes, image)),
+    onChange: (id, color, sizes, image, quantity) => dispatch(onChangeInput(id, color, sizes, image, quantity)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

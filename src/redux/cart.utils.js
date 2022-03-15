@@ -15,30 +15,36 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
     return [...cartItems, {...cartItemToAdd, quantity: 1}];
 }
-export const removeItemFromCart = (cartItems, id) => cartItems.filter(item => item.id !== id);
+export const removeItemFromCart = (cartItems, [id, color, sizes, image]) => cartItems.filter(item => {
+    return item.id === id ?
+        (item.color !== color ||
+            item.sizes !== sizes ||
+            item.image !== image) :
+        item.id !== id
+});
 
-export const incItemInCart = (cartItems, id) => {
+export const incItemInCart = (cartItems, [id, color, sizes, image]) => {
     return cartItems.map(cartItem =>
-        cartItem.id === id
+        (cartItem.id === id && cartItem.color === color && cartItem.sizes === sizes && cartItem.image === image)
             ? {...cartItem, quantity: parseInt(cartItem.quantity + 1)}
             : cartItem
     );
 }
-export const decItemInCart = (cartItems, id) => {
+export const decItemInCart = (cartItems, [id, color, sizes, image]) => {
     return cartItems.map(cartItem => {
             let qnt = cartItem.quantity;
             if (qnt > 1) {
                 qnt = qnt - 1
             }
-            return cartItem.id === id
+            return (cartItem.id === id && cartItem.color === color && cartItem.sizes === sizes && cartItem.image === image)
                 ? {...cartItem, quantity: qnt}
                 : cartItem
         }
     );
 }
-export const onChangeInput = (cartItems, [id, quantity]) => {
+export const onChangeInput = (cartItems, [id, color, sizes, image, quantity]) => {
     return cartItems.map(cartItem => {
-            if (cartItem.id === id) {
+            if (cartItem.id === id && cartItem.color === color && cartItem.sizes === sizes && cartItem.image === image) {
                 return quantity !== ''
                     ? {...cartItem, quantity: parseInt(quantity)} :
                     {...cartItem, quantity: quantity}
