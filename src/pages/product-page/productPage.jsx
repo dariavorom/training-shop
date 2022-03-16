@@ -100,7 +100,7 @@ const ProductPage = ({items, addItem, removeItem}) => {
                                                     setImageToCart();
                                                     actions();
                                                 }}>
-                                            {curQuantity === 0 ? 'Add to card' : 'remove to card'}
+                                            {curQuantity === 0 ? 'Add to cart' : 'remove from cart'}
                                         </button>
                                     </div>
                                     <div className="product__like-icons">

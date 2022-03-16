@@ -14,6 +14,47 @@ const RelatedProducts = () => {
     const [prodList, setProdList] = useState(PRODUCTS[productType]);
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
+    const params = {
+        className: 'related-slider',
+        modules: [Navigation],
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation:
+            {
+                prevEl: navigationPrevRef.current,
+                nextEl: navigationNextRef.current,
+            }
+        ,
+        onBeforeInit: (swiper) => {
+            swiper.params.navigation.prevEl = navigationPrevRef.current;
+            swiper.params.navigation.nextEl = navigationNextRef.current;
+        },
+        breakpoints: {
+            360: {
+                slidesPerView: 2,
+            },
+            720: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        }
+    }
+    const slides = prodList.map((card) => {
+        return (
+            <SwiperSlide key={card.id}>
+                <CardsItem cardsItem={card} productType={productType}/>
+            </SwiperSlide>
+        )
+    })
+    const Slider = () => {
+        return (
+            <Swiper {...params}>
+                {slides}
+            </Swiper>
+        )
+    }
     useEffect(() => {
         setProdList(PRODUCTS[productType])
     }, [productType])
@@ -28,43 +69,8 @@ const RelatedProducts = () => {
                     <button className={'arrow arrow-next'} ref={navigationNextRef}>
                         <img src={arrow} alt=""/>
                     </button>
-                    <Swiper
-                        className={'related-slider'}
-                        modules={[Navigation]}
-                        slidesPerView={1}
-                        spaceBetween={20}
-                        navigation={
-                            {
-                                prevEl: navigationPrevRef.current,
-                                nextEl: navigationNextRef.current,
-                            }
-                        }
-                        onBeforeInit={(swiper) => {
-                            swiper.params.navigation.prevEl = navigationPrevRef.current;
-                            swiper.params.navigation.nextEl = navigationNextRef.current;
-                        }}
-                        breakpoints={{
-                            360: {
-                                slidesPerView: 2,
-                            },
-                            720: {
-                                slidesPerView: 3,
-                            },
-                            1024: {
-                                slidesPerView: 4,
-                            },
-                        }}
-                    >
-                        {prodList.map((card) => {
-                            return (
-                                <SwiperSlide key={card.id}>
-                                    <CardsItem cardsItem={card} productType={productType}/>
-                                </SwiperSlide>
-                            )
-                        })}
-                    </Swiper>
+                    <Slider/>
                 </div>
-
             </div>
         </div>
     )
