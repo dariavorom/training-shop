@@ -1,16 +1,14 @@
 import React, {useState} from "react";
 import Clothes from "../../clothes/Clothes";
 import {MAIN_CLOTHES_BLOCK_MENU} from "../../constants/main-clothes-block-menu";
-import {PRODUCTS} from "../../constants/products";
+import {useSelector} from "react-redux";
 
 const MenClothes = () => {
     const [particular, setParticular] = useState(MAIN_CLOTHES_BLOCK_MENU[0].particularName);
     const [isChosen, setChosen] = useState(0);
-    let products;
-    products = PRODUCTS['men'].filter(el => {
+    const products = useSelector(state => state.productsSlice.products.men).filter(el => {
         return el.particulars[particular] === true;
     })
-
     return (
         <>
             <div className="men-clothes">

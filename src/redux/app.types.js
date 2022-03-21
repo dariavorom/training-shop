@@ -1,0 +1,3 @@
+export const SHOW_ERROR = 'SHOW_ERROR'
+export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS'

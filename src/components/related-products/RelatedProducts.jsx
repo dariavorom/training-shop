@@ -6,12 +6,11 @@ import {Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
-import {PRODUCTS} from "../constants/products";
 import CardsItem from "../cards-item/CardsItem";
 
-const RelatedProducts = () => {
+const RelatedProducts = ({products}) => {
     const {productType} = useParams();
-    const [prodList, setProdList] = useState(PRODUCTS[productType]);
+    const [prodList, setProdList] = useState(products);
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
     const params = {
@@ -48,6 +47,7 @@ const RelatedProducts = () => {
             </SwiperSlide>
         )
     })
+
     const Slider = () => {
         return (
             <Swiper {...params}>
@@ -56,7 +56,7 @@ const RelatedProducts = () => {
         )
     }
     useEffect(() => {
-        setProdList(PRODUCTS[productType])
+        setProdList(products)
     }, [productType])
     return (
         <div className={'related'}>

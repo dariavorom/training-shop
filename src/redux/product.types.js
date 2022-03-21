@@ -1,0 +1,2 @@
+export const REQUEST_PRODUCT = 'REQUEST_PRODUCT'
+export const LOAD_PRODUCT = 'LOAD_PRODUCT'

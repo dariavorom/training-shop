@@ -5,11 +5,12 @@ import ProductsHeader from "../../components/products-header/ProductsHeader";
 import loading from '../../assets/loading.gif';
 import Filter from "../../components/filter/Filter";
 import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
-import {PRODUCTS} from "../../components/constants/products";
 import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 
 const ProductsPage = () => {
     const {productType} = useParams();
+    const productsInit = useSelector(state => state.productsSlice.products[productType])
     const [color, setColor] = useState([])
     const [sizes, setSize] = useState([])
     const [brand, setBrand] = useState([])
@@ -72,19 +73,20 @@ const ProductsPage = () => {
     selected.sizes = sizes;
     selected.brand = brand;
     selected.price = price;
-
     useEffect(() => {
-        let filtered = filter(PRODUCTS[productType], selected)
-        !isNotEmpty() ? setProducts(PRODUCTS[productType]) : setProducts(filtered)
+        let filtered = filter(productsInit, selected)
+        !isNotEmpty() ? setProducts(productsInit) : setProducts(filtered)
     }, [color, brand, sizes, price, productType])
     useEffect(() => {
         setBrand([])
         setColor([])
         setSize([])
         setPrice([])
-        setProducts(PRODUCTS[productType])
+        setProducts(productsInit)
     }, [productType])
-
+    useEffect(() => {
+        setProducts(productsInit)
+    }, [productsInit])
     return (
         <>
             <ScrollToTop/>

@@ -1,11 +1,10 @@
-import { combineReducers } from 'redux';
 import CartActionTypes from './cart.types';
 import { addItemToCart, removeItemFromCart, incItemInCart, decItemInCart, onChangeInput } from './cart.utils';
 
 const INITIAL_STATE = {
     cartItems: []
 }
-const cartReducer = (state = INITIAL_STATE, action) => {
+export const cartReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CartActionTypes.ADD_ITEM:
             return {
@@ -36,6 +35,3 @@ const cartReducer = (state = INITIAL_STATE, action) => {
             return state;
     }
 }
-export default combineReducers({
-    cart: cartReducer
-});

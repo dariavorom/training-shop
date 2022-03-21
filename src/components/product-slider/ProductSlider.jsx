@@ -1,5 +1,5 @@
 import arrow from '../../assets/arrow.svg';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './product-slider.scss';
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs} from "swiper";
@@ -11,9 +11,44 @@ import {useParams} from "react-router-dom";
 
 const ProductSlider = ({images}) => {
     const {path} = useParams();
+    const [swiper, updateSwiper] = useState(null);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const paramsMainSlider = {
+        id: "slider__slides",
+        spaceBetween: 10,
+        thumbs: {swiper: thumbsSwiper},
+        modules: [FreeMode, Navigation, Thumbs],
+        onBeforeInit: swiper => updateSwiper(swiper),
+        navigation: {
+            prevEl: '.product-slider .arrow.arrow-prev',
+            nextEl: '.product-slider .arrow.arrow-next',
+        },
+    }
+    const paramsThumbSlider = {
+        id: "slider__thumbnails",
+        direction: 'horizontal',
+        onBeforeInit: setThumbsSwiper,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+        modules: [FreeMode, Navigation, Thumbs],
+        slideToClickedSlide: true,
+        breakpoints: {
+            // when window width is >= 640px
+            600: {
+                direction: 'vertical'
+            },
+            // when window width is >= 768px
+        },
+    }
+    useEffect(() => {
+        if (swiper && thumbsSwiper) {
+            swiper.thumbs.swiper = thumbsSwiper
+        }
+    }, [images, swiper, path, thumbsSwiper])
     return (
-        <div className="product-slider slider"  data-test-id={'product-slider'}>
+        <div className="product-slider slider" data-test-id={'product-slider'}>
             <div className="slider__slides">
                 <button className={'arrow arrow-prev'}>
                     <img src={arrow} alt=""/>
@@ -21,16 +56,7 @@ const ProductSlider = ({images}) => {
                 <button className={'arrow arrow-next'}>
                     <img src={arrow} alt=""/>
                 </button>
-                <Swiper
-                    id={"slider__slides"}
-                    spaceBetween={10}
-                    thumbs={{swiper: thumbsSwiper}}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    navigation={{
-                        prevEl: '.product-slider .arrow.arrow-prev',
-                        nextEl: '.product-slider .arrow.arrow-next',
-                    }}
-                >
+                <Swiper {...paramsMainSlider}>
                     {images.map(({url, id}) => (
                         <SwiperSlide className="slider__slide" key={id}>
                             <img src={`https://training.cleverland.by/shop${url}`} alt=""/>
@@ -45,28 +71,11 @@ const ProductSlider = ({images}) => {
                 <button className={'arrow arrow-next arrow-bot'}>
                     <img src={arrow} alt=""/>
                 </button>
-                <Swiper
-                    id={"slider__thumbnails"}
-                    direction={'horizontal'}
-                    onSwiper={setThumbsSwiper}
-                    spaceBetween={10}
-                    slidesPerView={4}
-                    freeMode={true}
-                    watchSlidesProgress={true}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    slideToClickedSlide={true}
-                    breakpoints={{
-                        // when window width is >= 640px
-                        600: {
-                            direction: 'vertical'
-                        },
-                        // when window width is >= 768px
-                    }}
-                >
+                <Swiper {...paramsThumbSlider}>
                     {images.map(({url, id}) => (
                         <SwiperSlide className="slider__thumbnail" key={id}>
-                                <img src={`https://training.cleverland.by/shop${url}`} alt=""
-                                     className={'slider__thumbnail-img'}/>
+                            <img src={`https://training.cleverland.by/shop${url}`} alt=""
+                                 className={'slider__thumbnail-img'}/>
                         </SwiperSlide>
                     ))}
                 </Swiper>
