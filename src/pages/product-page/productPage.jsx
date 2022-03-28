@@ -157,7 +157,7 @@ const ProductPage = ({items, addItem, removeItem}) => {
                                     </div>
                                     <ProductAdditional sizes={product.sizes} productColor={product.images}
                                                        material={product.material}/>
-                                    {product.reviews.length > 0 ? <Reviews reviews={product.reviews}/> : null}
+                                    {product.reviews.length > 0 ? <Reviews reviews={product.reviews} id={product.id}/> : null}
                                 </div>
                             </div>
                         </div>

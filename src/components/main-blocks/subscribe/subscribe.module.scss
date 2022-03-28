@@ -51,12 +51,14 @@
     }
 
     button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #121212;
       cursor: pointer;
       font-weight: 500;
       font-size: 16px;
       line-height: 18px;
-      text-align: center;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #fff;

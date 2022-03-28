@@ -1,4 +1,4 @@
-.error {
+.error:not(.response-message) {
     position: relative;
     padding: 1rem 1rem;
     margin: 100px auto 15px;

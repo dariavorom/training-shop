@@ -15,7 +15,7 @@ const Rating = (props) => {
         arrStars.fill('grey', Math.round(countRating))
     }
     const stars = arrStars.map((item, index) => (
-            <SvgGenerator id={'star'} className={item} key={index}/>
+            <SvgGenerator id={'star'} className={item} key={index} color={'#f1d545'}/>
         )
     )
     return (
@@ -25,3 +25,5 @@ const Rating = (props) => {
     )
 }
 export default Rating;
+
+

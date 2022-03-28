@@ -205,13 +205,16 @@ img {
     .arrow-prev {
         left: 10px;
     }
+
     .arrow-next {
         right: 10px !important;
     }
 }
+
 svg.grey path {
     fill: #E5E5E5;
 }
+
 .btn-dark {
     font-weight: 300;
     font-size: 13px;
@@ -228,7 +231,8 @@ svg.grey path {
     width: 100%;
     transition: .3s ease-in-out;
 }
-.btn-dark:hover {
+
+.btn-dark:not(.reviews-popup__form-btn:disabled):hover {
     background: #E6E6E6;
     border: 2px solid #E6E6E6;
     color: #121212;
@@ -250,12 +254,66 @@ svg.grey path {
     width: 100%;
     transition: .3s ease-in-out;
 }
+
 .btn-light:hover {
     background: #E6E6E6;
     border: 2px solid #E6E6E6;
 }
+
 .btn-dark:active, .btn-light:active {
     background: #9C9C9C;
     border: 2px solid #9C9C9C;
-    color: #fff ;
+    color: #fff;
+}
+
+/*loader for btn*/
+.lds-dual-ring {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.reviews-popup__form-btn .lds-dual-ring:after {
+    margin: 0;
+}
+.reviews-popup__form-btn .lds-dual-ring {
+    margin-right: 5px;
+}
+.response-message {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px auto;
+}
+
+.response-message.success {
+    color: green;
+}
+
+.response-message.error {
+    color: red;
+}
+
+.btn-submit:disabled {
+    background-color: #9b9999 !important;
+    cursor: not-allowed !important;
 }
