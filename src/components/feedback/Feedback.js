@@ -65,7 +65,7 @@ const Feedback = ({active, toggleActive, id, rating}) => {
                                             <input data-test-id="review-name-field" {...field} type="text" placeholder="Имя"
                                                    className={'reviews-popup__form-item'} autoComplete={'off'}/>
                                             {errors.name &&
-                                                <div className={'reviews-popup__error'}><ErrorMessage name="name"/>
+                                                <div className={'form__error'}><ErrorMessage name="name"/>
                                                 </div>}
                                         </>
                                     )}
@@ -77,7 +77,7 @@ const Feedback = ({active, toggleActive, id, rating}) => {
                                     <textarea data-test-id="review-text-field" {...field} onBlur={handleBlur} placeholder="Комментарий"
                                               className={'reviews-popup__form-item reviews-popup__form-item--textarea'}/>
                                             {errors.text &&
-                                                <div className={'reviews-popup__error'}><ErrorMessage name="text"/>
+                                                <div className={'form__error'}><ErrorMessage name="text"/>
                                                 </div>}
                                         </>
                                     )}

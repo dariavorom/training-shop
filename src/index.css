@@ -317,3 +317,9 @@ svg.grey path {
     background-color: #9b9999 !important;
     cursor: not-allowed !important;
 }
+.form__error {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+}

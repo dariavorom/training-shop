@@ -6,7 +6,9 @@ import './join-us.scss';
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {sendMailRequestFooter} from "../../../redux/subscribe/actions";
-import {useState} from "react";
+import React from "react";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import * as Yup from "yup";
 
 const JoinUs = () => {
     const dispatch = useDispatch();
@@ -16,37 +18,53 @@ const JoinUs = () => {
         isMailSendError,
         mailSendResponse
     } = useSelector(state => state.subscribe.subscribeFooter);
-    const [email, setEmail] = useState('');
-    const [formValid, setFormValid] = useState(false);
 
-    const sendSubscribeMail = (e) => {
-        e.preventDefault();
-        dispatch(sendMailRequestFooter(email));
-        setEmail('');
-        setFormValid(false);
-    }
+    const ErrorSchema = Yup.object().shape({
+        email: Yup.string()
+            .matches(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, 'Некорретный email')
+            .required('Введите email')
+    });
 
-    const emailHandler = (e) => {
-        setEmail(e.target.value)
-        const re =
-            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        if (!String(e.target.value).toLowerCase().match(re)) {
-            setFormValid(false)
-        } else {
-            setFormValid(true)
-        }
-    }
     return (
         <div className={'joinus'}>
             <div className="container">
                 <div className={'joinus-wrapper'}>
                     <div className={'joinus__title'}>BE IN TOUCH WITH US:</div>
-                    <form action="" className={'joinus__form'} onSubmit={e => sendSubscribeMail(e)}>
-                        <input data-test-id="footer-mail-field" type="text" placeholder={'Enter your email'} value={email}
-                               onChange={e => emailHandler(e)}/>
-                        <button data-test-id="footer-subscribe-mail-button" type={'submit'} className={'joinus__btn btn-submit'} disabled={!formValid}>Join Us</button>
-                        {isMailSendLoading && <div className="lds-dual-ring"/>}
-                    </form>
+                    <Formik
+                        initialValues={{
+                            email: "",
+                        }}
+                        validateOnChange
+                        validationSchema={ErrorSchema}
+                        onSubmit={(values) => {
+                            dispatch(sendMailRequestFooter(values));
+                        }}
+                    >
+                        {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
+                            return (
+                                <Form className={'joinus__form'}>
+                                    <Field name="email">
+                                        {({field, form, meta}) => (
+                                            <div className={'input-wrapper'}>
+                                                <input data-test-id="footer-mail-field" {...field} type="email"
+                                                       placeholder="email" autoComplete={'off'}/>
+                                                {errors.email &&
+                                                    <div className={'form__error'}><ErrorMessage name="email"/>
+                                                    </div>}
+                                            </div>
+                                        )}
+                                    </Field>
+                                    <button data-test-id="footer-subscribe-mail-button"
+                                            className={'joinus__btn btn-submit'}
+                                            type="submit"
+                                            disabled={!isValid || !dirty}
+                                            onClick={handleSubmit}>join us
+                                    </button>
+                                    {isMailSendLoading && <div className="lds-dual-ring"/>}
+                                </Form>
+                            )
+                        }}
+                    </Formik>
                     <div className="joinus__socials">
                         <Link to={'/'} className={'joinus__socials-link'}>
                             <img src={facebook} alt="facebook"/>

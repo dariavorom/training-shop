@@ -26,6 +26,13 @@
     justify-content: space-between;
     width: 45%;
     max-width: 510px;
+    .input-wrapper {
+      margin-right: 12px;
+      width: 100%;
+    }
+    .form__error {
+      margin-top: 5px;
+    }
     input {
       height: 32px;
       background-color: rgba(255, 255, 255, 0.2);
@@ -37,7 +44,7 @@
       border: none;
       outline: none;
       width: 100%;
-      margin-right: 12px;
+
       &::placeholder {
         font-weight: 500;
         font-size: 13px;
