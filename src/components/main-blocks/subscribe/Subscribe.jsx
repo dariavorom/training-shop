@@ -2,24 +2,26 @@ import woman from './assets/woman.png';
 import man from './assets/man.png';
 import classes from './subscribe.module.scss';
 import {useDispatch, useSelector} from "react-redux";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {sendMailRequest} from "../../../redux/subscribe/actions";
 import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
+import {useLocation} from "react-router-dom";
+import {validationEmail} from "../../functions/validation";
 
 const Subscribe = () => {
     const dispatch = useDispatch();
+    const url = useLocation().pathname;
+    const formikRef = useRef();
     const {
         isMailSendLoading,
         isMailSendSuccess,
         isMailSendError,
         mailSendResponse
     } = useSelector(state => state.subscribe.subscribe);
-    const ErrorSchema = Yup.object().shape({
-        email: Yup.string()
-            .matches(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, 'Некорретный email')
-            .required('Введите email')
-    });
+    useEffect(() => {
+        formikRef.current.resetForm();
+    }, [url])
     return (
         <div className={classes.subscribe}>
             <div className="container">
@@ -32,24 +34,28 @@ const Subscribe = () => {
                         And <span>Get 10% Off</span>
                     </div>
                     <Formik
+                        innerRef={formikRef}
                         initialValues={{
                             email: "",
                         }}
-                        validateOnChange
-                        validationSchema={ErrorSchema}
+                        enableReinitialize={true}
+                        validate={validationEmail}
                         onSubmit={(values, actions) => {
                             dispatch(sendMailRequest(values));
                             actions.resetForm();
                         }}
                     >
-                        {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
+                        {formik => {
                             return (
                                 <Form className={classes.subscribe__form}>
                                     <Field name="email">
-                                        {({field, form, meta}) => (
+                                        {({field, meta}) => (
                                             <>
-                                                <input data-test-id="main-subscribe-mail-field" {...field} type="email" placeholder="Enter your email" autoComplete='off'/>
-                                                {errors.email &&
+                                                <input {...field}
+                                                       type="email"
+                                                       placeholder="Enter your email"
+                                                       data-test-id="main-subscribe-mail-field"/>
+                                                {meta.touched && meta.error &&
                                                     <div className={'form__error'}><ErrorMessage name="email"/>
                                                     </div>}
                                             </>
@@ -57,8 +63,7 @@ const Subscribe = () => {
                                     </Field>
                                     <button data-test-id="main-subscribe-mail-button" className={'btn-submit'}
                                             type="submit"
-                                            disabled={!isValid || !dirty || isMailSendLoading}
-                                            onClick={handleSubmit}>
+                                            disabled={formik.errors.email || isMailSendLoading}>
                                         {isMailSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Subscribe</span>
                                     </button>

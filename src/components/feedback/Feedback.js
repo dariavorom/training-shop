@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
 import './feedback.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {sendReviewRequest} from "../../redux/review/actions";
 import FeedbackStarRating from "./Feedback-star-rating";
+import {useLocation} from "react-router-dom";
 
 const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
     const [curRating, setCurRating] = useState(null);
+    const url = useLocation().pathname;
+    const formikRef = useRef();
     const dispatch = useDispatch();
     const {
         isReviewSendLoading,
@@ -35,6 +38,7 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
         if (isReviewSendError) {
             togglePopup(true);
         } else if (isReviewSendSuccess) {
+            formikRef.current.resetForm();
             setTimeout(()=> {
                 togglePopup(false);
             }, 1000)
@@ -43,6 +47,9 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
     useEffect(()=> {
         togglePopup(false);
     }, [id])
+    useEffect(() => {
+        formikRef.current.resetForm();
+    }, [url])
     return (
         <div data-test-id="review-modal" className={`reviews-popup ${active ? 'active' : 'not-active'}`} onClick={toggleActive}>
             <div className="reviews-popup-content">
@@ -54,6 +61,7 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
                     <h3 className={'reviews-popup__title'}>Write a review</h3>
                     <FeedbackStarRating rating={rating} setCurRating={setCurRating}/>
                     <Formik
+                        innerRef={formikRef}
                         initialValues={{
                             id: id,
                             name: '',
@@ -63,11 +71,6 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
                         validationSchema={ErrorSchema}
                         onSubmit={(values, actions) => {
                             dispatch(sendReviewRequest(id, {...values, rating: curRating}));
-                            actions.resetForm();
-                            // setTimeout(() => {
-                            //     toggleActive();
-                            // }, 1000)
-
                         }}
                     >
                         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
