@@ -24,7 +24,6 @@ const JoinUs = () => {
             .matches(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, 'Некорретный email')
             .required('Введите email')
     });
-
     return (
         <div className={'joinus'}>
             <div className="container">

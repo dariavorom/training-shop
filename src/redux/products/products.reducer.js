@@ -1,4 +1,4 @@
-import {SHOW_ERROR, LOAD_PRODUCTS, REQUEST_PRODUCTS} from "./app.types";
+import {SHOW_ERROR, LOAD_PRODUCTS, REQUEST_PRODUCTS} from "./products.types";
 
 const initialState = {
     products: {
@@ -9,7 +9,7 @@ const initialState = {
     isError: false
 }
 
-export const appReducer = (state = initialState, action) => {
+export const productsReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_PRODUCTS:
             return {...state, isLoading: true, isError: false}

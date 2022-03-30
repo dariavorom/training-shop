@@ -1,4 +1,4 @@
-import {REQUEST_PRODUCTS, LOAD_PRODUCTS, SHOW_ERROR} from "./app.types";
+import {REQUEST_PRODUCTS, LOAD_PRODUCTS, SHOW_ERROR} from "./products.types";
 
 export function requestProducts() {
     return {

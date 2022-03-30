@@ -9,7 +9,7 @@ import Footer from "./components/footer/Footer";
 import Cart from "./components/cart/cart"
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {requestProducts} from "./redux/app.actions";
+import {requestProducts} from "./redux/products/products.actions";
 import Loader from "./components/loader/loader";
 import Error from "./components/error/error";
 

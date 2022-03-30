@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './cart.scss';
 import close from './assets/close.png';
 import {connect} from 'react-redux';
-import {incItem, decItem, removeItemById, onChangeInput} from "../../redux/cart.actions";
+import {incItem, decItem, removeItemById, onChangeInput} from "../../redux/cart/cart.actions";
 import CartItems from "./cart.items";
 import CartDelivery from "./cart.delivery";
 

@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {sendReviewRequest} from "../../redux/review/actions";
 import FeedbackStarRating from "./Feedback-star-rating";
 
-const Feedback = ({active, toggleActive, id, rating}) => {
+const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
     const [curRating, setCurRating] = useState(null);
     const dispatch = useDispatch();
     const {
@@ -31,6 +31,18 @@ const Feedback = ({active, toggleActive, id, rating}) => {
             document.body.classList.remove('lock');
         };
     }, [active]);
+    useEffect(() => {
+        if (isReviewSendError) {
+            togglePopup(true);
+        } else if (isReviewSendSuccess) {
+            setTimeout(()=> {
+                togglePopup(false);
+            }, 1000)
+        }
+    }, [isReviewSendError, isReviewSendSuccess])
+    useEffect(()=> {
+        togglePopup(false);
+    }, [id])
     return (
         <div data-test-id="review-modal" className={`reviews-popup ${active ? 'active' : 'not-active'}`} onClick={toggleActive}>
             <div className="reviews-popup-content">
@@ -47,15 +59,14 @@ const Feedback = ({active, toggleActive, id, rating}) => {
                             name: '',
                             text: '',
                         }}
-
                         validateOnChange
                         validationSchema={ErrorSchema}
                         onSubmit={(values, actions) => {
                             dispatch(sendReviewRequest(id, {...values, rating: curRating}));
                             actions.resetForm();
-                            setTimeout(() => {
-                                toggleActive();
-                            }, 1000)
+                            // setTimeout(() => {
+                            //     toggleActive();
+                            // }, 1000)
 
                         }}
                     >

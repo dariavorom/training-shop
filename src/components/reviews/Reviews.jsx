@@ -44,7 +44,7 @@ const Reviews = ({reviews, id}) => {
                     ))}
                 </div>
             </div>
-            <Feedback active={isActivePopup} toggleActive={toggleActive} id={id} rating={reviews}/>
+            <Feedback active={isActivePopup} toggleActive={toggleActive} togglePopup={togglePopup} id={id} rating={reviews}/>
         </>
     )
 }

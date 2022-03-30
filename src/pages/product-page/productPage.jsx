@@ -15,9 +15,9 @@ import ProductAdditional from "../../components/products-settings/ProductAdditio
 import ProductSetColor from "../../components/products-settings/ProductSetColor";
 import ProductSetSize from "../../components/products-settings/ProductSetSize";
 import {connect, useDispatch, useSelector} from 'react-redux';
-import {addItem, removeItemById} from "../../redux/cart.actions";
+import {addItem, removeItemById} from "../../redux/cart/cart.actions";
 import {useEffect, useState} from "react";
-import {requestProduct} from "../../redux/product.actions";
+import {requestProduct} from "../../redux/product/product.actions";
 import Loader from "../../components/loader/loader";
 import Error from "../../components/error/error";
 
@@ -76,9 +76,6 @@ const ProductPage = ({items, addItem, removeItem}) => {
         } else {
             removeItem(cartItem.id, cartItem.color, cartItem.sizes, cartItem.image)
         }
-    }
-    function updateProduct (id) {
-        dispatch(requestProduct(id))
     }
     useEffect(() => {
         dispatch(requestProduct(path))
@@ -160,7 +157,7 @@ const ProductPage = ({items, addItem, removeItem}) => {
                                     </div>
                                     <ProductAdditional sizes={product.sizes} productColor={product.images}
                                                        material={product.material}/>
-                                    <Reviews reviews={product.reviews} id={product.id} updateProduct={updateProduct}/>
+                                    <Reviews reviews={product.reviews} id={product.id}/>
                                 </div>
                             </div>
                         </div>
