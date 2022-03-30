@@ -59,7 +59,7 @@ const JoinUs = () => {
                                     <button data-test-id="footer-subscribe-mail-button"
                                             className={'joinus__btn btn-submit'}
                                             type="submit"
-                                            disabled={!isValid || !dirty}
+                                            disabled={!isValid || !dirty || isMailSendLoading}
                                             onClick={handleSubmit}><span>join us</span>
                                     </button>
                                     {isMailSendLoading && <div className="lds-dual-ring"/>}

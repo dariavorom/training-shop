@@ -57,7 +57,7 @@ const Subscribe = () => {
                                     </Field>
                                     <button data-test-id="main-subscribe-mail-button" className={'btn-submit'}
                                             type="submit"
-                                            disabled={!isValid || !dirty}
+                                            disabled={!isValid || !dirty || isMailSendLoading}
                                             onClick={handleSubmit}>
                                         {isMailSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Subscribe</span>

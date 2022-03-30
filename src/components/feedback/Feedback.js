@@ -90,7 +90,7 @@ const Feedback = ({active, toggleActive, id, rating}) => {
                                     <button data-test-id="review-submit-button"
                                             className={'reviews-popup__form-btn btn-dark btn-submit'}
                                             type="submit"
-                                            disabled={!isValid || !dirty}
+                                            disabled={!isValid || !dirty || isReviewSendLoading}
                                             onClick={handleSubmit}>
                                         {isReviewSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Send</span>
