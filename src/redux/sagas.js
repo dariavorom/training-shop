@@ -2,7 +2,7 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import {REQUEST_PRODUCTS} from "./app.types";
 import {REQUEST_PRODUCT} from "./product.types";
 import {loadProducts, showError} from "./app.actions";
-import {loadProduct} from "./product.actions";
+import {loadProduct, requestProduct} from "./product.actions";
 import {SEND_MAIL_REQUEST, SEND_MAIL_REQUEST_FOOTER} from "./subscribe/types";
 import {
     mailSendResponse,
@@ -107,12 +107,11 @@ function* sagaReviewWorker(action) {
     try {
         const response = yield call(reviewRequestWorker, action.payload.review)
         if (response.status === 200) {
-            yield put(sendReviewSuccess())
-            yield put(sendReviewResponse('Ваш отзыв отправлен'))
+            yield put(sendReviewSuccess());
+            yield put(sendReviewResponse('Ваш отзыв отправлен'));
+            yield put(requestProduct(action.payload.id));
             const delay = time => new Promise(resolve => setTimeout(resolve, time));
             yield delay(3000)
-            yield call(sagaProductWorker, {payload: action.payload.id});
-            yield call(sagaProductsWorker);
             yield put(sendReviewResponse(null))
         }
     } catch (error) {

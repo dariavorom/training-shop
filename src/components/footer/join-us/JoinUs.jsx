@@ -36,8 +36,10 @@ const JoinUs = () => {
                         }}
                         validateOnChange
                         validationSchema={ErrorSchema}
-                        onSubmit={(values) => {
+                        onSubmit={(values, actions) => {
                             dispatch(sendMailRequestFooter(values));
+                            actions.resetForm();
+
                         }}
                     >
                         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
@@ -47,7 +49,7 @@ const JoinUs = () => {
                                         {({field, form, meta}) => (
                                             <div className={'input-wrapper'}>
                                                 <input data-test-id="footer-mail-field" {...field} type="email"
-                                                       placeholder="email" autoComplete={'off'}/>
+                                                       placeholder="Enter your email" autoComplete='off'/>
                                                 {errors.email &&
                                                     <div className={'form__error'}><ErrorMessage name="email"/>
                                                     </div>}
@@ -58,7 +60,7 @@ const JoinUs = () => {
                                             className={'joinus__btn btn-submit'}
                                             type="submit"
                                             disabled={!isValid || !dirty}
-                                            onClick={handleSubmit}>join us
+                                            onClick={handleSubmit}><span>join us</span>
                                     </button>
                                     {isMailSendLoading && <div className="lds-dual-ring"/>}
                                 </Form>

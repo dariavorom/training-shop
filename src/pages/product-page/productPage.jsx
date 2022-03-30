@@ -77,6 +77,9 @@ const ProductPage = ({items, addItem, removeItem}) => {
             removeItem(cartItem.id, cartItem.color, cartItem.sizes, cartItem.image)
         }
     }
+    function updateProduct (id) {
+        dispatch(requestProduct(id))
+    }
     useEffect(() => {
         dispatch(requestProduct(path))
     }, [path, productType])
@@ -157,7 +160,7 @@ const ProductPage = ({items, addItem, removeItem}) => {
                                     </div>
                                     <ProductAdditional sizes={product.sizes} productColor={product.images}
                                                        material={product.material}/>
-                                    {product.reviews.length > 0 ? <Reviews reviews={product.reviews} id={product.id}/> : null}
+                                    <Reviews reviews={product.reviews} id={product.id} updateProduct={updateProduct}/>
                                 </div>
                             </div>
                         </div>

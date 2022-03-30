@@ -37,8 +37,9 @@ const Subscribe = () => {
                         }}
                         validateOnChange
                         validationSchema={ErrorSchema}
-                        onSubmit={(values) => {
+                        onSubmit={(values, actions) => {
                             dispatch(sendMailRequest(values));
+                            actions.resetForm();
                         }}
                     >
                         {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
@@ -47,7 +48,7 @@ const Subscribe = () => {
                                     <Field name="email">
                                         {({field, form, meta}) => (
                                             <>
-                                                <input data-test-id="main-subscribe-mail-field" {...field} type="email" placeholder="email" autoComplete={'off'}/>
+                                                <input data-test-id="main-subscribe-mail-field" {...field} type="email" placeholder="Enter your email" autoComplete='off'/>
                                                 {errors.email &&
                                                     <div className={'form__error'}><ErrorMessage name="email"/>
                                                     </div>}

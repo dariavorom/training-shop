@@ -3,16 +3,35 @@
 
   &.active {
     position: fixed;
+    display: block;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
     background-color: rgba(0, 0, 0, .2);
     z-index: 100;
+  }
+
+  &-content {
+    display: block;
+    height: 100%;
+    left: 0;
+    outline: none;
+    overflow: auto;
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    top: 0;
+    width: 100%;
+    z-index: 99994;
+    &:before {
+      content: '';
+      display: inline-block;
+      font-size: 0;
+      height: 100%;
+      vertical-align: middle;
+      width: 0;
+    }
   }
 
   &__wrapper {
@@ -24,6 +43,9 @@
     width: 100%;
     max-width: 500px;
     text-align: center;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   &__close-btn {
@@ -93,13 +115,16 @@
     &:disabled {
       border-color: #9b9999;
     }
+
     span {
       display: block;
       line-height: 48px;
     }
   }
+
   .star-rating {
     margin: 20px auto;
+
     svg {
       width: 30px;
       height: 28px;
