@@ -51,10 +51,10 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
         formikRef.current.resetForm();
     }, [url])
     return (
-        <div data-test-id="review-modal" className={`reviews-popup ${active ? 'active' : 'not-active'}`}
+        <div className={`reviews-popup ${active ? 'active' : 'not-active'}`}
              onClick={toggleActive}>
             <div className="reviews-popup-content">
-                <div className="reviews-popup__wrapper" onClick={e => e.stopPropagation()}>
+                <div data-test-id="review-modal" className="reviews-popup__wrapper" onClick={e => e.stopPropagation()}>
                     <button className={'reviews-popup__close-btn'} onClick={toggleActive}>
                         <span/>
                         <span/>
@@ -84,7 +84,6 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
                                         className={"reviews-popup__form-item"}/>
                                     <div className={'form__error'}><ErrorMessage name="name"/>
                                     </div>
-
                                     <Field
                                         as={'textarea'}
                                         data-test-id="review-text-field"
