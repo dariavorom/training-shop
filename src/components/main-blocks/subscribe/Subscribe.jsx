@@ -4,7 +4,6 @@ import classes from './subscribe.module.scss';
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useRef} from "react";
 import {sendMailRequest} from "../../../redux/subscribe/actions";
-import * as Yup from "yup";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useLocation} from "react-router-dom";
 import {validationEmail} from "../../functions/validation";
@@ -42,28 +41,23 @@ const Subscribe = () => {
                         validate={validationEmail}
                         onSubmit={(values, actions) => {
                             dispatch(sendMailRequest(values));
-                            actions.resetForm();
+                            setTimeout(() => {
+                                actions.resetForm();
+                            }, 10000)
                         }}
                     >
                         {formik => {
                             return (
                                 <Form className={classes.subscribe__form}>
-                                    <Field name="email">
-                                        {({field, meta}) => (
-                                            <>
-                                                <input {...field}
-                                                       type="email"
-                                                       placeholder="Enter your email"
-                                                       data-test-id="main-subscribe-mail-field"/>
-                                                {meta.touched && meta.error &&
-                                                    <div className={'form__error'}><ErrorMessage name="email"/>
-                                                    </div>}
-                                            </>
-                                        )}
-                                    </Field>
+                                    <Field name="email"
+                                           type="email"
+                                           placeholder="Enter your email"
+                                           data-test-id="main-subscribe-mail-field"/>
+                                    <div className={'form__error'}><ErrorMessage name="email"/>
+                                    </div>
                                     <button data-test-id="main-subscribe-mail-button" className={'btn-submit'}
                                             type="submit"
-                                            disabled={formik.errors.email || isMailSendLoading}>
+                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading}>
                                         {isMailSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Subscribe</span>
                                     </button>

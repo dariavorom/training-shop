@@ -8,7 +8,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {sendMailRequestFooter} from "../../../redux/subscribe/actions";
 import React, {useEffect, useRef} from "react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import * as Yup from "yup";
 import {validationEmail} from "../../functions/validation";
 
 const JoinUs = () => {
@@ -39,30 +38,27 @@ const JoinUs = () => {
                         validate={validationEmail}
                         onSubmit={(values, actions) => {
                             dispatch(sendMailRequestFooter(values));
-                            actions.resetForm();
-
+                            setTimeout(() => {
+                                actions.resetForm();
+                            }, 10000)
                         }}
                     >
                         {formik => {
+                            console.log(formik)
                             return (
                                 <Form className={'joinus__form'}>
-                                    <Field name="email">
-                                        {({field, meta}) => (
-                                            <div className={'input-wrapper'}>
-                                                <input {...field}
-                                                       type="email"
-                                                       placeholder="Enter your email"
-                                                       data-test-id="footer-mail-field"/>
-                                                {meta.touched && meta.error &&
-                                                    <div className={'form__error'}><ErrorMessage name="email"/>
-                                                    </div>}
+                                    <div className={'input-wrapper'}>
+                                        <Field name="email"
+                                               type="email"
+                                               placeholder="Enter your email"
+                                               data-test-id="footer-mail-field"/>
+                                            <div className={'form__error'}><ErrorMessage name="email"/>
                                             </div>
-                                        )}
-                                    </Field>
+                                    </div>
                                     <button data-test-id="footer-subscribe-mail-button"
                                             className={'joinus__btn btn-submit'}
                                             type="submit"
-                                            disabled={formik.errors.email || isMailSendLoading}><span>join us</span>
+                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading}><span>join us</span>
                                     </button>
                                     {isMailSendLoading && <div className="lds-dual-ring"/>}
                                 </Form>

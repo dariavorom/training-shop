@@ -39,21 +39,22 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
             togglePopup(true);
         } else if (isReviewSendSuccess) {
             formikRef.current.resetForm();
-            setTimeout(()=> {
+            setTimeout(() => {
                 togglePopup(false);
             }, 1000)
         }
     }, [isReviewSendError, isReviewSendSuccess])
-    useEffect(()=> {
+    useEffect(() => {
         togglePopup(false);
     }, [id])
     useEffect(() => {
         formikRef.current.resetForm();
     }, [url])
     return (
-        <div data-test-id="review-modal" className={`reviews-popup ${active ? 'active' : 'not-active'}`} onClick={toggleActive}>
+        <div data-test-id="review-modal" className={`reviews-popup ${active ? 'active' : 'not-active'}`}
+             onClick={toggleActive}>
             <div className="reviews-popup-content">
-                <div className="reviews-popup__wrapper" onClick={e=>e.stopPropagation()}>
+                <div className="reviews-popup__wrapper" onClick={e => e.stopPropagation()}>
                     <button className={'reviews-popup__close-btn'} onClick={toggleActive}>
                         <span/>
                         <span/>
@@ -69,43 +70,33 @@ const Feedback = ({active, toggleActive, togglePopup, id, rating}) => {
                         }}
                         validateOnChange
                         validationSchema={ErrorSchema}
-                        onSubmit={(values, actions) => {
+                        onSubmit={(values) => {
                             dispatch(sendReviewRequest(id, {...values, rating: curRating}));
                         }}
                     >
-                        {({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty}) => {
+                        {formik => {
                             return (
                                 <Form className={'reviews-popup__form'}>
-                                    <Field name="name">
-                                        {({field, form, meta}) => (
-                                            <>
-                                                <input data-test-id="review-name-field" {...field} type="text"
-                                                       placeholder="Имя"
-                                                       className={'reviews-popup__form-item'} autoComplete={'off'}/>
-                                                {errors.name &&
-                                                    <div className={'form__error'}><ErrorMessage name="name"/>
-                                                    </div>}
-                                            </>
-                                        )}
-                                    </Field>
                                     <Field
-                                        name="text">
-                                        {({field, form, meta}) => (
-                                            <>
-                                    <textarea data-test-id="review-text-field" {...field} onBlur={handleBlur}
-                                              placeholder="Комментарий"
-                                              className={'reviews-popup__form-item reviews-popup__form-item--textarea'}/>
-                                                {errors.text &&
-                                                    <div className={'form__error'}><ErrorMessage name="text"/>
-                                                    </div>}
-                                            </>
-                                        )}
-                                    </Field>
+                                        data-test-id="review-name-field"
+                                        name="name"
+                                        placeholder="Имя"
+                                        className={"reviews-popup__form-item"}/>
+                                    <div className={'form__error'}><ErrorMessage name="name"/>
+                                    </div>
+
+                                    <Field
+                                        as={'textarea'}
+                                        data-test-id="review-text-field"
+                                        name="text"
+                                        placeholder="Комментарий"
+                                        className={'reviews-popup__form-item reviews-popup__form-item--textarea'}/>
+                                    <div className={'form__error'}><ErrorMessage name="text"/>
+                                    </div>
                                     <button data-test-id="review-submit-button"
                                             className={'reviews-popup__form-btn btn-dark btn-submit'}
                                             type="submit"
-                                            disabled={!isValid || !dirty || isReviewSendLoading}
-                                            onClick={handleSubmit}>
+                                            disabled={!formik.isValid || !formik.dirty || isReviewSendLoading}>
                                         {isReviewSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Send</span>
                                     </button>
