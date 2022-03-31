@@ -5,7 +5,7 @@ import {requestProduct} from "../product/product.actions";
 
 export function* sagaReviewWorker(action) {
     try {
-        const response = yield call(reviewRequestWorker, action.payload.review)
+        const response = yield call(reviewRequestWorker, action.payload)
         if (response.status === 200) {
             yield put(sendReviewSuccess());
             yield put(sendReviewResponse('Ваш отзыв отправлен'));

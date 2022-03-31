@@ -1,9 +1,9 @@
 import * as types from './types';
 
-export function sendReviewRequest(id, review) {
+export function sendReviewRequest(review) {
     return {
         type: types.SEND_REVIEW_REQUEST,
-        payload: {id, review}
+        payload: {...review}
     }
 }
 

@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {SvgGenerator} from "../svg-generator/SvgGenerator";
 
-const FeedbackStarRating = ({numTotalStars = 5, setCurRating}) => {
-    const [numSelectedStars, setNumSelectedStars] = useState(1);
+const FeedbackStarRating = ({numTotalStars = 5, rating, formControle}) => {
     const [numHoveringStars, setNumHoveringStars] = useState(null);
 
     const [isUserHovering, setIsUserHovering] = useState(false);
@@ -11,9 +10,6 @@ const FeedbackStarRating = ({numTotalStars = 5, setCurRating}) => {
         const threshold = isUserHovering ? numHoveringStars : numSelectedStars;
         return (i < threshold) ? "#f1d545" : "#c1c1bf";
     }
-    useEffect(() => {
-        setCurRating(numSelectedStars);
-    }, [numSelectedStars])
     return (
         <div className="star-rating" onMouseEnter={() => setIsUserHovering(true)}
              onMouseLeave={() => setIsUserHovering(false)}>
@@ -21,8 +17,9 @@ const FeedbackStarRating = ({numTotalStars = 5, setCurRating}) => {
                 <SvgGenerator id={'star'}
                               className={'star'}
                               key={i}
-                              color={getColor(isUserHovering, i, numSelectedStars, numHoveringStars)}
-                              onClick={() => setNumSelectedStars(i + 1)}
+                              color={getColor(isUserHovering, i, rating, numHoveringStars)}
+                              // onClick={() => setNumSelectedStars(i + 1)}
+                              onClick={() => formControle('rating', i + 1)}
                               onMouseOver={() => setNumHoveringStars(i + 1)}/>)}
         </div>
     );

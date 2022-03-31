@@ -24,6 +24,11 @@ const JoinUs = () => {
     useEffect(() => {
         formikRef.current.resetForm();
     }, [url])
+    useEffect(() => {
+        if (isMailSendSuccess) {
+            formikRef.current.resetForm();
+        }
+    }, [isMailSendSuccess, isMailSendLoading])
     return (
         <div className={'joinus'}>
             <div className="container">
@@ -44,7 +49,6 @@ const JoinUs = () => {
                         }}
                     >
                         {formik => {
-                            console.log(formik)
                             return (
                                 <Form className={'joinus__form'}>
                                     <div className={'input-wrapper'}>
@@ -58,7 +62,7 @@ const JoinUs = () => {
                                     <button data-test-id="footer-subscribe-mail-button"
                                             className={'joinus__btn btn-submit'}
                                             type="submit"
-                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading}><span>join us</span>
+                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading || formik.isSubmitting}><span>join us</span>
                                     </button>
                                     {isMailSendLoading && <div className="lds-dual-ring"/>}
                                 </Form>

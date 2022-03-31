@@ -9,3 +9,11 @@ export const validationEmail = (values) => {
 
     return errors;
 }
+export const validationText = (values) => {
+    const errors = {};
+    if (!values.name) errors.name = 'Введите имя';
+
+    if (!values.text) errors.text = 'Напишите отзыв';
+
+    return errors;
+}

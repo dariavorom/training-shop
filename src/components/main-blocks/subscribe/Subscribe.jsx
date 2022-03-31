@@ -21,6 +21,11 @@ const Subscribe = () => {
     useEffect(() => {
         formikRef.current.resetForm();
     }, [url])
+    useEffect(() => {
+        if (isMailSendSuccess) {
+            formikRef.current.resetForm();
+        }
+    }, [isMailSendSuccess, isMailSendLoading])
     return (
         <div className={classes.subscribe}>
             <div className="container">
@@ -57,7 +62,7 @@ const Subscribe = () => {
                                     </div>
                                     <button data-test-id="main-subscribe-mail-button" className={'btn-submit'}
                                             type="submit"
-                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading}>
+                                            disabled={!formik.isValid || !formik.dirty || isMailSendLoading || formik.isSubmitting}>
                                         {isMailSendLoading && <div className="lds-dual-ring"/>}
                                         <span>Subscribe</span>
                                     </button>
