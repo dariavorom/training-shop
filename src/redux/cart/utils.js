@@ -63,7 +63,7 @@ export const dataToSend = (data) => {
         paymentMethod: data.paymentMethod,
         totalPrice: data.totalPrice,
         phone: data.phone.replace(/[\s()]/g, ''),
-        email: data.email,
+        email: data.e_mail,
         country: data.country,
         cashEmail: data.cashEmail,
         city: data.city,

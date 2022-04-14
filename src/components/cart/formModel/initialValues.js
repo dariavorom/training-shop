@@ -4,7 +4,7 @@ export const InitialValues = {
     paymentMethod: 'visa',
     totalPrice: '',
     phone: '',
-    email: '',
+    e_mail: '',
     country: '',
     cashEmail: '',
     city: '',

@@ -148,6 +148,20 @@
     }
   }
 
+  .select {
+
+  }
+
+  &__form-item-placeholder {
+    line-height: 48px;
+    padding: 0 0 0 10px;
+    position: absolute;
+    pointer-events: none;
+    font-weight: 500;
+    color: #9C9C9C;
+    top: 0;
+  }
+
   &__input-wrapper {
     position: relative;
     padding-bottom: 30px;
@@ -336,11 +350,13 @@
     margin-top: auto;
   }
 }
+
 .order-result {
   max-width: 250px;
   margin: 0 auto;
   padding-top: 50px;
   text-align: center;
+
   &__title {
     font-weight: 600;
     font-size: 26px;
@@ -348,10 +364,12 @@
     text-align: center;
     margin-bottom: 25px;
   }
+
   p {
     margin-bottom: 15px;
   }
 }
+
 @media (max-width: 550px) {
   .cart-wrapper {
     max-width: 100%;

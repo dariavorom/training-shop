@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import {Field} from "formik";
-import '../cart-delivery.scss';
 import CustomErrorMessage from "../formFields/CustomErrorMessage";
 import CustomMaskedField from "../formFields/CustomMaskedField";
 import CustomFieldCountries from "../formFields/CustomFieldCountries";
@@ -35,12 +34,13 @@ const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
         <span className="cart__input-title">e-mail</span>
         <div className="cart__input-wrapper">
             <Field
-                name="email"
+                name="e_mail"
                 type="email"
+                autoComplete="whatever"
                 placeholder="email"
-                className={`cart__form-item ${formik.touched.email && formik.errors.email ? 'invalid' : ''}`}
+                className={`cart__form-item ${formik.touched.e_mail && formik.errors.e_mail ? 'invalid' : ''}`}
             />
-            <CustomErrorMessage name="email"/>
+            <CustomErrorMessage name="e_mail"/>
         </div>
         {values.deliveryMethod !== "store pickup" && <>
             <span className="cart__input-title">address</span>
