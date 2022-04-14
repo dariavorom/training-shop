@@ -16,5 +16,5 @@ export const InitialValues = {
     card: '',
     cardDate: '',
     cardCVV: '',
-    agree: false
+    // agree: false
 }
