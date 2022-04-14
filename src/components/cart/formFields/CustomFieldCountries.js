@@ -43,6 +43,7 @@ const CustomFieldCountries = ({formik}) => {
             <Field
                 name="country"
                 validate={validateCountry}
+                placeholder="Country"
                 as="select"
                 className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
             >

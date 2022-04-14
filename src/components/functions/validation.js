@@ -48,7 +48,7 @@ export const validationDelivery = (values) => {
         //postcode
         if (values.deliveryMethod === 'pickup from post offices') {
             if (!values.postcode || !values.postcode.replace(/[\s_BY]/g, '')) errors.postcode = 'Поле должно быть заполнено';
-            else if (values.postcode.replace(/[\s_BY]/g, '').length !== 6) errors.postcode = 'Проверьте индекс';
+            // else if (values.postcode.replace(/[\s_BY]/g, '').length !== 6) errors.postcode = 'Проверьте индекс';
         }
     }
     if (values.deliveryMethod === 'store pickup') {
