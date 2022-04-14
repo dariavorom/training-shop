@@ -1,4 +1,3 @@
-
 //Запрос всех продуктов
 import {call, put} from "redux-saga/effects";
 import {loadProducts, showError} from "./products.actions";

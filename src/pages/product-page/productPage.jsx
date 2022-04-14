@@ -1,6 +1,5 @@
 import {Link, useParams} from "react-router-dom";
 import ProductHeader from "../../components/product-header/ProductHeader";
-import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
 import ProductSlider from "../../components/product-slider/ProductSlider";
 import Reviews from "../../components/reviews/Reviews";
 import './productPage.scss';
@@ -15,7 +14,7 @@ import ProductAdditional from "../../components/products-settings/ProductAdditio
 import ProductSetColor from "../../components/products-settings/ProductSetColor";
 import ProductSetSize from "../../components/products-settings/ProductSetSize";
 import {connect, useDispatch, useSelector} from 'react-redux';
-import {addItem, removeItemById} from "../../redux/cart/cart.actions";
+import {addItem, removeItemById} from "../../redux/cart/actions";
 import {useEffect, useState} from "react";
 import {requestProduct} from "../../redux/product/product.actions";
 import Loader from "../../components/loader/loader";
@@ -95,7 +94,6 @@ const ProductPage = ({items, addItem, removeItem}) => {
     }
     return (
         <>
-            <ScrollToTop/>
             {isLoadingProduct && <Loader/>}
             {!isLoadingProduct &&
                 <main className={'page-product'} data-test-id={`product-page-${productType}`}>

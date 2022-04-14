@@ -6,23 +6,18 @@ import MenClothes from "../../components/main-blocks/men-clothes/menClothes";
 import Offers from "../../components/main-blocks/offers/Offers";
 import Subscribe from "../../components/main-blocks/subscribe/Subscribe";
 import LatestFromBlog from "../../components/main-blocks/latest-from-blog/LatestFromBlog";
-import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
-
 
 const Main = () => {
     return (
-        <>
-            <ScrollToTop/>
-            <main>
-                <Banner/>
-                <Benefits/>
-                <WomenClothes/>
-                <MenClothes/>
-                <Offers/>
-                <Subscribe/>
-                <LatestFromBlog/>
-            </main>
-        </>
+        <main>
+            <Banner/>
+            <Benefits/>
+            <WomenClothes/>
+            <MenClothes/>
+            <Offers/>
+            <Subscribe/>
+            <LatestFromBlog/>
+        </main>
     );
 }
 export {Main};

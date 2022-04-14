@@ -18,7 +18,9 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
         reviewSendResponse
     } = useSelector(state => state.reviews);
     useEffect(() => {
-        document.body.classList.add(`${active ? 'lock' : 'unlock'}`);
+        if (active) {
+            document.body.classList.add('lock');
+        }
         return () => {
             document.body.classList.remove('lock');
         };
@@ -60,16 +62,14 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
                         enableReinitialize={true}
                         validate={validationText}
                         onSubmit={(values) => {
-                            console.log( values )
                             dispatch(sendReviewRequest(values));
                         }}
                     >
                         {formik => {
-                            console.log(formik.errors);
                             return (
                                 <>
                                     <FeedbackStarRating rating={formik.values.rating} isRatingInteractive={true}
-                                                        formControle={formik.setFieldValue}/>
+                                                        formControl={formik.setFieldValue}/>
                                     <Form className={'reviews-popup__form'}>
                                         <Field
                                             data-test-id="review-name-field"
