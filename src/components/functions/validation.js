@@ -1,3 +1,5 @@
+import {type} from "@testing-library/user-event/dist/type";
+
 export const validationEmail = (values) => {
     const errors = {};
 
@@ -81,7 +83,9 @@ export const validationPayment = (values) => {
 
         }
         if (!values.cardCVV) errors.cardCVV = 'Поле должно быть заполнено';
-        else if (values.cardCVV.length < 3 || values.cardCVV.length > 4) errors.cardCVV = 'Проверьте CVV';
+        else if (values.cardCVV.length < 3) errors.cardCVV = 'Введите не меньше 3 цифр';
+        else if (values.cardCVV.length > 4) errors.cardCVV = 'Введите не больше 4 цифр';
+        else if (!values.cardCVV.replace(/\D+/g, '')) errors.cardCVV = 'Только цифры';
     }
     if (values.paymentMethod === 'paypal') {
         if (!values.cashEmail) errors.cashEmail = 'Поле должно быть заполнено';

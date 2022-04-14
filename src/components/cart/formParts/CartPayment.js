@@ -2,20 +2,20 @@ import React, {useEffect, useState} from "react";
 import {Field} from "formik";
 import CustomErrorMessage from "../formFields/CustomErrorMessage";
 import CustomMaskedField from "../formFields/CustomMaskedField";
-import CustomField from "../formFields/CustomField";
 import paypal from '../assets/paypal.png';
 import visa from '../assets/visa.png';
 import mastercard from '../assets/mastercard.png';
 import iconEyeHidden from '../assets/icon-eye.png';
 import iconEyeShow from '../assets/icon-eye-show.png';
 
-const CartPayment = ({values, showButtonText}) => {
+const CartPayment = ({formik, values, showButtonText}) => {
     const [inputType, toggleInputType] = useState('password');
     function inputTypeHandler () {
         if (inputType === 'password') {
             toggleInputType('text')
         } else toggleInputType('password')
     }
+
     useEffect(() => {
         if (values.paymentMethod === 'cash') {
             showButtonText('ready')
@@ -58,7 +58,15 @@ const CartPayment = ({values, showButtonText}) => {
                         </div>
                         <div className="cart__input-wrapper">
                             <label className="label--bg">
-                                <CustomField name="cardCVV" placeholder="CVV" type={inputType}/>
+                                <Field
+                                    name="cardCVV"
+                                    type={inputType}
+                                    placeholder="CVV"
+                                    className={`cart__form-item ${formik.touched.cardCVV && formik.errors.cardCVV ? 'invalid' : ''}`}
+                                    onChange={(e) => {
+                                        formik.setFieldValue('cardCVV', e.target.value.replace(/\D+/g, ''))
+                                    }}
+                                />
                                 <span className="icon" onClick={inputTypeHandler}>
                                     {inputType === "password" && <img src={iconEyeHidden} alt=""/>}
                                     {inputType === "text" && <img src={iconEyeShow} alt=""/>}
@@ -73,7 +81,12 @@ const CartPayment = ({values, showButtonText}) => {
                 <>
                     <span className="cart__input-title">e-mail</span>
                     <div className="cart__input-wrapper">
-                        <CustomField type="email" name="cashEmail" placeholder="e-mail"/>
+                        <Field
+                            name="cashEmail"
+                            type="email"
+                            placeholder="e-mail"
+                            className={`cart__form-item ${formik.touched.cardCVV && formik.errors.cardCVV ? 'invalid' : ''}`}
+                        />
                         <CustomErrorMessage name="cashEmail"/>
                     </div>
                 </>

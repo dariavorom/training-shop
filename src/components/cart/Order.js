@@ -37,7 +37,7 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                 return <CartDelivery values={values} formik={formik} agree={agree} setAgree={setAgree}
                                      showButtonText={showButtonText}/>;
             case 2:
-                return <CartPayment values={values} showButtonText={showButtonText}/>;
+                return <CartPayment values={values} formik={formik} showButtonText={showButtonText}/>;
             default:
                 return null;
         }

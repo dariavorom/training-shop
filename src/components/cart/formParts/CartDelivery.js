@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {Field} from "formik";
 import '../cart-delivery.scss';
 import CustomErrorMessage from "../formFields/CustomErrorMessage";
-import CustomField from "../formFields/CustomField";
 import CustomMaskedField from "../formFields/CustomMaskedField";
 import CustomFieldCountries from "../formFields/CustomFieldCountries";
 import CustomFieldCities from "../formFields/CustomFieldCities";
@@ -35,7 +34,12 @@ const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
         </div>
         <span className="cart__input-title">e-mail</span>
         <div className="cart__input-wrapper">
-            <CustomField type="email" name="email" placeholder="e-mail"/>
+            <Field
+                name="email"
+                type="email"
+                placeholder="email"
+                className={`cart__form-item ${formik.touched.email && formik.errors.email ? 'invalid' : ''}`}
+            />
             <CustomErrorMessage name="email"/>
         </div>
         {values.deliveryMethod !== "store pickup" && <>
@@ -43,28 +47,38 @@ const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
             <div className="cart__input-wrapper">
                 <Field
                     name="country"
-                >
-                    {({field, meta}) => (
-                        <input
-                            {...field}
-                            autoComplete="whatever"
-                            placeholder="Country"
-                            className={`cart__form-item ${meta.touched && meta.error ? 'invalid' : ''}`}/>
-                    )}
-                </Field>
+                    autoComplete="whatever"
+                    placeholder="Country"
+                    className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
+                />
                 <CustomErrorMessage name="country"/>
             </div>
             <div className="cart__input-wrapper">
-                <CustomField name="city" placeholder="City"/>
+                <Field
+                    name="city"
+                    autoComplete="whatever"
+                    placeholder="City"
+                    className={`cart__form-item ${formik.touched.city && formik.errors.city ? 'invalid' : ''}`}
+                />
                 <CustomErrorMessage name="city"/>
             </div>
             <div className="cart__input-wrapper">
-                <CustomField name="street" placeholder="Street"/>
+                <Field
+                    name="street"
+                    autoComplete="whatever"
+                    placeholder="Street"
+                    className={`cart__form-item ${formik.touched.street && formik.errors.street ? 'invalid' : ''}`}
+                />
                 <CustomErrorMessage name="street"/>
             </div>
             <div className="cart__inputs-row">
                 <div className="cart__input-wrapper">
-                    <CustomField name="house" placeholder="House"/>
+                    <Field
+                        name="house"
+                        autoComplete="whatever"
+                        placeholder="House"
+                        className={`cart__form-item ${formik.touched.house && formik.errors.house ? 'invalid' : ''}`}
+                    />
                     <CustomErrorMessage name="house"/>
                 </div>
                 <div className="cart__input-wrapper">
@@ -83,7 +97,7 @@ const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
                 <CustomErrorMessage name="country"/>
             </div>
             <div className="cart__input-wrapper">
-                <CustomFieldCities city={values.storeAddress} country={values.country}/>
+                <CustomFieldCities city={values.storeAddress} country={values.country} formik={formik}/>
                 <CustomErrorMessage name="storeAddress"/>
             </div>
         </>}

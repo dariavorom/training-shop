@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {sendCitiesRequest} from "../../../redux/cart/actions";
 
-const CustomFieldCities = ({city, country}) => {
+const CustomFieldCities = ({formik, city, country}) => {
     const dispatch = useDispatch();
     const {citiesList, isRequestSuccess} = useSelector(state => state.cart.cities);
     const validateCity = (value) => {
@@ -16,8 +16,11 @@ const CustomFieldCities = ({city, country}) => {
                 return country
             }));
             if (!citiesArray.includes(value) || !countriesArray.has(country)) {
-                errors = 'В данном городе нету магазина';
+                errors = 'Нету результатов';
             }
+        }
+        if (isRequestSuccess && !citiesList.length) {
+            errors = 'Нету результатов';
         }
         return errors;
     }
@@ -44,18 +47,13 @@ const CustomFieldCities = ({city, country}) => {
         <>
             <Field
                 name="storeAddress"
+                autoComplete="whatever"
                 validate={validateCity}
-            >
-                {({field, meta}) => (
-                    <input
-                        {...field}
-                        disabled={!country}
-                        autoComplete="whatever"
-                        list="storeAddress"
-                        placeholder="Store address"
-                        className={`cart__form-item ${meta.touched && meta.error ? 'invalid' : ''}`}/>
-                )}
-            </Field>
+                disabled={!country}
+                list="storeAddress"
+                placeholder="Store address"
+                className={`cart__form-item ${formik.touched.storeAddress && formik.errors.storeAddress ? 'invalid' : ''}`}
+            />
             <datalist id="storeAddress">
                 {renderCities()}
             </datalist>

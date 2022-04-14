@@ -29,7 +29,7 @@ const CustomFieldCountries = ({formik}) => {
     }
     const handleBlurCustom = (value) => {
         if (!countriesArray.includes(value)) {
-            formik.setFieldValue('country', '', false);
+            formik.setFieldValue('country', '', true)
         }
     }
     useEffect(() => {
@@ -39,6 +39,7 @@ const CustomFieldCountries = ({formik}) => {
         <>
             <Field
                 name="country"
+                autoComplete="whatever"
                 validate={validateCountry}
                 placeholder="Country"
                 list="country"
