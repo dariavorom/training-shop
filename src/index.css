@@ -329,7 +329,7 @@ span input[type="checkbox"] {
     z-index: 5 !important;
     cursor: pointer !important;
 }
-label input[type="checkbox"] + span, span input[type="checkbox"] + span {
+label input[type="checkbox"] + span, div input[type="checkbox"] + span {
     position: relative;
     display: block;
     font-size: 13px;

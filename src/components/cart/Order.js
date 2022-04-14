@@ -110,6 +110,7 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                         initialValues={orderValues}
                         enableReinitialize={false}
                         validate={activeStep === 1 ? validationDelivery : activeStep === 2 ? validationPayment : false}
+                        validateOnBlur={true}
                         onSubmit={handleSubmit}>
                         {formik => {
                             return (

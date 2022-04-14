@@ -5,7 +5,7 @@ import CustomMaskedField from "../formFields/CustomMaskedField";
 import CustomFieldCountries from "../formFields/CustomFieldCountries";
 import CustomFieldCities from "../formFields/CustomFieldCities";
 
-const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
+const CartDelivery = ({values, formik, showButtonText}) => {
     useEffect(() => {
         showButtonText('further')
     }, [])
@@ -110,22 +110,19 @@ const CartDelivery = ({values, formik, agree, setAgree, showButtonText}) => {
 
         </>}
         <div className="cart__input-wrapper">
-            <span className={`cart__input-label ${values.agree ? 'checked' : ''}`} onClick={() => {
-                setAgree(agree === 'setAgree' ? 'notAgree' : 'setAgree');
-                !formik.values.agree && (formik.setFieldValue('agree', false))
-            }}>
+            <label className={`cart__input-label ${values.agree ? 'checked' : ''}`} >
                 <Field name={'agree'}>
                     {({field, meta}) => (
                         <input
                             {...field}
                             type={'checkbox'}
-                            checked={agree === 'setAgree'}
+                            checked={values.agree}
                             className={`cart__form-item ${meta.touched && meta.error ? 'invalid' : ''}`}
-                            value={formik.values.agree}/>
+                            />
                     )}
                 </Field>
                 <span>I agree to the processing of my personal information</span>
-            </span>
+            </label>
             <CustomErrorMessage name="agree"/>
         </div>
     </>)
