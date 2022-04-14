@@ -4,7 +4,6 @@ import CardsItem from "../../components/cards-item/CardsItem";
 import ProductsHeader from "../../components/products-header/ProductsHeader";
 import loading from '../../assets/loading.gif';
 import Filter from "../../components/filter/Filter";
-import ScrollToTop from "../../components/scrolltotop/ScrollToTop";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
@@ -89,7 +88,6 @@ const ProductsPage = () => {
     }, [productsInit])
     return (
         <>
-            <ScrollToTop/>
             <main className="products-page" data-test-id={`products-page-${productType}`}>
                 <ProductsHeader name={productType}/>
                 <Filter onInputCheck={onInputCheck}/>

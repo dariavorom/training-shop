@@ -6,9 +6,9 @@ import user from '../assets/img/user.svg';
 import './header_bottom.scss';
 import {Link} from "react-router-dom";
 import classNames from "classnames";
-import CartButton from "../../cart/cart-button";
+import CartButton from "../../cart/CartButton";
 
-const HeaderBottom = ({isMenuOpen, toggleMenu, toggleCartMode}) => {
+const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
     function toggleMenuMode() {
         toggleMenu(!isMenuOpen);
     }
@@ -41,7 +41,7 @@ const HeaderBottom = ({isMenuOpen, toggleMenu, toggleCartMode}) => {
                         <Link to={'/'} className={'personal__item'}>
                             <img src={user} alt=""/>
                         </Link>
-                        <CartButton toggleCartMode={toggleCartMode}/>
+                        <CartButton/>
                     </div>
                     <button
                         data-test-id={'burger-menu-btn'}

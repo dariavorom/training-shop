@@ -319,7 +319,97 @@ svg.grey path {
 }
 .form__error {
     color: red;
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
     margin-bottom: 5px;
+}
+span input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    z-index: 5 !important;
+    cursor: pointer !important;
+}
+label input[type="checkbox"] + span, span input[type="checkbox"] + span {
+    position: relative;
+    display: block;
+    font-size: 13px;
+    line-height: 15px;
+    color: #121212;
+    opacity: 0.8;
+    padding: 0 0 0 35px;
+}
+label input[type="checkbox"] + span:before, span input[type="checkbox"] + span:before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    top: -3px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+span input[type="checkbox"] + span:before {
+    top: 0;
+}
+label input[type=checkbox]:checked + span:before, label.checked input[type="checkbox"] + span:before, span.checked input[type="checkbox"] + span:before {
+    border: 1px solid #000;
+    background: #fff url('./assets/checked.png') 0 0 no-repeat;
+}
+label input[type="checkbox"] + span:hover:before  {
+    border: 1px solid #000;
+}
+
+label input[type=checkbox].invalid + span:before, span input[type="checkbox"].invalid + span:before {
+    border-color: red;
+}
+label input[type="checkbox"], label input[type="radio"], span input[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+label input[type="radio"] + span {
+    position: relative;
+    padding-left: 33px;
+}
+label input[type="radio"] + span img {
+    display: inline;
+    vertical-align: middle;
+}
+label input[type="radio"] + span:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #E6E6E6;
+    cursor: pointer;
+}
+
+label input[type="radio"]:checked + span:before {
+    border-color: #121212;
+    padding: 2px;
+
+}
+
+label input[type="radio"]:checked + span:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #121212;
 }

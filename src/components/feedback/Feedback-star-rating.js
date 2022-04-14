@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {SvgGenerator} from "../svg-generator/SvgGenerator";
 
-const FeedbackStarRating = ({numTotalStars = 5, rating, formControle}) => {
+const FeedbackStarRating = ({numTotalStars = 5, rating, formControl}) => {
     const [numHoveringStars, setNumHoveringStars] = useState(null);
 
     const [isUserHovering, setIsUserHovering] = useState(false);
@@ -18,8 +18,7 @@ const FeedbackStarRating = ({numTotalStars = 5, rating, formControle}) => {
                               className={'star'}
                               key={i}
                               color={getColor(isUserHovering, i, rating, numHoveringStars)}
-                              // onClick={() => setNumSelectedStars(i + 1)}
-                              onClick={() => formControle('rating', i + 1)}
+                              onClick={() => formControl('rating', i + 1)}
                               onMouseOver={() => setNumHoveringStars(i + 1)}/>)}
         </div>
     );

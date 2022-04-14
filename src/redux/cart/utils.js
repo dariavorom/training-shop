@@ -15,6 +15,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
     return [...cartItems, {...cartItemToAdd, quantity: 1}];
 }
+
 export const removeItemFromCart = (cartItems, [id, color, sizes, image]) => cartItems.filter(item => {
     return item.id === id ?
         (item.color !== color ||
@@ -55,4 +56,24 @@ export const onChangeInput = (cartItems, [id, color, sizes, image, quantity]) =>
     );
 }
 
-
+export const dataToSend = (data) => {
+    return {
+        products: data.products,
+        deliveryMethod: data.deliveryMethod,
+        paymentMethod: data.paymentMethod,
+        totalPrice: data.totalPrice,
+        phone: data.phone.replace(/[\s()]/g, ''),
+        email: data.email,
+        country: data.country,
+        cashEmail: data.cashEmail,
+        city: data.city,
+        street: data.street,
+        house: data.house,
+        apartment: data.apartment,
+        postcode: data.postcode,
+        storeAddress: data.storeAddress,
+        card: data.card,
+        cardDate: data.cardDate,
+        cardCVV: data.cardCVV
+    }
+}
