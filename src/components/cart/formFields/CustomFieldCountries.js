@@ -1,11 +1,12 @@
 import {Field} from "formik";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {sendCountriesRequest} from "../../../redux/cart/actions";
 
 const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();
     const {countriesList, isRequestSuccess} = useSelector(state => state.cart.countries);
+    const [placeholder, togglePlaceholder] = useState(true);
     const renderCountries = () => {
         if (isRequestSuccess) {
             return countriesList.map(({_id, name}) => {
@@ -23,32 +24,34 @@ const CustomFieldCountries = ({formik}) => {
 
         if (!countriesArray.includes(value)) {
             errors = 'Выберите город из списка';
-
         }
         return errors;
-    }
-    const handleBlurCustom = (value) => {
-        if (!countriesArray.includes(value)) {
-            formik.setFieldValue('country', '', true)
-        }
     }
     useEffect(() => {
         dispatch(sendCountriesRequest());
     }, [])
+    useEffect(() => {
+        if (countriesArray.includes(formik.values.country) ) {
+            togglePlaceholder(false)
+        }
+        if (!formik.values.country) {
+            togglePlaceholder(true)
+        }
+    }, [formik])
     return (
         <>
             <Field
                 name="country"
-                autoComplete="whatever"
                 validate={validateCountry}
-                placeholder="Country"
-                list="country"
-                onBlur={(e) => handleBlurCustom(e.target.value)}
+                as="select"
                 className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
-            />
-            <datalist id="country">
-                {renderCountries()}
-            </datalist>
+            >
+                <>
+                    <option/>
+                    {renderCountries()}
+                </>
+            </Field>
+            {placeholder && <label className='cart__form-item-placeholder'>Country</label>}
         </>
     )
 }

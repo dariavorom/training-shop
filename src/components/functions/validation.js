@@ -1,5 +1,3 @@
-import {type} from "@testing-library/user-event/dist/type";
-
 export const validationEmail = (values) => {
     const errors = {};
 
@@ -23,10 +21,10 @@ export const validationText = (values) => {
 export const validationDelivery = (values) => {
     const errors = {};
     //email
-    if (!values.email) errors.email = 'Поле должно быть заполнено';
-    else if (values.email
-        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)
-    ) errors.email = 'Некорректный email';
+    if (!values.e_mail) errors.e_mail = 'Поле должно быть заполнено';
+    else if (values.e_mail
+        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.e_mail)
+    ) errors.e_mail = 'Некорректный email';
 
     //phone
     if (!values.phone || !values.phone.replace(/[\s+375()_]/g, '').length) errors.phone = 'Поле должно быть заполнено';
@@ -49,7 +47,8 @@ export const validationDelivery = (values) => {
         if (!values.house) errors.house = 'Поле должно быть заполнено';
         //postcode
         if (values.deliveryMethod === 'pickup from post offices') {
-            if (!values.postcode) errors.postcode = 'Поле должно быть заполнено';
+            if (!values.postcode || !values.postcode.replace(/[\s_BY]/g, '')) errors.postcode = 'Поле должно быть заполнено';
+            else if (values.postcode.replace(/[\s_BY]/g, '').length !== 6) errors.postcode = 'Проверьте индекс';
         }
     }
     if (values.deliveryMethod === 'store pickup') {
