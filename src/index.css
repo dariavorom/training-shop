@@ -323,12 +323,7 @@ svg.grey path {
     text-align: center;
     margin-bottom: 5px;
 }
-.cart__input-label input[type="checkbox"] {
-    width: 18px !important;
-    height: 18px !important;
-    z-index: 5 !important;
-    cursor: pointer !important;
-}
+
 label input[type="checkbox"] + span, div input[type="checkbox"] + span, .cart__input-label {
     position: relative;
     display: block;
