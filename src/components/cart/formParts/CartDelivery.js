@@ -110,16 +110,14 @@ const CartDelivery = ({values, formik, showButtonText}) => {
 
         </>}
         <div className="cart__input-wrapper">
-            <div className={`cart__input-label ${values.agree ? 'checked' : ''}`} onClick={() => {
-                formik.setFieldValue('agree', !values.agree)
-            }}>
+            <label className={`cart__input-label ${values.agree ? 'checked' : ''} ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`} >
                 <Field name='agree'
                        type='checkbox'
                        checked={values.agree}
                        className={`cart__form-item ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`}
                 />
-                <span>I agree to the processing of my personal information</span>
-            </div>
+                I agree to the processing of my personal information
+            </label>
             <CustomErrorMessage name="agree"/>
         </div>
     </>)
