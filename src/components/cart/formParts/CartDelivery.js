@@ -110,11 +110,13 @@ const CartDelivery = ({values, formik, showButtonText}) => {
 
         </>}
         <div className="cart__input-wrapper">
-            <label className={`cart__input-label ${values.agree ? 'checked' : ''} ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`} >
-                <Field name='agree'
-                       type='checkbox'
-                       checked={values.agree}
-                       className={`cart__form-item ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`}
+            <label htmlFor='agree'
+                   className={`cart__input-label ${values.agree ? 'checked' : ''} ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`}>
+                <Field
+                    id="agree"
+                    name='agree'
+                    type='checkbox'
+                    className={`cart__form-item ${formik.touched.agree && formik.errors.agree ? 'invalid' : ''}`}
                 />
                 I agree to the processing of my personal information
             </label>
