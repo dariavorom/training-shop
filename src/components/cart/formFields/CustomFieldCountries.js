@@ -6,7 +6,6 @@ import {sendCountriesRequest} from "../../../redux/cart/actions";
 const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();
     const {countriesList, isRequestSuccess} = useSelector(state => state.cart.countries);
-    const [placeholder, togglePlaceholder] = useState(true);
     const renderCountries = () => {
         if (isRequestSuccess) {
             return countriesList.map(({_id, name}) => {
@@ -19,6 +18,11 @@ const CustomFieldCountries = ({formik}) => {
     const countriesArray = countriesList.map(({name}) => {
         return name
     });
+    const handleBlurCustom = (value) => {
+        if (!countriesArray.includes(value)) {
+            formik.setFieldValue('country', '', true)
+        }
+    }
     const validateCountry = (value) => {
         let errors;
 
@@ -30,29 +34,20 @@ const CustomFieldCountries = ({formik}) => {
     useEffect(() => {
         dispatch(sendCountriesRequest());
     }, [])
-    useEffect(() => {
-        if (countriesArray.includes(formik.values.country) ) {
-            togglePlaceholder(false)
-        }
-        if (!formik.values.country) {
-            togglePlaceholder(true)
-        }
-    }, [formik])
     return (
         <>
             <Field
                 name="country"
                 validate={validateCountry}
+                autoComplete="whatever"
                 placeholder="Country"
-                as="select"
+                list="country"
+                onBlur={(e) => handleBlurCustom(e.target.value)}
                 className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
-            >
-                <>
-                    <option/>
-                    {renderCountries()}
-                </>
-            </Field>
-            {placeholder && <label className='cart__form-item-placeholder'>Country</label>}
+            />
+            <datalist id="country">
+                {renderCountries()}
+            </datalist>
         </>
     )
 }

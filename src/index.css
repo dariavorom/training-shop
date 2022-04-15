@@ -323,7 +323,7 @@ svg.grey path {
     text-align: center;
     margin-bottom: 5px;
 }
-span input[type="checkbox"] {
+div input[type="checkbox"] {
     width: 18px !important;
     height: 18px !important;
     z-index: 5 !important;
@@ -338,7 +338,7 @@ label input[type="checkbox"] + span, div input[type="checkbox"] + span {
     opacity: 0.8;
     padding: 0 0 0 35px;
 }
-label input[type="checkbox"] + span:before, span input[type="checkbox"] + span:before {
+label input[type="checkbox"] + span:before, div input[type="checkbox"] + span:before {
     content: "";
     display: inline-block;
     width: 18px;
@@ -351,10 +351,10 @@ label input[type="checkbox"] + span:before, span input[type="checkbox"] + span:b
     box-sizing: border-box;
     cursor: pointer;
 }
-span input[type="checkbox"] + span:before {
+div input[type="checkbox"] + span:before {
     top: 0;
 }
-label input[type=checkbox]:checked + span:before, label.checked input[type="checkbox"] + span:before, span.checked input[type="checkbox"] + span:before {
+label input[type=checkbox]:checked + span:before, label.checked input[type="checkbox"] + span:before, div.checked input[type="checkbox"] + span:before {
     border: 1px solid #000;
     background: #fff url('./assets/checked.png') 0 0 no-repeat;
 }
@@ -362,10 +362,10 @@ label input[type="checkbox"] + span:hover:before  {
     border: 1px solid #000;
 }
 
-label input[type=checkbox].invalid + span:before, span input[type="checkbox"].invalid + span:before {
+label input[type=checkbox].invalid + span:before, div input[type="checkbox"].invalid + span:before {
     border-color: red;
 }
-label input[type="checkbox"], label input[type="radio"], span input[type="checkbox"] {
+label input[type="checkbox"], label input[type="radio"], div input[type="checkbox"] {
     position: absolute;
     z-index: -1;
     opacity: 0;

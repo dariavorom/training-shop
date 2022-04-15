@@ -132,7 +132,6 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                             onClick={() => {
                                 formikRef.current.handleSubmit();
                                 !formikRef.current.isValid && (formikRef.current.setFieldValue('agree', false));
-                                !formikRef.current.isValid && setAgree('notAgree');
                             }}
                             type={"submit"}>{activeStep === 0 ? 'further' : btnText}</button>
                     {activeStep !== 0 &&
