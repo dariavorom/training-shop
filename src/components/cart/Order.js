@@ -45,12 +45,12 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
 
     function showButtonText(values) {
         switch (values) {
-            case 'checkout':
-                return setBtnText('checkout');
+            case 'Check out':
+                return setBtnText('Check out');
             case  'further' :
                 return setBtnText('further');
-            case 'ready':
-                return setBtnText('ready');
+            case 'Ready':
+                return setBtnText('Ready');
             default:
                 return setBtnText('back to shopping');
         }

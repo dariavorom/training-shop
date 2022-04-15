@@ -18,9 +18,9 @@ const CartPayment = ({formik, values, showButtonText}) => {
 
     useEffect(() => {
         if (values.paymentMethod === 'cash') {
-            showButtonText('ready')
+            showButtonText('Ready')
         } else {
-            showButtonText('checkout')
+            showButtonText('Check out')
         }
     },[values])
     useEffect(() => {
