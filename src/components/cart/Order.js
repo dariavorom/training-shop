@@ -88,9 +88,6 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
             formikRef.current.setFieldValue('totalPrice', total)
         }
     }, [total])
-    useEffect(() => {
-
-    }, [orderError])
     if (orderError) return <CartOrderFail/>
     if (orderComplete) return <CartOrderSuccess/>
     return (
@@ -113,6 +110,7 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                         validateOnBlur={true}
                         onSubmit={handleSubmit}>
                         {formik => {
+                            console.log(formik.errors);
                             return (
                                 <Form>
                                     {renderStepContent(activeStep, formik.values, formik, formik.setFieldValue)}

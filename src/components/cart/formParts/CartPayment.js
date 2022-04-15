@@ -23,6 +23,10 @@ const CartPayment = ({formik, values, showButtonText}) => {
             showButtonText('checkout')
         }
     },[values])
+    useEffect(() => {
+        formik.setErrors({});
+        formik.setTouched({});
+    }, [values.paymentMethod])
     return (
         <>
             <p>Method of payments</p>
