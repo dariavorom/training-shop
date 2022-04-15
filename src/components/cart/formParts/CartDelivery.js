@@ -9,7 +9,10 @@ const CartDelivery = ({values, formik, showButtonText}) => {
     useEffect(() => {
         showButtonText('further')
     }, [])
-
+    useEffect(() => {
+        formik.setErrors({});
+        formik.setTouched({});
+    }, [values.deliveryMethod])
     return (<>
         <p>Choose the method of delivery of the items</p>
         <div className="cart__method">
