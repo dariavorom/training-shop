@@ -323,13 +323,13 @@ svg.grey path {
     text-align: center;
     margin-bottom: 5px;
 }
-div input[type="checkbox"] {
+.cart__input-label input[type="checkbox"] {
     width: 18px !important;
     height: 18px !important;
     z-index: 5 !important;
     cursor: pointer !important;
 }
-label input[type="checkbox"] + span, div input[type="checkbox"] + span {
+label input[type="checkbox"] + span, div input[type="checkbox"] + span, .cart__input-label {
     position: relative;
     display: block;
     font-size: 13px;
@@ -338,7 +338,8 @@ label input[type="checkbox"] + span, div input[type="checkbox"] + span {
     opacity: 0.8;
     padding: 0 0 0 35px;
 }
-label input[type="checkbox"] + span:before, div input[type="checkbox"] + span:before {
+
+label input[type="checkbox"] + span:before, div input[type="checkbox"] + span:before, .cart__input-label:before {
     content: "";
     display: inline-block;
     width: 18px;
@@ -351,18 +352,23 @@ label input[type="checkbox"] + span:before, div input[type="checkbox"] + span:be
     box-sizing: border-box;
     cursor: pointer;
 }
-div input[type="checkbox"] + span:before {
+div input[type="checkbox"] + span:before, .cart__input-label:before {
     top: 0;
 }
-label input[type=checkbox]:checked + span:before, label.checked input[type="checkbox"] + span:before, div.checked input[type="checkbox"] + span:before {
+label input[type=checkbox]:checked + span:before,
+label.checked input[type="checkbox"] + span:before,
+div.checked input[type="checkbox"] + span:before,
+.cart__input-label.checked:before {
     border: 1px solid #000;
     background: #fff url('./assets/checked.png') 0 0 no-repeat;
 }
-label input[type="checkbox"] + span:hover:before  {
+label input[type="checkbox"] + span:hover:before, .cart__input-label:hover:before  {
     border: 1px solid #000;
 }
 
-label input[type=checkbox].invalid + span:before, div input[type="checkbox"].invalid + span:before {
+label input[type=checkbox].invalid + span:before,
+div input[type="checkbox"].invalid + span:before,
+.cart__input-label.invalid:before {
     border-color: red;
 }
 label input[type="checkbox"], label input[type="radio"], div input[type="checkbox"] {
