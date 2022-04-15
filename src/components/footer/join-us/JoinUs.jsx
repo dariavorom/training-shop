@@ -37,7 +37,7 @@ const JoinUs = () => {
                     <Formik
                         innerRef={formikRef}
                         initialValues={{
-                            email: "",
+                            email_main: "",
                         }}
                         enableReinitialize={true}
                         validate={validationEmail}
@@ -52,11 +52,11 @@ const JoinUs = () => {
                             return (
                                 <Form className={'joinus__form'}>
                                     <div className={'input-wrapper'}>
-                                        <Field name="email"
+                                        <Field name="email_main"
                                                type="email"
                                                placeholder="Enter your email"
                                                data-test-id="footer-mail-field"/>
-                                            <div className={'form__error'}><ErrorMessage name="email"/>
+                                            <div className={'form__error'}><ErrorMessage name="email_main"/>
                                             </div>
                                     </div>
                                     <button data-test-id="footer-subscribe-mail-button"

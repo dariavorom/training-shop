@@ -1,10 +1,10 @@
 export const validationEmail = (values) => {
     const errors = {};
 
-    if (!values.email) errors.email = 'Введите email';
+    if (!values.email_main) errors.email_main = 'Введите email';
 
-    else if (values.email
-        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    else if (values.email_main
+        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email_main)
     ) errors.email = 'Некорректный email';
 
     return errors;
@@ -21,10 +21,10 @@ export const validationText = (values) => {
 export const validationDelivery = (values) => {
     const errors = {};
     //email
-    if (!values.e_mail) errors.e_mail = 'Поле должно быть заполнено';
-    else if (values.e_mail
-        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.e_mail)
-    ) errors.e_mail = 'Некорректный email';
+    if (!values.email) errors.email = 'Поле должно быть заполнено';
+    else if (values.email
+        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)
+    ) errors.email = 'Некорректный email';
 
     //phone
     if (!values.phone || !values.phone.replace(/[\s+375()_]/g, '').length) errors.phone = 'Поле должно быть заполнено';

@@ -40,7 +40,7 @@ const Subscribe = () => {
                     <Formik
                         innerRef={formikRef}
                         initialValues={{
-                            email: "",
+                            email_main: "",
                         }}
                         enableReinitialize={true}
                         validate={validationEmail}
@@ -54,11 +54,11 @@ const Subscribe = () => {
                         {formik => {
                             return (
                                 <Form className={classes.subscribe__form}>
-                                    <Field name="email"
+                                    <Field name="email_main"
                                            type="email"
                                            placeholder="Enter your email"
                                            data-test-id="main-subscribe-mail-field"/>
-                                    <div className={'form__error'}><ErrorMessage name="email"/>
+                                    <div className={'form__error'}><ErrorMessage name="email_main"/>
                                     </div>
                                     <button data-test-id="main-subscribe-mail-button" className={'btn-submit'}
                                             type="submit"

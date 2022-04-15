@@ -37,13 +37,13 @@ const CartDelivery = ({values, formik, showButtonText}) => {
         <span className="cart__input-title">e-mail</span>
         <div className="cart__input-wrapper">
             <Field
-                name="e_mail"
+                name="email"
                 type="email"
                 autoComplete="whatever"
                 placeholder="email"
-                className={`cart__form-item ${formik.touched.e_mail && formik.errors.e_mail ? 'invalid' : ''}`}
+                className={`cart__form-item ${formik.touched.email && formik.errors.email ? 'invalid' : ''}`}
             />
-            <CustomErrorMessage name="e_mail"/>
+            <CustomErrorMessage name="email"/>
         </div>
         {values.deliveryMethod !== "store pickup" && <>
             <span className="cart__input-title">address</span>
