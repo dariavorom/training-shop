@@ -4,7 +4,7 @@ export const InitialValues = {
     paymentMethod: 'visa',
     totalPrice: '',
     phone: '',
-    e_mail: '',
+    email: '',
     country: '',
     cashEmail: '',
     city: '',
@@ -16,5 +16,5 @@ export const InitialValues = {
     card: '',
     cardDate: '',
     cardCVV: '',
-    // agree: false
+    agree: false
 }

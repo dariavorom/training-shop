@@ -110,7 +110,7 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                         validateOnBlur={true}
                         onSubmit={handleSubmit}>
                         {formik => {
-                            console.log(formik.errors);
+                            console.log(formik.values);
                             return (
                                 <Form>
                                     {renderStepContent(activeStep, formik.values, formik, formik.setFieldValue)}
