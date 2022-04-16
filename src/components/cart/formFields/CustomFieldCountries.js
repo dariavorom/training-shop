@@ -2,10 +2,12 @@ import {Field} from "formik";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {sendCountriesRequest} from "../../../redux/cart/actions";
+import {SvgGenerator} from "../../svg-generator/SvgGenerator";
 
 const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();
     const {countriesList, isRequestSuccess} = useSelector(state => state.cart.countries);
+    const [showCountriesList, toggleShowCountriesList] = useState(false);
     const countriesArray = countriesList.map(({name}) => {
         return name
     });
@@ -13,7 +15,12 @@ const CustomFieldCountries = ({formik}) => {
         if (isRequestSuccess) {
             return countriesList.map(({_id, name}) => {
                 return (
-                    <option key={_id} value={name}>{name}</option>
+                    <li key={_id}
+                        onClick={e => {
+                        formik.setFieldValue('country', e.target.textContent);
+                    }}>
+                        {name}
+                    </li>
                 )
             })
         }
@@ -38,19 +45,30 @@ const CustomFieldCountries = ({formik}) => {
     }, [])
     return (
         <>
-            <label htmlFor="country-input">
+            <label htmlFor="country-input" className={`country-label ${showCountriesList && 'active'}`}
+                   onClick={() => toggleShowCountriesList(!showCountriesList)}>
                 <Field
+                    id="country-input"
+                    disabled
+                    onClick={e=>e.stopPropagation()}
                     name="country"
                     validate={validateCountry}
                     autoComplete="whatever"
                     placeholder="Country"
-                    list="country"
                     onBlur={(e) => handleBlurCustom(e.target.value)}
                     className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
                 />
-                <datalist id="country">
-                    {renderCountries()}
-                </datalist>
+                {showCountriesList &&
+                    <>
+                        <ul className="country-list"
+                        >
+                            {renderCountries()}
+                        </ul>
+                        <span className="label-arrow">
+                    <SvgGenerator id="arrow"/>
+                    </span>
+                    </>
+                }
             </label>
         </>
     )

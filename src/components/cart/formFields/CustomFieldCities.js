@@ -47,6 +47,7 @@ const CustomFieldCities = ({formik, city, country}) => {
         <>
             <label htmlFor="storeAddress-input">
                 <Field
+                    id="storeAddress-input"
                     name="storeAddress"
                     autoComplete="whatever"
                     validate={validateCity}
@@ -59,6 +60,7 @@ const CustomFieldCities = ({formik, city, country}) => {
                     {renderCities()}
                 </datalist>
             </label>
+
         </>
     )
 }
