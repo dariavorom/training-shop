@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
-import {setOrderFormStep} from "../../../redux/cart/actions";
+import {setOrderFormStep, setOrderValues} from "../../../redux/cart/actions";
 import React from "react";
+import {InitialValues} from "../formModel/initialValues";
 
 const CartOrderFail = () => {
     const dispatch = useDispatch();
@@ -14,7 +15,10 @@ const CartOrderFail = () => {
             <div className={'cart__bottom'}>
                 <div className="cart__btns">
                     <button className="btn-dark" type="submit" onClick={() => dispatch(setOrderFormStep(2))}>back to payment</button>
-                    <button className="btn-light" onClick={() => dispatch(setOrderFormStep(0))}>view cart</button>
+                    <button className="btn-light" onClick={() => {
+                        dispatch(setOrderValues(InitialValues));
+                        dispatch(setOrderFormStep(0));
+                    }}>view cart</button>
                 </div>
             </div>
         </>

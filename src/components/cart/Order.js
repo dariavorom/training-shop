@@ -14,12 +14,13 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
     const dispatch = useDispatch();
     const {activeStep} = useSelector(state => state.cart.order);
     const {orderComplete, orderError, orderValues} = useSelector(state => state.cart.order);
+    const {cartItems} = useSelector(state => state.cart);
     const formikRef = useRef();
     const steps = ['Item In Cart', 'Delivery', 'Payment'];
     const [btnText, setBtnText] = useState('');
     const [agree, setAgree] = useState('notAgree');
     const isLastStep = activeStep === steps.length - 1;
-    const products = items.map(({name, sizes, color, quantity}) => {
+    const products = cartItems.map(({name, sizes, color, quantity}) => {
         return {
             name: name,
             size: sizes,
@@ -27,7 +28,6 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
             quantity: quantity
         }
     })
-
     function renderStepContent(step, values, formik) {
         switch (step) {
             case 0:
@@ -72,17 +72,12 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
         if (activeStep !== 0) dispatch(setOrderFormStep(activeStep - 1));
 
     }
-
+    
     useEffect(() => {
         if (formikRef.current) {
             formikRef.current.setFieldValue('products', [...products])
         }
-    }, [])
-    useEffect(() => {
-        if (formikRef.current) {
-            formikRef.current.setFieldValue('products', [...products])
-        }
-    }, [items])
+    }, [cartItems, orderError, products])
     useEffect(() => {
         if (formikRef.current) {
             formikRef.current.setFieldValue('totalPrice', total)
@@ -110,7 +105,6 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
                         validateOnBlur={true}
                         onSubmit={handleSubmit}>
                         {formik => {
-                            console.log(formik.values);
                             return (
                                 <Form>
                                     {renderStepContent(activeStep, formik.values, formik, formik.setFieldValue)}
