@@ -45,18 +45,20 @@ const CustomFieldCities = ({formik, city, country}) => {
     }, [city])
     return (
         <>
-            <Field
-                name="storeAddress"
-                autoComplete="whatever"
-                validate={validateCity}
-                disabled={!country}
-                list="storeAddress"
-                placeholder="Store address"
-                className={`cart__form-item ${formik.touched.storeAddress && formik.errors.storeAddress ? 'invalid' : ''}`}
-            />
-            <datalist id="storeAddress">
-                {renderCities()}
-            </datalist>
+            <label htmlFor="storeAddress-input">
+                <Field
+                    name="storeAddress"
+                    autoComplete="whatever"
+                    validate={validateCity}
+                    disabled={!country}
+                    list="storeAddress"
+                    placeholder="Store address"
+                    className={`cart__form-item ${formik.touched.storeAddress && formik.errors.storeAddress ? 'invalid' : ''}`}
+                />
+                <datalist id="storeAddress">
+                    {renderCities()}
+                </datalist>
+            </label>
         </>
     )
 }

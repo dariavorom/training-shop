@@ -70,7 +70,10 @@ export const reducer = (state = INITIAL_STATE, action) => {
         case types.ORDER_COMPLETE:
             return {
                 ...state,
-                order: {...state.order, orderComplete: true, orderError: false, orderValues: InitialValues},
+                order: {...state.order,
+                    orderComplete: true,
+                    orderError: false,
+                    orderValues: InitialValues},
             }
         case types.ORDER_ERROR:
             return {

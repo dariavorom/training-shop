@@ -369,7 +369,15 @@
     margin-bottom: 15px;
   }
 }
-
+.country-label {
+  position: relative;
+  .label-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+  }
+}
 @media (max-width: 550px) {
   .cart-wrapper {
     max-width: 100%;

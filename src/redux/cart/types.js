@@ -4,7 +4,6 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const REMOVE_ALL_ITEMS = 'REMOVE_ALL_ITEMS';
 export const INC_ITEM = 'INC_ITEM';
 export const DEC_ITEM = 'DEC_ITEM';
-export const SET_BTN_TEXT = 'SET_BTN_TEXT';
 export const ON_CHANGE_INPUT = 'ON_CHANGE_INPUT';
 
 export const ACTIVE_STEP = 'ORDER_FORM/ACTIVE_STEP'
