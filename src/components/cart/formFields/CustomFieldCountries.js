@@ -49,8 +49,6 @@ const CustomFieldCountries = ({formik}) => {
                    onClick={() => toggleShowCountriesList(!showCountriesList)}>
                 <Field
                     id="country-input"
-                    disabled
-                    onClick={e=>e.stopPropagation()}
                     name="country"
                     validate={validateCountry}
                     autoComplete="whatever"
@@ -61,6 +59,7 @@ const CustomFieldCountries = ({formik}) => {
                 {showCountriesList &&
                     <>
                         <ul className="country-list"
+                            onClick={e=>e.stopPropagation()}
                         >
                             {renderCountries()}
                         </ul>
