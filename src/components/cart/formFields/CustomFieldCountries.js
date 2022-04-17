@@ -17,8 +17,8 @@ const CustomFieldCountries = ({formik}) => {
                 return (
                     <li key={_id}
                         onClick={e => {
-                        formik.setFieldValue('country', e.target.textContent);
-                    }}>
+                            formik.setFieldValue('country', e.target.textContent);
+                        }}>
                         {name}
                     </li>
                 )
@@ -40,9 +40,12 @@ const CustomFieldCountries = ({formik}) => {
         }
         return errors;
     }
+
     useEffect(() => {
-        dispatch(sendCountriesRequest());
-    }, [])
+        if (!countriesArray.length) {
+            dispatch(sendCountriesRequest());
+        }
+    }, [countriesArray])
     return (
         <>
             <label htmlFor="country-input" className={`country-label ${showCountriesList && 'active'}`}
@@ -59,7 +62,7 @@ const CustomFieldCountries = ({formik}) => {
                 {showCountriesList &&
                     <>
                         <ul className="country-list"
-                            onClick={e=>e.stopPropagation()}
+                            onClick={e => e.stopPropagation()}
                         >
                             {renderCountries()}
                         </ul>
