@@ -4,11 +4,9 @@ import {sendCitiesError, sendCitiesResponse, sendCitiesSuccess} from "./actions"
 export function* sagaCitiesWorker(action) {
     try {
         const response = yield call(citiesRequestWorker, action.payload);
-        if (response.ok) {
-            const jsonResponse = yield response.text();
-            yield put(sendCitiesSuccess());
-            yield put(sendCitiesResponse(JSON.parse(jsonResponse)));
-        }
+        const jsonResponse = yield response.text();
+        yield put(sendCitiesSuccess());
+        yield put(sendCitiesResponse(JSON.parse(jsonResponse)));
     } catch (error) {
         console.log(error)
         yield put(sendCitiesError())

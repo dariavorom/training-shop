@@ -1,6 +1,6 @@
-import {removeAllItems, toggleCartOpen} from "../../../redux/cart/actions";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {removeAllItems, toggleCartOpen} from "../../../redux/cart/actions";
 
 const CartOrderSuccess = () => {
     const dispatch = useDispatch();

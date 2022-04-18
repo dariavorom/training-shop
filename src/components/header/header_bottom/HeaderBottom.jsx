@@ -1,10 +1,12 @@
+import React from 'react';
+import {Link} from "react-router-dom";
 import Menu from "../menu/Menu";
 import logo from '../../../assets/logo.svg';
 import search from '../assets/img/search.svg';
 import globe from '../assets/img/globe.svg';
 import user from '../assets/img/user.svg';
 import './header_bottom.scss';
-import {Link} from "react-router-dom";
+
 import classNames from "classnames";
 import CartButton from "../../cart/CartButton";
 
@@ -17,7 +19,6 @@ const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
             toggleMenuMode()
         }
     }
-
     return (
         <div className={'header__bottom'}>
             <div className="container">
