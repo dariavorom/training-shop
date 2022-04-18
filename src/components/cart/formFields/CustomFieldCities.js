@@ -31,7 +31,7 @@ const handleClick = (e) => {
     const renderCities = () => {
         if (isRequestSuccess && citiesList.length)
             return citiesList
-                .filter(({city}) => city.indexOf(formik.values.storeAddress) !== -1)
+                .filter(({city}) => city.toLowerCase().indexOf(formik.values.storeAddress.toLowerCase()) !== -1)
                 .map(({_id, city}) => (
                         <li key={_id}>
                             <button onClick={e => handleClick(e)} value={city}>{city}</button>
