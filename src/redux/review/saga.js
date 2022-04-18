@@ -1,7 +1,7 @@
 //Отзывы
 import {call, put} from "redux-saga/effects";
 import {sendReviewError, sendReviewResponse, sendReviewSuccess} from "./actions";
-import {requestProduct} from "../product/product.actions";
+import {requestProduct} from "../product/actions";
 
 export function* sagaReviewWorker(action) {
     try {

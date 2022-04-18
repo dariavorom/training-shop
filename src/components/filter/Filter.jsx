@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+
+import {PRODUCTS} from "../constants/products";
+
+import './filter.scss';
+
 import viewList from './assets/view-list.svg';
 import viewGrid from './assets/view-grid.svg';
-import './filter.scss';
-import {PRODUCTS} from "../constants/products";
-import {useParams} from "react-router-dom";
 
 const Filter = ({onInputCheck}) => {
     const {productType} = useParams();

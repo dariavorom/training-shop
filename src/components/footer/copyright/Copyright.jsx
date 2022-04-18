@@ -1,6 +1,9 @@
-import './copyright.scss';
+import React from "react";
 import {Link} from "react-router-dom";
+
 import {PAYMENTS} from "../../constants/payments";
+
+import './copyright.scss';
 
 const Copyright = () => {
     return (

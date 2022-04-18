@@ -1,19 +1,19 @@
-import {Main} from './pages/main-page/main';
-import ProductPage from './pages/product-page/productPage';
-import ProductsPage from './pages/products-page/productsPage';
+import React from "react";
 import {Routes, Route} from "react-router-dom";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-
-
-import Cart from "./components/cart/Cart"
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {requestProducts} from "./redux/products/products.actions";
+
+import {Main} from './pages/main/main';
+import ProductPage from './pages/productPage/productPage';
+import ProductsPage from './pages/productsPage/productsPage';
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Cart from "./components/cart/Cart"
 import Loader from "./components/loader/loader";
 import Error from "./components/error/error";
 import ScrollToTop from "./components/scrolltotop/ScrollToTop";
 import {lockBody} from "./components/functions/lockBody";
+import {requestProducts} from "./redux/products/actions";
 
 const App = () => {
     const dispatch = useDispatch();

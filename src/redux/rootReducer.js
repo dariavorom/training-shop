@@ -1,13 +1,13 @@
 import {combineReducers} from "redux";
-import {reducer} from "./cart/reducer";
-import {productsReducer} from "./products/products.reducer";
+import {cartReducer} from "./cart/cartReducer";
+import {productsReducer} from "./products/productsReducer";
 import {productReducer} from "./product/productReducer";
-import {subscribeReducer} from "./subscribe/reducer";
-import {reviewReducer} from "./review/reducer";
+import {subscribeReducer} from "./subscribe/subscribeReducer";
+import {reviewReducer} from "./review/reviewReducer";
 
 
 export const RootReducer = combineReducers({
-    cart: reducer,
+    cart: cartReducer,
     productsSlice: productsReducer,
     product: productReducer,
     subscribe: subscribeReducer,

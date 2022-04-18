@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Field} from "formik";
 import {useDispatch, useSelector} from "react-redux";
+
 import {sendCountriesRequest} from "../../../redux/cart/actions";
-import {SvgGenerator} from "../../svg-generator/SvgGenerator";
+import {SvgGenerator} from "../../svgGenerator/SvgGenerator";
 
 const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();

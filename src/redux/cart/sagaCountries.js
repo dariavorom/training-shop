@@ -1,6 +1,10 @@
 import {call, put} from "redux-saga/effects";
 import {isRequestCountriesError, isRequestCountriesSuccess, loadCountries} from "./actions";
 
+async function countriesRequestWorker() {
+    const response = await fetch('https://training.cleverland.by/shop/countries');
+    return response.json();
+}
 
 export function* sagaCountriesWorker() {
     try {
@@ -13,7 +17,3 @@ export function* sagaCountriesWorker() {
     }
 }
 
-async function countriesRequestWorker() {
-    const response = await fetch('https://training.cleverland.by/shop/countries');
-    return await response.json();
-}
