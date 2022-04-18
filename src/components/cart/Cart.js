@@ -15,7 +15,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const {isCartOpen, cartItems} = useSelector(state => state.cart);
     const {orderComplete, orderError} = useSelector(state => state.cart.order);
-    
+
     const total = cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0).toFixed(2);
 
     function handleCloseCart () {
