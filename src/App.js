@@ -13,6 +13,7 @@ import {requestProducts} from "./redux/products/products.actions";
 import Loader from "./components/loader/loader";
 import Error from "./components/error/error";
 import ScrollToTop from "./components/scrolltotop/ScrollToTop";
+import {lockBody} from "./components/functions/lockBody";
 
 const App = () => {
     const dispatch = useDispatch();
@@ -22,12 +23,7 @@ const App = () => {
         dispatch(requestProducts())
     }, [])
     useEffect(() => {
-        if (isCartOpen) {
-            document.body.classList.add('lock');
-        }
-        return () => {
-            document.body.classList.remove('lock');
-        };
+        lockBody(isCartOpen);
     }, [isCartOpen]);
     return (
         <div className="app" data-test-id="app">

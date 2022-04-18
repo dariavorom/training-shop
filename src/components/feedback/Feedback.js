@@ -1,11 +1,12 @@
 import React, {useEffect, useRef} from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import './feedback.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {sendReviewRequest} from "../../redux/review/actions";
 import FeedbackStarRating from "./Feedback-star-rating";
 import {useLocation} from "react-router-dom";
 import {validationText} from "../functions/validation";
+import {lockBody} from "../functions/lockBody";
+import './feedback.scss';
 
 const Feedback = ({active, toggleActive, togglePopup, id}) => {
     const url = useLocation().pathname;
@@ -18,12 +19,7 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
         reviewSendResponse
     } = useSelector(state => state.reviews);
     useEffect(() => {
-        if (active) {
-            document.body.classList.add('lock');
-        }
-        return () => {
-            document.body.classList.remove('lock');
-        };
+        lockBody(active);
     }, [active]);
     useEffect(() => {
         if (isReviewSendError) {

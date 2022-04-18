@@ -1,5 +1,5 @@
-import {Field} from "formik";
 import React, {useEffect, useState} from "react";
+import {Field} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import {sendCountriesRequest} from "../../../redux/cart/actions";
 import {SvgGenerator} from "../../svg-generator/SvgGenerator";
@@ -8,71 +8,58 @@ const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();
     const {countriesList, isRequestSuccess} = useSelector(state => state.cart.countries);
     const [showCountriesList, toggleShowCountriesList] = useState(false);
-    const countriesArray = countriesList.map(({name}) => {
-        return name
-    });
-    const renderCountries = () => {
-        if (isRequestSuccess) {
-            return countriesList.map(({_id, name}) => {
-                return (
-                    <li key={_id}
-                        onClick={e => {
-                            formik.setFieldValue('country', e.target.textContent);
-                        }}>
-                        {name}
-                    </li>
-                )
-            })
-        }
+    const countriesArray = countriesList.map(({name}) => name);
+    const handleClick = (e) => {
+        e.preventDefault();
+        formik.setFieldValue('country', e.target.value);
+        toggleShowCountriesList(false);
     }
+    const renderCountries = () => (isRequestSuccess && countriesList.map(({_id, name}) => (<li key={_id}>
+        <button onClick={e => handleClick(e)} value={name}>{name}</button>
+    </li>))
+    )
+
 
     const handleBlurCustom = (value) => {
         formik.setFieldTouched('country', true);
-        if (!countriesArray.includes(value)) {
+        if (!countriesArray.includes(value))
             formik.setFieldValue('country', '', true)
-        }
     }
-    const validateCountry = (value) => {
-        let errors;
+    const validateCountry = (value) => (!countriesArray.includes(value) && 'Выберите город из списка');
 
-        if (!countriesArray.includes(value)) {
-            errors = 'Выберите город из списка';
-        }
-        return errors;
-    }
 
     useEffect(() => {
-        if (!countriesArray.length) {
+        if (!countriesArray.length)
             dispatch(sendCountriesRequest());
-        }
+
     }, [countriesArray])
     return (
-        <>
-            <label htmlFor="country-input" className={`country-label ${showCountriesList && 'active'}`}
-                   onClick={() => toggleShowCountriesList(!showCountriesList)}>
+        <div className={`country-label ${showCountriesList && 'active'}`}>
+            <label htmlFor="country-input">
                 <Field
                     id="country-input"
                     name="country"
                     validate={validateCountry}
                     autoComplete="whatever"
                     placeholder="Country"
+                    onFocus={() => toggleShowCountriesList(true)}
                     onBlur={(e) => handleBlurCustom(e.target.value)}
+                    onChange={(e) => formik.setFieldValue('country', e.target.value)}
                     className={`cart__form-item ${formik.touched.country && formik.errors.country ? 'invalid' : ''}`}
                 />
-                {showCountriesList &&
-                    <>
-                        <ul className="country-list"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            {renderCountries()}
-                        </ul>
-                        <span className="label-arrow">
+            </label>
+            {showCountriesList &&
+                <>
+                    <ul className="country-list">
+                        {renderCountries()}
+                    </ul>
+                    <span className="label-arrow"
+                          onClick={() => toggleShowCountriesList(!showCountriesList)}>
                     <SvgGenerator id="arrow"/>
                     </span>
-                    </>
-                }
-            </label>
-        </>
+                </>
+            }
+        </div>
     )
 }
 export default CustomFieldCountries

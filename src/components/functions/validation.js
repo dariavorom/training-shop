@@ -3,7 +3,7 @@ export const validationEmail = (values) => {
 
     if (!values.email_main) errors.email_main = 'Введите email';
 
-    else if (values.email_main
+    if (values.email_main
         && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email_main)
     ) errors.email = 'Некорректный email';
 
@@ -22,13 +22,11 @@ export const validationDelivery = (values) => {
     const errors = {};
     //email
     if (!values.email) errors.email = 'Поле должно быть заполнено';
-    else if (values.email
-        && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)
-    ) errors.email = 'Некорректный email';
+    if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.email)) errors.email = 'Некорректный email';
 
     //phone
     if (!values.phone || !values.phone.replace(/[\s+375()_]/g, '').length) errors.phone = 'Поле должно быть заполнено';
-    else if (values.phone) {
+    if (values.phone) {
         let phone = values.phone.replace(/[\s()]/g, '')
         if (!/^(\+375)(29|25|44|33)(\d{3})(\d{2})(\d{2})$/.test(phone))
             errors.phone = 'Некорректный номер телефона!'
@@ -64,33 +62,30 @@ export const validationPayment = (values) => {
     const errors = {};
     if (values.paymentMethod === 'visa' || values.paymentMethod === 'mastercard') {
         if (!values.card || !values.card.replace(/[\s_]/g, '')) errors.card = 'Поле должно быть заполнено';
-        else if (values.card.replace(/[\s_]/g, '').length !== 16) {
-            errors.card = 'Проверьте правильность введенных данных';
-        }
+        if (values.card.replace(/[\s_]/g, '').length !== 16) errors.card = 'Проверьте правильность введенных данных';
+
         if (!values.cardDate || !values.cardDate.replace(/[_/]/g, '')) errors.cardDate = 'Поле должно быть заполнено';
         if (values.cardDate) {
-            let dateArr = values.cardDate.split('/');
-            let month = dateArr[0].replace(/[_/]/g, '');
-            let year = (20 + dateArr[1].replace(/[_/]/g, ''));
+            const dateArr = values.cardDate.split('/');
+            const month = dateArr[0].replace(/[_/]/g, '');
+            const year = (20 + dateArr[1].replace(/[_/]/g, ''));
             if (month.length !== 2 || month > 12) errors.cardDate = 'Неверно введен месяц';
             if (year.length !== 4) errors.cardDate = 'Неверно введен год';
             else {
-                let startDate = new Date();
-                let valueDate = new Date(+year, +month);
+                const startDate = new Date();
+                const valueDate = new Date(+year, +month);
                 if (startDate > valueDate) errors.cardDate = 'Проверьте срок действия';
             }
 
         }
         if (!values.cardCVV) errors.cardCVV = 'Поле должно быть заполнено';
-        else if (values.cardCVV.length < 3) errors.cardCVV = 'Введите не меньше 3 цифр';
-        else if (values.cardCVV.length > 4) errors.cardCVV = 'Введите не больше 4 цифр';
-        else if (!values.cardCVV.replace(/\D+/g, '')) errors.cardCVV = 'Только цифры';
+        if (values.cardCVV.length < 3) errors.cardCVV = 'Введите не меньше 3 цифр';
+        if (values.cardCVV.length > 4) errors.cardCVV = 'Введите не больше 4 цифр';
+        if (!values.cardCVV.replace(/\D+/g, '')) errors.cardCVV = 'Только цифры';
     }
     if (values.paymentMethod === 'paypal') {
         if (!values.cashEmail) errors.cashEmail = 'Поле должно быть заполнено';
-        else if (values.cashEmail
-            && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.cashEmail)
-        ) errors.cashEmail = 'Некорректный email';
+        if (values.cashEmail && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,63}$/i.test(values.cashEmail)) errors.cashEmail = 'Некорректный email';
     }
     return errors;
 }

@@ -13,7 +13,9 @@ const CartPayment = ({formik, values, showButtonText}) => {
     function inputTypeHandler () {
         if (inputType === 'password') {
             toggleInputType('text')
-        } else toggleInputType('password')
+        } else {
+            toggleInputType('password')
+        }
     }
 
     useEffect(() => {
