@@ -1,4 +1,5 @@
-import {SvgGenerator} from "../svg-generator/SvgGenerator";
+import React from 'react';
+import {SvgGenerator} from "../svgGenerator/SvgGenerator";
 
 const Rating = (props) => {
     const rating = props.rating;

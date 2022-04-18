@@ -1,7 +1,7 @@
 import {takeLatest} from 'redux-saga/effects';
 //types
-import {REQUEST_PRODUCTS} from "./products/products.types";
-import {REQUEST_PRODUCT} from "./product/product.types";
+import {REQUEST_PRODUCTS} from "./products/types";
+import {REQUEST_PRODUCT} from "./product/types";
 import {SEND_MAIL_REQUEST, SEND_MAIL_REQUEST_FOOTER} from "./subscribe/types";
 import {SEND_REVIEW_REQUEST} from "./review/types";
 import {SEND_CITIES_REQUEST, SEND_COUNTRIES_REQUEST, SEND_ORDER_REQUEST} from "./cart/types";

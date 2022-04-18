@@ -1,5 +1,5 @@
-import {REQUEST_PRODUCT, LOAD_PRODUCT} from "./product.types";
-import {SHOW_ERROR} from "../products/products.types";
+import {REQUEST_PRODUCT, LOAD_PRODUCT} from "./types";
+import {SHOW_ERROR} from "../products/types";
 
 const initialState = {
     product: {

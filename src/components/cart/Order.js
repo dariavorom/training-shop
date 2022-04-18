@@ -1,21 +1,26 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {Form, Formik} from "formik";
+
+import {dataToSend} from "../../redux/cart/utils";
+import {sendOrderRequest, setOrderFormStep, setOrderValues} from "../../redux/cart/actions";
+import {validationDelivery, validationPayment} from "../functions/validation";
+
 import CartItems from "./formParts/CartItems";
 import CartDelivery from "./formParts/CartDelivery";
 import CartPayment from "./formParts/CartPayment";
-import {dataToSend} from "../../redux/cart/utils";
-import {sendOrderRequest, setOrderFormStep, setOrderValues} from "../../redux/cart/actions";
-import {Form, Formik} from "formik";
-import {validationDelivery, validationPayment} from "../functions/validation";
 import CartOrderFail from "./formParts/CartOrderFail";
 import CartOrderSuccess from "./formParts/CartOrderSuccess";
 
-const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
+const Order = () => {
     const dispatch = useDispatch();
+    const formikRef = useRef();
     const {activeStep} = useSelector(state => state.cart.order);
     const {orderComplete, orderError, orderValues} = useSelector(state => state.cart.order);
     const {cartItems} = useSelector(state => state.cart);
-    const formikRef = useRef();
+
+    const total = cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0).toFixed(2);
+
     const steps = ['Item In Cart', 'Delivery', 'Payment'];
     const [btnText, setBtnText] = useState('');
     const [agree, setAgree] = useState('notAgree');
@@ -31,8 +36,7 @@ const Order = ({items, total, removeItem, incItem, decItem, onChange}) => {
     function renderStepContent(step, values, formik) {
         switch (step) {
             case 0:
-                return <CartItems items={items} removeItem={removeItem} incItem={incItem} decItem={decItem}
-                                  onChange={onChange}/>;
+                return <CartItems items={cartItems}/>;
             case 1:
                 return <CartDelivery values={values} formik={formik} agree={agree} setAgree={setAgree}
                                      showButtonText={showButtonText}/>;

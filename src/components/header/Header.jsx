@@ -1,9 +1,13 @@
 import React from "react";
-import HeaderTop from "./header_top/HeaderTop";
-import HeaderBottom from "./header_bottom/HeaderBottom";
 import {useState, useEffect} from "react";
+
+import HeaderTop from "./headerTop/HeaderTop";
+import HeaderBottom from "./headerBottom/HeaderBottom";
+
 import {lockBody} from "../functions/lockBody";
+
 import './header.scss';
+
 const Header = () => {
     const [isMenuOpen, toggleMenu] = useState(false);
     useEffect(() => {

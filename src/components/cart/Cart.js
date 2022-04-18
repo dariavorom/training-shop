@@ -1,26 +1,23 @@
 import React from "react";
 
-import {connect, useDispatch, useSelector} from 'react-redux';
-import {
-    incItem,
-    decItem,
-    removeItemById,
-    onChangeInput,
-    toggleCartOpen,
-    removeAllItems
-} from "../../redux/cart/actions";
+import {useDispatch, useSelector} from 'react-redux';
+import {removeAllItems, toggleCartOpen} from "../../redux/cart/actions";
 
-import ErrorBoundary from "../error-boundry/ErrorBoundary";
+import ErrorBoundary from "../errorBoundry/ErrorBoundary";
 import Order from "./Order";
 import EmptyCart from "./EmptyCart";
 
 import './cart.scss';
+
 import close from './assets/close.png';
 
-const Cart = ({items, total, removeItem, incItem, decItem, onChange}) => {
+const Cart = () => {
     const dispatch = useDispatch();
-    const isCartOpen = useSelector(state => state.cart.isCartOpen);
+    const {isCartOpen, cartItems} = useSelector(state => state.cart);
     const {orderComplete, orderError} = useSelector(state => state.cart.order);
+    
+    const total = cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0).toFixed(2);
+
     function handleCloseCart () {
         if (orderComplete) {
             dispatch(removeAllItems())
@@ -37,12 +34,9 @@ const Cart = ({items, total, removeItem, incItem, decItem, onChange}) => {
                     </button>
                 </div>
                 <div className="cart-content">
-                    {(items.length === 0 && !orderComplete && !orderError) && <EmptyCart/>}
+                    {(cartItems.length === 0 && !orderComplete && !orderError) && <EmptyCart/>}
                     <ErrorBoundary>
-                        {(items.length !== 0) && <Order items={items} total={total}
-                                                                           removeItem={removeItem}
-                                                                           incItem={incItem} decItem={decItem}
-                                                                           onChange={onChange}/>}
+                        {(cartItems.length !== 0) && <Order items={cartItems} total={total}/>}
                     </ErrorBoundary>
                 </div>
             </div>
@@ -50,14 +44,4 @@ const Cart = ({items, total, removeItem, incItem, decItem, onChange}) => {
     )
 }
 
-const mapStateToProps = ({cart: {cartItems}}) => ({
-    items: cartItems,
-    total: cartItems.reduce((acc, item) => acc += item.price * item.quantity, 0).toFixed(2)
-});
-const mapDispatchToProps = dispatch => ({
-    removeItem: (id, color, sizes, image) => dispatch(removeItemById(id, color, sizes, image)),
-    incItem: (id, color, sizes, image) => dispatch(incItem(id, color, sizes, image)),
-    decItem: (id, color, sizes, image) => dispatch(decItem(id, color, sizes, image)),
-    onChange: (id, color, sizes, image, quantity) => dispatch(onChangeInput(id, color, sizes, image, quantity)),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default Cart;

@@ -1,11 +1,13 @@
 import React, {useEffect, useRef} from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import {useDispatch, useSelector} from "react-redux";
-import {sendReviewRequest} from "../../redux/review/actions";
-import FeedbackStarRating from "./Feedback-star-rating";
 import {useLocation} from "react-router-dom";
+
+import {sendReviewRequest} from "../../redux/review/actions";
+import FeedbackStarRating from "./FeedbackStarRating";
 import {validationText} from "../functions/validation";
 import {lockBody} from "../functions/lockBody";
+
 import './feedback.scss';
 
 const Feedback = ({active, toggleActive, togglePopup, id}) => {

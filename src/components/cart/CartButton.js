@@ -1,9 +1,14 @@
-import cart from "../header/assets/img/cart.svg";
-import {connect, useDispatch, useSelector} from 'react-redux';
+import React from "react";
+import {useDispatch, useSelector} from 'react-redux';
+
 import {toggleCartOpen} from "../../redux/cart/actions";
-const CartButton = ({itemsCount}) => {
+
+import cart from "../header/assets/img/cart.svg";
+
+const CartButton = () => {
     const dispatch = useDispatch();
-    const isCartOpen = useSelector(state => state.cart.isCartOpen);
+    const {cartItems, isCartOpen} = useSelector(state => state.cart);
+    const itemsCount = cartItems.length;
   return (
       <button data-test-id='cart-button' className='personal__item cart-btn' onClick={() => dispatch(toggleCartOpen(!isCartOpen))}>
           <span className='count'>{itemsCount}</span>
@@ -11,7 +16,4 @@ const CartButton = ({itemsCount}) => {
       </button>
   )
 }
-const mapStateToProps = state => ({
-    itemsCount: state.cart.cartItems.length
-});
-export default connect(mapStateToProps)(CartButton);
+export default CartButton;
