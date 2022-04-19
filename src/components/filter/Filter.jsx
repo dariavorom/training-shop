@@ -8,7 +8,7 @@ import './filter.scss';
 import viewList from './assets/view-list.svg';
 import viewGrid from './assets/view-grid.svg';
 
-const Filter = ({onInputCheck}) => {
+export const Filter = ({onInputCheck}) => {
     const {productType} = useParams();
     const products = PRODUCTS[productType];
     const [isActive, toggleActive] = useState(false);
@@ -118,4 +118,3 @@ const Filter = ({onInputCheck}) => {
         </div>
     );
 }
-export default Filter;

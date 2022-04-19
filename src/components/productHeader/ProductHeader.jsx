@@ -1,13 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import Rating from "../raiting/Raiting";
+import {Rating} from "../raiting/Raiting";
 
 import './productHeader.scss';
 
 import share from './assets/share.svg';
 
-const ProductHeader = (props) => {
+export const ProductHeader = (props) => {
     let product = props.product
     let cat = product.category[0].toUpperCase() + product.category.substring(1);
     return (
@@ -55,4 +55,3 @@ const ProductHeader = (props) => {
 
     );
 }
-export default ProductHeader;

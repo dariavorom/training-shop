@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {removeAllItems, toggleCartOpen} from "../../../redux/cart/actions";
 
-const CartOrderSuccess = () => {
+export const CartOrderSuccess = () => {
     const dispatch = useDispatch();
     const isCartOpen = useSelector(state => state.cart.isCartOpen);
     return (
@@ -25,4 +25,3 @@ const CartOrderSuccess = () => {
         </>
     )
 }
-export default CartOrderSuccess;

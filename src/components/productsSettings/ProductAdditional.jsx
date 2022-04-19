@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductAdditional = ({sizes, productColor, material}) => {
+export const ProductAdditional = ({sizes, productColor, material}) => {
     let colorArr = [];
     colorArr = productColor.map(el => {
         return colorArr[el] = el.color
@@ -33,4 +33,3 @@ const ProductAdditional = ({sizes, productColor, material}) => {
         </div>
     )
 }
-export default ProductAdditional;

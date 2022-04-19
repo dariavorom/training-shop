@@ -2,7 +2,7 @@ import React from "react";
 import InputMask from "react-input-mask";
 import {Field} from "formik";
 
-const CustomMaskedField = ({mask, name, placeholder, type}) => (
+export const CustomMaskedField = ({mask, name, placeholder, type}) => (
     <Field
         name={name}>
         {({field, meta}) => (<InputMask
@@ -14,4 +14,3 @@ const CustomMaskedField = ({mask, name, placeholder, type}) => (
         </InputMask>)}
     </Field>
 )
-export default CustomMaskedField

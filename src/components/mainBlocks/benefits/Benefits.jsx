@@ -4,7 +4,7 @@ import {BENEFITS} from "../../constants/mainPage/benefits";
 
 import './benefits.scss';
 
-const Benefits = () => (
+export const Benefits = () => (
     <div className={'benefits-wrapper'}>
         <div className="container">
             <div className={'benefits'}>
@@ -22,4 +22,3 @@ const Benefits = () => (
     </div>
 );
 
-export {Benefits};

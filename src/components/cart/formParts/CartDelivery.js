@@ -1,12 +1,12 @@
 import React, {useEffect} from "react";
 import {Field} from "formik";
 
-import CustomErrorMessage from "../formFields/CustomErrorMessage";
-import CustomMaskedField from "../formFields/CustomMaskedField";
-import CustomFieldCountries from "../formFields/CustomFieldCountries";
-import CustomFieldCities from "../formFields/CustomFieldCities";
+import {CustomErrorMessage} from "../formFields/CustomErrorMessage";
+import {CustomMaskedField} from "../formFields/CustomMaskedField";
+import {CustomFieldCountries} from "../formFields/CustomFieldCountries";
+import {CustomFieldCities} from "../formFields/CustomFieldCities";
 
-const CartDelivery = ({values, formik, showButtonText}) => {
+export const CartDelivery = ({values, formik, showButtonText}) => {
     useEffect(() => {
         showButtonText('further')
     }, [])
@@ -128,4 +128,3 @@ const CartDelivery = ({values, formik, showButtonText}) => {
         </div>
     </>)
 }
-export default CartDelivery;

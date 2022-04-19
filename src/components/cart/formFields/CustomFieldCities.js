@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {sendCitiesRequest} from "../../../redux/cart/actions";
 import {SvgGenerator} from "../../svgGenerator/SvgGenerator";
 
-const CustomFieldCities = ({formik, city, country}) => {
+export const CustomFieldCities = ({formik, city, country}) => {
     const dispatch = useDispatch();
     const {citiesList, isRequestSuccess} = useSelector(state => state.cart.cities);
     const [showCitiesList, toggleShowCitiesList] = useState(false);
@@ -78,4 +78,3 @@ const handleClick = (e) => {
         </div>
     )
 }
-export default CustomFieldCities;

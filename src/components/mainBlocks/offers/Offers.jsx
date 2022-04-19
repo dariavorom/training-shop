@@ -4,7 +4,8 @@ import classes from './offers.module.scss';
 
 import lookbook from './assets/lookbook.jpg';
 import sale from './assets/sale.jpg';
-const Offers = () => {
+
+export const Offers = () => {
     return (
         <div className={classes.offers}>
             <div className="container">
@@ -29,4 +30,3 @@ const Offers = () => {
         </div>
     )
 }
-export default Offers;

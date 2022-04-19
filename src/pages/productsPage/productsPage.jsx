@@ -2,15 +2,15 @@ import React, {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {useSelector} from "react-redux";
 
-import CardsItem from "../../components/cardsItem/CardsItem";
-import ProductsHeader from "../../components/productsHeader/ProductsHeader";
-import Filter from "../../components/filter/Filter";
+import {CardsItem} from "../../components/cardsItem/CardsItem";
+import {ProductsHeader} from "../../components/productsHeader/ProductsHeader";
+import {Filter} from "../../components/filter/Filter";
 
 import loading from '../../assets/loading.gif';
 
 import './productsPage.scss';
 
-const ProductsPage = () => {
+export const ProductsPage = () => {
     const {productType} = useParams();
     const productsInit = useSelector(state => state.productsSlice.products[productType])
     const [color, setColor] = useState([])
@@ -128,4 +128,3 @@ const ProductsPage = () => {
         </>
     );
 }
-export default ProductsPage;

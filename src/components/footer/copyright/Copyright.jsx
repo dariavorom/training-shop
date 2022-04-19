@@ -5,7 +5,7 @@ import {PAYMENTS} from "../../constants/payments";
 
 import './copyright.scss';
 
-const Copyright = () => {
+export const Copyright = () => {
     return (
         <div className={'copyright'}>
             <div className="container">
@@ -22,4 +22,3 @@ const Copyright = () => {
         </div>
     );
 }
-export default Copyright;

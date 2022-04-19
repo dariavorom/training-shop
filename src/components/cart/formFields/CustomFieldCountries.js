@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {sendCountriesRequest} from "../../../redux/cart/actions";
 import {SvgGenerator} from "../../svgGenerator/SvgGenerator";
 
-const CustomFieldCountries = ({formik}) => {
+export const CustomFieldCountries = ({formik}) => {
     const dispatch = useDispatch();
     const {countriesList, isRequestSuccess} = useSelector(state => state.cart.countries);
     const [showCountriesList, toggleShowCountriesList] = useState(false);
@@ -20,7 +20,6 @@ const CustomFieldCountries = ({formik}) => {
     </li>))
     )
 
-
     const handleBlurCustom = (value) => {
         formik.setFieldTouched('country', true);
         if (!countriesArray.includes(value))
@@ -28,11 +27,9 @@ const CustomFieldCountries = ({formik}) => {
     }
     const validateCountry = (value) => (!countriesArray.includes(value) && 'Выберите город из списка');
 
-
     useEffect(() => {
         if (!countriesArray.length)
             dispatch(sendCountriesRequest());
-
     }, [countriesArray])
     return (
         <div className={`country-label ${showCountriesList && 'active'}`}>
@@ -63,4 +60,3 @@ const CustomFieldCountries = ({formik}) => {
         </div>
     )
 }
-export default CustomFieldCountries

@@ -5,7 +5,7 @@ import {MENU} from '../../constants/menu';
 
 import './menu.scss';
 
-const Menu = ({isMenuOpen, toggleMenu}) => (
+export const Menu = ({isMenuOpen, toggleMenu}) => (
     <div className={isMenuOpen ? 'menu active' : 'menu'} data-test-id='burger-menu' onClick={() => toggleMenu(false)}>
         <ul className={'nav'} onClick={e => e.stopPropagation()}>
             {MENU.map(({id, path, name}) => (
@@ -18,5 +18,3 @@ const Menu = ({isMenuOpen, toggleMenu}) => (
         </ul>
     </div>
 );
-
-export default Menu;

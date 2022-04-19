@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import Clothes from "../../clothes/Clothes";
 import {MAIN_CLOTHES_BLOCK_MENU} from "../../constants/mainClothesBlockMenu";
 
-const MenClothes = () => {
+export const MenClothes = () => {
     const [particular, setParticular] = useState(MAIN_CLOTHES_BLOCK_MENU[0].particularName);
     const [isChosen, setChosen] = useState(0);
     const products = useSelector(state => state.productsSlice.products.men).filter(el => {
@@ -39,4 +39,3 @@ const MenClothes = () => {
         </>
     );
 }
-export default MenClothes;

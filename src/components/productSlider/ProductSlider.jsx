@@ -12,7 +12,7 @@ import './productSlider.scss';
 
 import arrow from '../../assets/arrow.svg';
 
-const ProductSlider = ({images}) => {
+export const ProductSlider = ({images}) => {
     const {path} = useParams();
     const [swiper, updateSwiper] = useState(null);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -86,4 +86,3 @@ const ProductSlider = ({images}) => {
         </div>
     );
 }
-export default ProductSlider;

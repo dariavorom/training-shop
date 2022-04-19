@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import Rating from "../raiting/Raiting";
+import {Rating} from "../raiting/Raiting";
 import './cardsItem.scss';
 
-const CardsItem = ({cardsItem: {id, name, price, discount, images, reviews}, productType}) => {
+export const CardsItem = ({cardsItem: {id, name, price, discount, images, reviews}, productType}) => {
     let oldPrice;
     if (discount) {
         oldPrice = (price / ((100 - discount.replace(/[^0-9]/g, '')) / 100)).toFixed(2);
@@ -31,4 +31,3 @@ const CardsItem = ({cardsItem: {id, name, price, discount, images, reviews}, pro
         </>
     );
 }
-export default CardsItem;

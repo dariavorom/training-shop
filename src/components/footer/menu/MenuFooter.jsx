@@ -12,7 +12,7 @@ import phone from '../assets/phone.svg';
 import clock from '../assets/clock.svg';
 import mail from '../assets/mail.svg';
 
-const MenuFooter = () => (
+export const MenuFooter = () => (
     <div className={'footer-nav'}>
         <div className="container">
             <div className="footer-nav-wrapper">
@@ -71,4 +71,3 @@ const MenuFooter = () => (
         </div>
     </div>
 );
-export default MenuFooter;

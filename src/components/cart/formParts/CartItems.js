@@ -5,7 +5,7 @@ import {decItem, incItem, onChangeInput, removeItemById} from "../../../redux/ca
 
 import remove from "../assets/remove.png";
 
-const CartItems = () => {
+export const CartItems = () => {
     const dispatch = useDispatch();
     const {cartItems} = useSelector(state => state.cart);
 
@@ -50,5 +50,3 @@ const CartItems = () => {
         </div>
     )
 }
-
-export default CartItems;

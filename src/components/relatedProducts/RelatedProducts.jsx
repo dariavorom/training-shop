@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from "swiper/react";
 
-import CardsItem from "../cardsItem/CardsItem";
+import {CardsItem} from "../cardsItem/CardsItem";
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,7 +11,7 @@ import './relatedProducts.scss';
 
 import arrow from "../../assets/arrow.svg";
 
-const RelatedProducts = ({products}) => {
+export const RelatedProducts = ({products}) => {
     const {productType} = useParams();
     const [prodList, setProdList] = useState(products);
     const navigationPrevRef = React.useRef(null)
@@ -78,4 +78,3 @@ const RelatedProducts = ({products}) => {
         </div>
     )
 }
-export default RelatedProducts;

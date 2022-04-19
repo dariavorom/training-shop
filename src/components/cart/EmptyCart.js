@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {toggleCartOpen} from "../../redux/cart/actions";
 
-const EmptyCart = () => {
+export const EmptyCart = () => {
     const dispatch = useDispatch();
     const isCartOpen = useSelector(state => state.cart.isCartOpen);
     return (
@@ -13,4 +13,3 @@ const EmptyCart = () => {
         </div>
     )
 }
-export default EmptyCart;

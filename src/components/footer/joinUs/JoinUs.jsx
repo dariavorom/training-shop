@@ -13,7 +13,7 @@ import twitter from "../../header/assets/img//twitter.svg";
 import instagram from "../../header/assets/img/instagram.svg";
 import pinterest from "../../header/assets/img/pinterest.svg";
 
-const JoinUs = () => {
+export const JoinUs = () => {
     const dispatch = useDispatch();
     const url = useLocation().pathname;
     const formikRef = useRef();
@@ -93,4 +93,3 @@ const JoinUs = () => {
         </div>
     )
 }
-export default JoinUs;
