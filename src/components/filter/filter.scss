@@ -58,45 +58,6 @@
       position: relative;
       padding: 10px 0;
       user-select: none;
-      input[type="checkbox"] {
-        position: absolute;
-        z-index: -1;
-        opacity: 0;
-        display: block;
-        width: 0;
-        height: 0;
-      }
-
-      .label-name {
-        position: relative;
-        font-size: 13px;
-        line-height: 15px;
-        color: #121212;
-        opacity: 0.8;
-        padding: 0 0 0 35px;
-      }
-
-      .label-name:before {
-        content: "";
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        position: absolute;
-        left: 0;
-        top: -3px;
-        background: #fff;
-        border: 1px solid #e6e6e6;
-        box-sizing: border-box;
-        cursor: pointer;
-      }
-
-      input[type=checkbox]:checked + .label-name:before {
-        border: 1px solid #000;
-        background: #fff url('./assets/checked.png') 0 0 no-repeat;
-      }
-      .label-name:hover:before {
-        border: 1px solid #000;
-      }
     }
   }
 

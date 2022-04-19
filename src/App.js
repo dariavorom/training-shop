@@ -1,39 +1,34 @@
-import {Main} from './pages/main-page/main';
-import ProductPage from './pages/product-page/productPage';
-import ProductsPage from './pages/products-page/productsPage';
+import React, {useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-
-
-import Cart from "./components/cart/cart"
-import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {requestProducts} from "./redux/products/products.actions";
-import Loader from "./components/loader/loader";
-import Error from "./components/error/error";
 
-const App = () => {
+import {Main} from './pages/main/main';
+import {ProductPage} from './pages/productPage/productPage';
+import {ProductsPage} from './pages/productsPage/productsPage';
+import {Header} from "./components/header/Header";
+import {Footer} from "./components/footer/Footer";
+import {Cart} from "./components/cart/Cart"
+import {Loader} from "./components/loader/loader";
+import {Error} from "./components/error/error";
+import {ScrollToTop} from "./components/scrolltotop/ScrollToTop";
+import {lockBody} from "./components/functions/lockBody";
+import {requestProducts} from "./redux/products/actions";
+
+export const App = () => {
     const dispatch = useDispatch();
     const {isLoading, isError} = useSelector(state => state.productsSlice);
-    const [isCartOpen, toggleCart] = useState(false);
-
-    function toggleCartMode() {
-        toggleCart(!isCartOpen);
-    }
+    const isCartOpen = useSelector(state => state.cart.isCartOpen);
     useEffect(() => {
         dispatch(requestProducts())
     }, [])
     useEffect(() => {
-        document.body.classList.add(`${isCartOpen ? 'lock' : 'unlock'}`);
-        return () => {
-            document.body.classList.remove('lock');
-        };
+        lockBody(isCartOpen);
     }, [isCartOpen]);
     return (
         <div className="app" data-test-id="app">
+            <ScrollToTop/>
             {isLoading && <Loader/>}
-            <Header toggleCartMode={toggleCartMode}/>
+            <Header/>
             {isError && <Error/>}
             <Routes>
                 <Route index element={<Main/>}/>
@@ -48,9 +43,7 @@ const App = () => {
                 <Route exact path="/faq/" element={<Main/>}/>
             </Routes>
             <Footer/>
-            <Cart isCartOpen={isCartOpen} toggleCartMode={toggleCartMode}/>
+            {isCartOpen && <Cart/>}
         </div>
     );
 }
-
-export default App;

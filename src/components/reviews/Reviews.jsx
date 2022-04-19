@@ -1,10 +1,13 @@
-import './reviews.scss';
-import write from '../../pages/product-page/assets/write.png';
-import Rating from "../raiting/Raiting";
-import {useState} from "react";
-import Feedback from "../feedback/Feedback";
+import React, {useState} from "react";
 
-const Reviews = ({reviews, id}) => {
+import {Rating} from "../raiting/Raiting";
+import {Feedback} from "../feedback/Feedback";
+
+import './reviews.scss';
+
+import write from '../../pages/productPage/assets/write.png';
+
+export const Reviews = ({reviews, id}) => {
     const [isActivePopup, togglePopup] = useState(false);
     const toggleActive = () => {
         togglePopup(!isActivePopup);
@@ -48,4 +51,3 @@ const Reviews = ({reviews, id}) => {
         </>
     )
 }
-export default Reviews;

@@ -1,13 +1,16 @@
 import React, {useEffect, useRef} from "react";
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import './feedback.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {sendReviewRequest} from "../../redux/review/actions";
-import FeedbackStarRating from "./Feedback-star-rating";
 import {useLocation} from "react-router-dom";
-import {validationText} from "../functions/validation";
 
-const Feedback = ({active, toggleActive, togglePopup, id}) => {
+import {sendReviewRequest} from "../../redux/review/actions";
+import {FeedbackStarRating} from "./FeedbackStarRating";
+import {validationText} from "../functions/validation";
+import {lockBody} from "../functions/lockBody";
+
+import './feedback.scss';
+
+export const Feedback = ({active, toggleActive, togglePopup, id}) => {
     const url = useLocation().pathname;
     const formikRef = useRef();
     const dispatch = useDispatch();
@@ -18,10 +21,7 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
         reviewSendResponse
     } = useSelector(state => state.reviews);
     useEffect(() => {
-        document.body.classList.add(`${active ? 'lock' : 'unlock'}`);
-        return () => {
-            document.body.classList.remove('lock');
-        };
+        lockBody(active);
     }, [active]);
     useEffect(() => {
         if (isReviewSendError) {
@@ -60,16 +60,14 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
                         enableReinitialize={true}
                         validate={validationText}
                         onSubmit={(values) => {
-                            console.log( values )
                             dispatch(sendReviewRequest(values));
                         }}
                     >
                         {formik => {
-                            console.log(formik.errors);
                             return (
                                 <>
                                     <FeedbackStarRating rating={formik.values.rating} isRatingInteractive={true}
-                                                        formControle={formik.setFieldValue}/>
+                                                        formControl={formik.setFieldValue}/>
                                     <Form className={'reviews-popup__form'}>
                                         <Field
                                             data-test-id="review-name-field"
@@ -105,4 +103,3 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
         </div>
     )
 }
-export default Feedback;

@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
-import viewList from './assets/view-list.svg';
-import viewGrid from './assets/view-grid.svg';
-import './filter.scss';
-import {PRODUCTS} from "../constants/products";
 import {useParams} from "react-router-dom";
 
-const Filter = ({onInputCheck}) => {
+import {PRODUCTS} from "../constants/products";
+
+import './filter.scss';
+
+import viewList from './assets/view-list.svg';
+import viewGrid from './assets/view-grid.svg';
+
+export const Filter = ({onInputCheck}) => {
     const {productType} = useParams();
     const products = PRODUCTS[productType];
     const [isActive, toggleActive] = useState(false);
@@ -115,4 +118,3 @@ const Filter = ({onInputCheck}) => {
         </div>
     );
 }
-export default Filter;

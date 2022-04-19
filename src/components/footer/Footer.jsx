@@ -1,16 +1,13 @@
-import JoinUs from "./join-us/JoinUs";
-import MenuFooter from "./menu/MenuFooter";
-import Copyright from "./copyright/Copyright";
+import React from "react";
 
-const Footer = () => {
-    return (
-        <>
-            <footer className='footer' data-test-id='footer'>
-                <JoinUs/>
-                <MenuFooter/>
-                <Copyright/>
-            </footer>
-        </>
-    );
-}
-export default Footer;
+import {JoinUs} from "./joinUs/JoinUs";
+import {MenuFooter} from "./menu/MenuFooter";
+import {Copyright} from "./copyright/Copyright";
+
+export const Footer = () => (
+    <footer className='footer' data-test-id='footer'>
+        <JoinUs/>
+        <MenuFooter/>
+        <Copyright/>
+    </footer>
+);

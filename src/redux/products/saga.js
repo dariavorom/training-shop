@@ -1,7 +1,6 @@
-
 //Запрос всех продуктов
 import {call, put} from "redux-saga/effects";
-import {loadProducts, showError} from "./products.actions";
+import {loadProducts, showError} from "./actions";
 
 export function* sagaProductsWorker() {
     try {

@@ -1,8 +1,11 @@
-import './copyright.scss';
+import React from "react";
 import {Link} from "react-router-dom";
+
 import {PAYMENTS} from "../../constants/payments";
 
-const Copyright = () => {
+import './copyright.scss';
+
+export const Copyright = () => {
     return (
         <div className={'copyright'}>
             <div className="container">
@@ -19,4 +22,3 @@ const Copyright = () => {
         </div>
     );
 }
-export default Copyright;

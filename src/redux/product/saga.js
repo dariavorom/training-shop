@@ -1,7 +1,12 @@
 //Запрос одного продукта
 import {call, put} from "redux-saga/effects";
-import {loadProduct} from "./product.actions";
-import {showError} from "../products/products.actions";
+import {loadProduct} from "./actions";
+import {showError} from "../products/actions";
+
+async function productRequestWorker(id) {
+    const response = await fetch(`https://training.cleverland.by/shop/product/${id}`)
+    return await response.json()
+}
 
 export function* sagaProductWorker(action) {
     try {
@@ -13,7 +18,3 @@ export function* sagaProductWorker(action) {
     }
 }
 
-async function productRequestWorker(id) {
-    const response = await fetch(`https://training.cleverland.by/shop/product/${id}`)
-    return await response.json()
-}

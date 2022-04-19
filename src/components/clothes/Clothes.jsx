@@ -1,5 +1,8 @@
+import React from "react";
 import {Link} from "react-router-dom";
-import CardsItem from "../cards-item/CardsItem";
+
+import {CardsItem} from "../cardsItem/CardsItem";
+
 import './clothes.scss';
 
 const Clothes = ({productType, products}) => {

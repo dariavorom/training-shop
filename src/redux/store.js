@@ -6,7 +6,5 @@ import thunk from 'redux-thunk';
 
 const saga = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(RootReducer, composeEnhancers(applyMiddleware(thunk, saga)));
+export const store = createStore(RootReducer, composeEnhancers(applyMiddleware(thunk, saga)));
 saga.run(sagaWatcher)
-
-export default store;
