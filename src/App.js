@@ -1,21 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Routes, Route} from "react-router-dom";
-import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import {Main} from './pages/main/main';
-import ProductPage from './pages/productPage/productPage';
-import ProductsPage from './pages/productsPage/productsPage';
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import Cart from "./components/cart/Cart"
-import Loader from "./components/loader/loader";
-import Error from "./components/error/error";
-import ScrollToTop from "./components/scrolltotop/ScrollToTop";
+import {ProductPage} from './pages/productPage/productPage';
+import {ProductsPage} from './pages/productsPage/productsPage';
+import {Header} from "./components/header/Header";
+import {Footer} from "./components/footer/Footer";
+import {Cart} from "./components/cart/Cart"
+import {Loader} from "./components/loader/loader";
+import {Error} from "./components/error/error";
+import {ScrollToTop} from "./components/scrolltotop/ScrollToTop";
 import {lockBody} from "./components/functions/lockBody";
 import {requestProducts} from "./redux/products/actions";
 
-const App = () => {
+export const App = () => {
     const dispatch = useDispatch();
     const {isLoading, isError} = useSelector(state => state.productsSlice);
     const isCartOpen = useSelector(state => state.cart.isCartOpen);
@@ -48,5 +47,3 @@ const App = () => {
         </div>
     );
 }
-
-export default App;

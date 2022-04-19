@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 import arrow from '../../../../assets/arrow.svg';
 
-const Slider = () => {
+export const Slider = () => {
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
     return (
@@ -48,4 +48,3 @@ const Slider = () => {
         </div>
     );
 }
-export {Slider};

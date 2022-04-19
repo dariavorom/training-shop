@@ -2,7 +2,7 @@ import React from "react";
 
 import sizeGuide from "../../pages/productPage/assets/sizes.png";
 
-const ProductSetSize = ({sizes, size, setSize, isChosenSize, setChosenSize}) => (
+export const ProductSetSize = ({sizes, size, setSize, isChosenSize, setChosenSize}) => (
     <div className="product-info__size border-bottom">
         <div className={'product-info__text'}>
             <span className="product-info__name">SIZE: </span>
@@ -28,4 +28,3 @@ const ProductSetSize = ({sizes, size, setSize, isChosenSize, setChosenSize}) => 
         </div>
     </div>
 )
-export default ProductSetSize;

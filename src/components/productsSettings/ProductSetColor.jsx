@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductSetColor = ({colors, color, setColor, isChosenColor, setChosenColor}) => (
+export const ProductSetColor = ({colors, color, setColor, isChosenColor, setChosenColor}) => (
     <div className="product-info__color">
         <div className={'product-info__text'}>
             <span className="product-info__name">COLOR: </span>
@@ -22,4 +22,3 @@ const ProductSetColor = ({colors, color, setColor, isChosenColor, setChosenColor
         </div>
     </div>
 )
-export default ProductSetColor;

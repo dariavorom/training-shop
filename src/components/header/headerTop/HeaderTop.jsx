@@ -9,7 +9,7 @@ import phone from "../assets/img/phone.svg";
 import loc from "../assets/img/loc.svg";
 import clock from "../assets/img/clock.svg";
 
-const HeaderTop = () => (
+export const HeaderTop = () => (
     <div className={'header__top'}>
         <div className="container">
             <div className="header__top-wrapper">
@@ -46,4 +46,3 @@ const HeaderTop = () => (
         </div>
     </div>
 );
-export default HeaderTop;

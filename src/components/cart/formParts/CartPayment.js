@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Field} from "formik";
 
-import CustomErrorMessage from "../formFields/CustomErrorMessage";
-import CustomMaskedField from "../formFields/CustomMaskedField";
+import {CustomErrorMessage} from "../formFields/CustomErrorMessage";
+import {CustomMaskedField} from "../formFields/CustomMaskedField";
 
 import paypal from '../assets/paypal.png';
 import visa from '../assets/visa.png';

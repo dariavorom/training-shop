@@ -4,13 +4,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {useLocation} from "react-router-dom";
 
 import {sendReviewRequest} from "../../redux/review/actions";
-import FeedbackStarRating from "./FeedbackStarRating";
+import {FeedbackStarRating} from "./FeedbackStarRating";
 import {validationText} from "../functions/validation";
 import {lockBody} from "../functions/lockBody";
 
 import './feedback.scss';
 
-const Feedback = ({active, toggleActive, togglePopup, id}) => {
+export const Feedback = ({active, toggleActive, togglePopup, id}) => {
     const url = useLocation().pathname;
     const formikRef = useRef();
     const dispatch = useDispatch();
@@ -103,4 +103,3 @@ const Feedback = ({active, toggleActive, togglePopup, id}) => {
         </div>
     )
 }
-export default Feedback;

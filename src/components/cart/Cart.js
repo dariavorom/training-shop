@@ -4,14 +4,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import {removeAllItems, toggleCartOpen} from "../../redux/cart/actions";
 
 import ErrorBoundary from "../errorBoundry/ErrorBoundary";
-import Order from "./Order";
-import EmptyCart from "./EmptyCart";
+import {Order} from "./Order";
+import {EmptyCart} from "./EmptyCart";
 
 import './cart.scss';
 
 import close from './assets/close.png';
 
-const Cart = () => {
+export const Cart = () => {
     const dispatch = useDispatch();
     const {isCartOpen, cartItems} = useSelector(state => state.cart);
     const {orderComplete, orderError} = useSelector(state => state.cart.order);
@@ -43,5 +43,3 @@ const Cart = () => {
         </div>
     )
 }
-
-export default Cart;

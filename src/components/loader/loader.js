@@ -2,7 +2,7 @@ import React from "react";
 
 import './loader.css';
 
-const Loader = () => (
+export const Loader = () => (
     <div className="overlay" data-test-id="loader">
         <div className="lds-ellipsis">
             <div/>
@@ -13,5 +13,3 @@ const Loader = () => (
     </div>
 
 )
-
-export default Loader

@@ -11,7 +11,7 @@ import classes from './subscribe.module.scss';
 import woman from './assets/woman.png';
 import man from './assets/man.png';
 
-const Subscribe = () => {
+export const Subscribe = () => {
     const dispatch = useDispatch();
     const url = useLocation().pathname;
     const formikRef = useRef();
@@ -82,4 +82,3 @@ const Subscribe = () => {
         </div>
     );
 }
-export default Subscribe;

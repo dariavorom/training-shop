@@ -5,7 +5,7 @@ import {Cat} from "../../../constants/mainPage/categories";
 
 import './categories.scss';
 
-const Categories = () => (
+export const Categories = () => (
     <div className={'categories'}>
         {Cat.map(({id, productType, img_src}) => (
             <div key={id} className="categories__item ">
@@ -15,5 +15,3 @@ const Categories = () => (
         ))}
     </div>
 );
-
-export {Categories};

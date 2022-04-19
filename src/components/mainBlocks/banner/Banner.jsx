@@ -5,7 +5,7 @@ import {Categories} from "./categories/Categories";
 
 import './banner.scss';
 
-const Banner = () => (
+export const Banner = () => (
     <div className={'main-banner'}>
         <div className="container">
             <div className="banner-wrapper">
@@ -15,5 +15,3 @@ const Banner = () => (
         </div>
     </div>
 );
-
-export {Banner};

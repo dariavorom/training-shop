@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setOrderFormStep, setOrderValues} from "../../../redux/cart/actions";
 import {InitialValues} from "../formModel/initialValues";
 
-const CartOrderFail = () => {
+export const CartOrderFail = () => {
     const dispatch = useDispatch();
     const {errorMessage} = useSelector(state => state.cart.order);
     return (
@@ -25,4 +25,3 @@ const CartOrderFail = () => {
         </>
     )
 }
-export default CartOrderFail;

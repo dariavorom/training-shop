@@ -1,14 +1,14 @@
 import React from "react";
 import {useState, useEffect} from "react";
 
-import HeaderTop from "./headerTop/HeaderTop";
-import HeaderBottom from "./headerBottom/HeaderBottom";
+import {HeaderTop} from "./headerTop/HeaderTop";
+import {HeaderBottom} from "./headerBottom/HeaderBottom";
 
 import {lockBody} from "../functions/lockBody";
 
 import './header.scss';
 
-const Header = () => {
+export const Header = () => {
     const [isMenuOpen, toggleMenu] = useState(false);
     useEffect(() => {
         lockBody(isMenuOpen);
@@ -20,4 +20,3 @@ const Header = () => {
         </header>
     );
 }
-export default Header;

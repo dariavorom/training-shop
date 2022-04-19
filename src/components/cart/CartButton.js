@@ -5,7 +5,7 @@ import {toggleCartOpen} from "../../redux/cart/actions";
 
 import cart from "../header/assets/img/cart.svg";
 
-const CartButton = () => {
+export const CartButton = () => {
     const dispatch = useDispatch();
     const {cartItems, isCartOpen} = useSelector(state => state.cart);
     const itemsCount = cartItems.length;
@@ -16,4 +16,3 @@ const CartButton = () => {
       </button>
   )
 }
-export default CartButton;

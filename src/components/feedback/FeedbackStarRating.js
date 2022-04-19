@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {SvgGenerator} from "../svgGenerator/SvgGenerator";
 
-const FeedbackStarRating = ({numTotalStars = 5, rating, formControl}) => {
+export const FeedbackStarRating = ({numTotalStars = 5, rating, formControl}) => {
     const [numHoveringStars, setNumHoveringStars] = useState(null);
 
     const [isUserHovering, setIsUserHovering] = useState(false);
@@ -23,4 +23,3 @@ const FeedbackStarRating = ({numTotalStars = 5, rating, formControl}) => {
         </div>
     );
 }
-export default FeedbackStarRating;

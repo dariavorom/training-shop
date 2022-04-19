@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {addItem, removeItemById} from "../../redux/cart/actions";
 import {requestProduct} from "../../redux/product/actions";
 
-import ProductHeader from "../../components/productHeader/ProductHeader";
-import ProductSlider from "../../components/productSlider/ProductSlider";
-import Reviews from "../../components/reviews/Reviews";
 import {PAYMENTS} from "../../components/constants/payments";
-import RelatedProducts from "../../components/relatedProducts/RelatedProducts";
-import ProductAdditional from "../../components/productsSettings/ProductAdditional";
-import ProductSetColor from "../../components/productsSettings/ProductSetColor";
-import ProductSetSize from "../../components/productsSettings/ProductSetSize";
-import Loader from "../../components/loader/loader";
-import Error from "../../components/error/error";
+import {ProductHeader} from "../../components/productHeader/ProductHeader";
+import {ProductSlider} from "../../components/productSlider/ProductSlider";
+import {Reviews} from "../../components/reviews/Reviews";
+import {RelatedProducts} from "../../components/relatedProducts/RelatedProducts";
+import {ProductAdditional} from "../../components/productsSettings/ProductAdditional";
+import {ProductSetColor} from "../../components/productsSettings/ProductSetColor";
+import {ProductSetSize} from "../../components/productsSettings/ProductSetSize";
+import {Loader} from "../../components/loader/loader";
+import {Error} from "../../components/error/error";
 
 import favorite from './assets/favorite.svg';
 import compare from './assets/compare.svg';
@@ -24,11 +24,12 @@ import ask from './assets/ask.png';
 
 import './productPage.scss';
 
-const ProductPage = ({items, addItem, removeItem}) => {
+export const ProductPage = () => {
     const {productType} = useParams();
     const {path} = useParams();
     const dispatch = useDispatch();
     const {isLoadingProduct, isErrorProduct, product} = useSelector(state => state.product);
+    const {cartItems} = useSelector(state => state.cart);
     const products = useSelector(state => state.productsSlice.products[productType])
 
     const filterByProp = (arr, prop) => {
@@ -68,18 +69,19 @@ const ProductPage = ({items, addItem, removeItem}) => {
             cartItem.image = `https://training.cleverland.by/shop${colors.filter(item => item.color === color)[0].url}`
         }
     }
-    const curQuantity = items.filter(item =>
+    const curQuantity = cartItems.filter(item =>
         item.id === cartItem.id &&
         item.sizes === cartItem.sizes &&
         item.color === cartItem.color).length;
 
     function actions() {
         if (curQuantity === 0) {
-            addItem(cartItem);
+            dispatch(addItem(cartItem));
         } else {
-            removeItem(cartItem.id, cartItem.color, cartItem.sizes, cartItem.image)
+            dispatch(removeItemById(cartItem.id, cartItem.color, cartItem.sizes, cartItem.image))
         }
     }
+
     useEffect(() => {
         dispatch(requestProduct(path))
     }, [path, productType])
@@ -170,12 +172,3 @@ const ProductPage = ({items, addItem, removeItem}) => {
         </>
     );
 }
-const mapStateToProps = ({cart: {cartItems}}) => ({
-    items: cartItems
-});
-const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch(addItem(item)),
-    removeItem: (id, color, sizes, image) => dispatch(removeItemById(id, color, sizes, image)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

@@ -1,9 +1,10 @@
 import React from 'react';
 
 import {Link} from "react-router-dom";
-import Menu from "../menu/Menu";
+import {Menu} from "../menu/Menu";
 
-import CartButton from "../../cart/CartButton";
+import {CartButton} from "../../cart/CartButton";
+
 import logo from '../../../assets/logo.svg';
 import search from '../assets/img/search.svg';
 import globe from '../assets/img/globe.svg';
@@ -13,7 +14,7 @@ import './headerBottom.scss';
 import classNames from "classnames";
 
 
-const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
+export const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
     function toggleMenuMode() {
         toggleMenu(!isMenuOpen);
     }
@@ -61,4 +62,3 @@ const HeaderBottom = ({isMenuOpen, toggleMenu}) => {
         </div>
     );
 }
-export default HeaderBottom;

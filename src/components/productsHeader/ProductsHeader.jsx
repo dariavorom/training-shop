@@ -5,7 +5,7 @@ import './productsHeader.scss';
 
 import share from './assets/share.svg';
 
-const ProductsHeader = (props) => {
+export const ProductsHeader = (props) => {
     let breadCur = props.name[0].toUpperCase() + props.name.substring(1)
     return (
         <div className={'products-header'}>
@@ -32,4 +32,3 @@ const ProductsHeader = (props) => {
 
     );
 }
-export default ProductsHeader;

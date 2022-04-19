@@ -6,13 +6,13 @@ import {dataToSend} from "../../redux/cart/utils";
 import {sendOrderRequest, setOrderFormStep, setOrderValues} from "../../redux/cart/actions";
 import {validationDelivery, validationPayment} from "../functions/validation";
 
-import CartItems from "./formParts/CartItems";
-import CartDelivery from "./formParts/CartDelivery";
+import {CartItems} from "./formParts/CartItems";
+import {CartDelivery} from "./formParts/CartDelivery";
 import CartPayment from "./formParts/CartPayment";
-import CartOrderFail from "./formParts/CartOrderFail";
-import CartOrderSuccess from "./formParts/CartOrderSuccess";
+import {CartOrderFail} from "./formParts/CartOrderFail";
+import {CartOrderSuccess} from "./formParts/CartOrderSuccess";
 
-const Order = () => {
+export const Order = () => {
     const dispatch = useDispatch();
     const formikRef = useRef();
     const {activeStep} = useSelector(state => state.cart.order);
@@ -138,5 +138,3 @@ const Order = () => {
         </>
     )
 }
-
-export default Order;
